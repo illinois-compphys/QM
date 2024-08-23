@@ -38,8 +38,7 @@ jobs:
       # Build the book
       - name: Build the book
         run: |
-          jupyter-book build quantum_mechanics
-
+          jupyter-book build QM
       # Upload the book's HTML as an artifact
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
