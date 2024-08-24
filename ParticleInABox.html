@@ -1,0 +1,987 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Particle in a Box &#8212; Computation in Quantum Mechanics  (for Phys486)# The title of the book. Will be placed in the left navbar.</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'ParticleInABox';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Welcome to your Jupyter Book" href="intro.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Computation in Quantum Mechanics  (for Phys486)# The title of the book. Will be placed in the left navbar. - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Computation in Quantum Mechanics  (for Phys486)# The title of the book. Will be placed in the left navbar. - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Particle in a Box</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/bkclark/Quantum Mechanics/blob/main/docs/ParticleInABox.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/ParticleInABox.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Particle in a Box</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-particle-in-a-infinite-box">Exercise 1. Particle in a Infinite Box</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-hamiltonian-and-eigenvalues">a. Hamiltonian and Eigenvalues</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-eigenvectors">b. Eigenvectors</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-expectation-values">Exercise 2. Expectation values</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-measuring">a. Measuring</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-expectation-in-the-diagonal-basis">b. Expectation in the diagonal basis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-expectation-values-using-operators">c. Expectation values (using operators )</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-how-do-the-two-approaches-for-expectation-values-relate-optional">d. How do the two approaches for expectation values relate?  (optional)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-time-evolution">Exercise 3. Time Evolution</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-time-evolution">a. Time Evolution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-time-evolution-of-expectation-values">b.  Time evolution of expectation values</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-time-evolution-of-eigenstates">c.  Time evolution of eigenstates</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="particle-in-a-box">
+<h1>Particle in a Box<a class="headerlink" href="#particle-in-a-box" title="Permalink to this heading">#</a></h1>
+<ul class="simple">
+<li><p><strong>Author:</strong></p></li>
+<li><p><strong>Date:</strong></p></li>
+<li><p><strong>Time spent on this assignment:</strong></p></li>
+</ul>
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">scipy</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">from</span> <span class="nn">matplotlib.animation</span> <span class="kn">import</span> <span class="n">FuncAnimation</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">HTML</span>
+<span class="kn">import</span> <span class="nn">matplotlib.animation</span> <span class="k">as</span> <span class="nn">animation</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">HTML</span>
+<span class="k">def</span> <span class="nf">resetMe</span><span class="p">(</span><span class="n">keepList</span><span class="o">=</span><span class="p">[]):</span>
+    <span class="n">ll</span><span class="o">=%</span><span class="k">who_ls</span>
+    <span class="n">keepList</span><span class="o">=</span><span class="n">keepList</span><span class="o">+</span><span class="p">[</span><span class="s1">&#39;FuncAnimation&#39;</span><span class="p">,</span><span class="s1">&#39;HTML&#39;</span><span class="p">,</span><span class="s1">&#39;resetMe&#39;</span><span class="p">,</span><span class="s1">&#39;scipy&#39;</span><span class="p">,</span><span class="s1">&#39;np&#39;</span><span class="p">,</span><span class="s1">&#39;plt&#39;</span><span class="p">,</span><span class="s1">&#39;math&#39;</span><span class="p">,</span><span class="s1">&#39;jax&#39;</span><span class="p">,</span><span class="s1">&#39;jnp&#39;</span><span class="p">,</span><span class="s1">&#39;jit&#39;</span><span class="p">,</span><span class="s1">&#39;grad&#39;</span><span class="p">,</span><span class="s1">&#39;HTML&#39;</span><span class="p">,</span><span class="s1">&#39;animation&#39;</span><span class="p">,</span><span class="s1">&#39;animateMe_singlePendula&#39;</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">iiii</span> <span class="ow">in</span> <span class="n">keepList</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">iiii</span> <span class="ow">in</span> <span class="n">ll</span><span class="p">:</span>
+            <span class="n">ll</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">iiii</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">iiii</span> <span class="ow">in</span> <span class="n">ll</span><span class="p">:</span>
+        <span class="n">jjjj</span><span class="o">=</span><span class="s2">&quot;^&quot;</span><span class="o">+</span><span class="n">iiii</span><span class="o">+</span><span class="s2">&quot;$&quot;</span>
+        <span class="o">%</span><span class="k">reset_selective</span> -f {jjjj}
+    <span class="n">ll</span><span class="o">=%</span><span class="k">who_ls</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s2">&quot;font.size&quot;</span><span class="p">:</span> <span class="mi">14</span><span class="p">})</span>
+    <span class="k">return</span>
+<span class="n">resetMe</span><span class="p">()</span>
+<span class="kn">import</span> <span class="nn">datetime</span><span class="p">;</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">scipy</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">import</span> <span class="nn">math</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;scipy&#39;
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<section id="exercise-1-particle-in-a-infinite-box">
+<h2>Exercise 1. Particle in a Infinite Box<a class="headerlink" href="#exercise-1-particle-in-a-infinite-box" title="Permalink to this heading">#</a></h2>
+<section id="a-hamiltonian-and-eigenvalues">
+<h3>a. Hamiltonian and Eigenvalues<a class="headerlink" href="#a-hamiltonian-and-eigenvalues" title="Permalink to this heading">#</a></h3>
+<p>Consider a particle in a box of length 20 spanning <span class="math notranslate nohighlight">\(-10 \leq x \leq 10\)</span></p>
+<p>We are going to start by solving the time-independent schrodinger equation:</p>
+<div class="math notranslate nohighlight">
+\[-\frac{\hbar^2}{2m} \frac{\partial^2 \Psi}{\partial x^2}  + V\Psi = E\Psi \]</div>
+<div class="math notranslate nohighlight">
+\[\left( -\frac{\hbar^2}{2m} \frac{\partial^2}{\partial x^2}  + V \right) \Psi = E\Psi \]</div>
+<p>While this looks like a differential equation,we can actually think of it as a matrix equation - i.e. <span class="math notranslate nohighlight">\(H\Psi = E \Psi\)</span> where</p>
+<div class="math notranslate nohighlight">
+\[ H \equiv \left( -\frac{\hbar^2}{2m} \frac{\partial^2}{\partial x^2}  + V \right)  \]</div>
+<p>For a particle in a box, the V=0 (other then the infinite hard walls) and so we can ignore it for here.  We will have to pay more attention to it when we have a finite-walled box. We will also work in units where <span class="math notranslate nohighlight">\(\hbar=m=1\)</span>.  For most of this assignment we will be working in the <span class="math notranslate nohighlight">\(x\)</span> basis.</p>
+<p>To write it as a matrix equation, we need to discretize <span class="math notranslate nohighlight">\(x\)</span>.  We will do that in <span class="math notranslate nohighlight">\(\Delta x\)</span> steps of 0.01 as</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">SetupGrid</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="n">delta_x</span><span class="p">):</span>
+    <span class="n">ns</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">int</span><span class="p">((</span><span class="n">L</span><span class="o">+</span><span class="mi">2</span><span class="o">*</span><span class="n">delta_x</span><span class="p">)</span><span class="o">//</span><span class="n">delta_x</span><span class="p">)))</span>
+    <span class="n">xs</span><span class="o">=</span><span class="n">ns</span><span class="o">*</span><span class="n">delta_x</span><span class="o">-</span><span class="n">L</span><span class="o">/</span><span class="mi">2</span>
+    <span class="k">return</span> <span class="n">xs</span>
+
+<span class="n">xs</span><span class="o">=</span><span class="n">SetupGrid</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="n">delta_x</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This gives us a list of x (stored in <code class="docutils literal notranslate"><span class="pre">xs</span></code>) separated by steps of 0.01.  You can print it out to see it.</p>
+<p>Now we need to figure out what the matrix is <span class="math notranslate nohighlight">\(H\)</span>.  To get the matrix for the first piece, we will use from calculus that the stencil for a second derivative is</p>
+<div class="math notranslate nohighlight">
+\[\frac{\partial^2 }{\partial x^2} \equiv \frac{f(x+\delta) - 2 f(x) + f(x-\delta)}{\delta^2}\]</div>
+<p>We can let the rows and columns of the matrix <span class="math notranslate nohighlight">\(M\)</span> to be indexed by the values of <span class="math notranslate nohighlight">\(x\)</span></p>
+<p>This gives us a matrix of</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+H[i,j] = \begin{cases}
+2/(\delta x)^2 &amp; \text{if } i == j \\
+-1/(\delta x)^2 &amp; \text{if } \textrm{abs}(i-j)== 1\\
+0 &amp; \text{otherwise }
+\end{cases}
+\end{split}\]</div>
+<p>Your first step is to make a matrix <span class="math notranslate nohighlight">\(H\)</span> in python and fill it out as above.</p>
+<p>To build a matrix of zeros you can do
+<code class="docutils literal notranslate"><span class="pre">H=np.zeros((len(xs),len(xs)))</span></code>
+which builds a matrix of size len(xs) x len(xs)</p>
+<p>You now need to loop over the rows of your matrix and, for each row, fill out the three (or less at the edges) non-zero matrix elements of your matrix.  Do not loop over both the rows and columns (or it will take forever).</p>
+<p>If you’re feeling comfortable with python and numpy, you can also use <code class="docutils literal notranslate"><span class="pre">np.diag</span></code> to set it up more efficiently.</p>
+<p>As a sanity check, display the upper left of your matrix by doing <code class="docutils literal notranslate"><span class="pre">plt.matshow(H[0:10,0:10)</span></code>.  It should look like it has a stripe down the diagonal and two identically colored stripes down the off-diagonal.</p>
+<p>Once you’ve created H, you can find the eigenvalues and eigenvectors by doing</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">e</span><span class="p">,</span><span class="n">v</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eigh</span><span class="p">(</span><span class="n">H</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The eigenstates are now <code class="docutils literal notranslate"><span class="pre">e[0],e[1],</span></code>… and the eigenvalues are now <code class="docutils literal notranslate"><span class="pre">v[:,0],</span> <span class="pre">v[:,1],</span></code>…  (a common bug is to instead thing they are <code class="docutils literal notranslate"><span class="pre">v[0]</span></code>)</p>
+<p>Let us also check that we actually satisfy the equation above.  For our second eigenvalue <code class="docutils literal notranslate"><span class="pre">v[:,1]</span></code> let’s verify that <span class="math notranslate nohighlight">\(Hv_1 = Ev_1\)</span> (i.e. <code class="docutils literal notranslate"><span class="pre">H</span> <span class="pre">&#64;</span> <span class="pre">v[:,1]</span></code> is equal to <code class="docutils literal notranslate"><span class="pre">e[1]</span> <span class="pre">&#64;</span> <span class="pre">v[:,1]</span></code>).  You can check they are the same by subtracting them and making sure the result is essentially 0 (i.e term less then 1e-12).</p>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Answer here</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div><p>Now let us plot some of this information.  First go ahead and plot the lowest five eigenvalues.  You should also plot the expected answer</p>
+<div class="math notranslate nohighlight">
+\[E_n = \frac{\pi^2}{2L^2}n^2\]</div>
+<p>for <span class="math notranslate nohighlight">\(n \in \{1,2,...\}\)</span></p>
+<p>To plot something you do</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>where <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> are lists (or numpy arrays) or points.</p>
+<p>In the case of the eigenvalues your <code class="docutils literal notranslate"><span class="pre">x</span></code> is going to be <code class="docutils literal notranslate"><span class="pre">[1,2,3,4,5]</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> is going to be <code class="docutils literal notranslate"><span class="pre">e[0:5]</span></code>  After you’ve made all the plots that you want to show up on one graph you need to call <code class="docutils literal notranslate"><span class="pre">plt.show()</span></code>  To label the axis of your plot you can do things like</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;n&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;eigenvalue&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Notice that the lowest energy is not zero.  This is a result of the zero-point energy of the particle in the box.  If you reran this with a smaller box, you’d also get a higher energy.</p>
+<p>You may also notice that if you plot enough eigenvalues, you eventually get energies which don’t agree with the theoretical prediction.  This is essentially because there is a point at which it notices the discretization <span class="math notranslate nohighlight">\(\delta x\)</span> of the box we are using.</p>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Answer here</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div></section>
+<section id="b-eigenvectors">
+<h3>b. Eigenvectors<a class="headerlink" href="#b-eigenvectors" title="Permalink to this heading">#</a></h3>
+<p>We would also like to look at the eigenvectors.  We know that the eigenvectors are supposed to be orthonormal.  This means that their dot product <span class="math notranslate nohighlight">\(e_i e_j^\dagger\)</span> (also written <span class="math notranslate nohighlight">\(\langle e_i | e_j\rangle\)</span>) is either zero if they are different (<span class="math notranslate nohighlight">\(i \neq j\)</span>) or equal to one (if they are the same).</p>
+<p>Go ahead and verify that the three lowest states are orthonormal with respect to each other.  (Note: numbers that are near 1e-16 you should treat as zero).</p>
+<p>In python <span class="math notranslate nohighlight">\(ab^\dagger\)</span> can be computed by</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">vdot</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>or</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">@</span> <span class="n">b</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">conjugate</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>In addition to verifying this, we would like to make sure that we got the same answer as we computed theoretically. Plot the lowest three eigenvalues. On top of those eigenvalues plot the three expected values as well</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\Psi(x) = \begin{cases}
+\sqrt{2\delta x/L} \sin((n\pi/L) x)  \text{ if n is even}\\
+\sqrt{2\delta x/L} \cos((n\pi/L) x)  \text{ if n is odd}\\
+\end{cases}
+\end{split}\]</div>
+<p>Remember you already have <code class="docutils literal notranslate"><span class="pre">xs</span></code> defined and so can do things like <code class="docutils literal notranslate"><span class="pre">np.cos(xs)</span></code></p>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># answer here</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div></section>
+</section>
+<section id="exercise-2-expectation-values">
+<h2>Exercise 2. Expectation values<a class="headerlink" href="#exercise-2-expectation-values" title="Permalink to this heading">#</a></h2>
+<section id="a-measuring">
+<h3>a. Measuring<a class="headerlink" href="#a-measuring" title="Permalink to this heading">#</a></h3>
+<p>In the previous problem, you plotted the wave-function amplitude <span class="math notranslate nohighlight">\(\Psi(x)\)</span> for various eigenstates of the Hamiltonian. Experimentally, though, you aren’t measuring the amplitudes.  Instead you are measuring the probability or expectation values.</p>
+<p>In this section, let’s start by working with the wave-function</p>
+<div class="math notranslate nohighlight">
+\[|\Psi\rangle = \sqrt{0.1}|v_0\rangle + \sqrt{0.25}|v_1\rangle + i \sqrt{0.65}|v_2\rangle \]</div>
+<p>where <span class="math notranslate nohighlight">\(|v_0\rangle\)</span>, <span class="math notranslate nohighlight">\(|v_1\rangle\)</span>, <span class="math notranslate nohighlight">\(|v_2\rangle\)</span> are the eigenstates you computed for the particle in a box.</p>
+<p>Plot the probability <span class="math notranslate nohighlight">\(|\Psi(x)|^2\)</span> of this second eigenstate. If the particle in the box happened to be in this state, and you measured its position, this is the probability you would see it at a given position.</p>
+<p>Now let’s simulate measuring our wave-function in the position basis.  If you do <code class="docutils literal notranslate"><span class="pre">np.random.choice(xs,</span> <span class="pre">p=np.abs(psi)**2)</span></code>
+it will choose an <span class="math notranslate nohighlight">\(x\)</span> appropriately from the wave-function.    Write a loop which simulates 200 measurements and then plot each of these measurements on the x-axis of your wave-function plot - i.e. <code class="docutils literal notranslate"><span class="pre">plt.plot(x,0,'.',color='red')</span></code>.</p>
+<p>What you should notice is that most of these points are centered in the area where the probability is highest.</p>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># answer here</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div></section>
+<section id="b-expectation-in-the-diagonal-basis">
+<h3>b. Expectation in the diagonal basis<a class="headerlink" href="#b-expectation-in-the-diagonal-basis" title="Permalink to this heading">#</a></h3>
+<p>When an experimentalist measures their particle many times, they could report all the places where the electron is.  But often it is easier just to report the average of those locations. This is called the expectation value of <span class="math notranslate nohighlight">\(x\)</span> or <span class="math notranslate nohighlight">\(\langle x \rangle\)</span>.</p>
+<p>In this and the next part and the next, we will compute the expectation value of <span class="math notranslate nohighlight">\(x\)</span> in three different ways:
+First, let’s just take the code that you wrote above but now measure 10,000 times. Instead of plotting it, just report the aveage of all the <span class="math notranslate nohighlight">\(x\)</span> that you see.</p>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># answer here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div><p>Now instead of doing it with the random measurements we can actually just use the fact that we know the probability of <span class="math notranslate nohighlight">\(x\)</span> at every <span class="math notranslate nohighlight">\(x\)</span> to compute an average as</p>
+<div class="math notranslate nohighlight">
+\[\sum_x P(x) x\]</div>
+<p>where <span class="math notranslate nohighlight">\(P(x) = |\Psi(x)|^2\)</span>.   Go ahead and compute this using python.  It will be useful to use <code class="docutils literal notranslate"><span class="pre">np.sum(...)</span></code> which can sum up a numpy array and you can pointwise multiply two arrays <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> by doing <code class="docutils literal notranslate"><span class="pre">a*b</span></code>.  Remember you already have the array xs.  You should get an answer close to your answer above but it doesn’t have to be exactly the same (because the answer above involved some randomness)</p>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#answer here</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div><p>In addition to getting the expectation value of <span class="math notranslate nohighlight">\(x\)</span>, you should also get the expectation value of <span class="math notranslate nohighlight">\(x^2\)</span>, <span class="math notranslate nohighlight">\(\langle x^2 \rangle\)</span> - i.e. <span class="math notranslate nohighlight">\(\sum_x P(x) x^2\)</span>.   From <span class="math notranslate nohighlight">\(\langle x \rangle\)</span> and <span class="math notranslate nohighlight">\(\langle x^2 \rangle\)</span>, we can compute the variance</p>
+<div class="math notranslate nohighlight">
+\[ \Delta x = \sqrt{\langle X^2 \rangle - \langle X \rangle^2}\]</div>
+<p>which quantifes the variance of the position.</p>
+<p>Compute this variance as well.</p>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># answer here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div><p>We would also like to find the energy, which is the expectation value of the Hamiltonian.  This would be <span class="math notranslate nohighlight">\(\sum_x P(x) E(x)\)</span> where <span class="math notranslate nohighlight">\(E(x)\)</span> is the energy of the state when it is at a particular <span class="math notranslate nohighlight">\(x\)</span> (for example, the energy of the state when you <span class="math notranslate nohighlight">\(x=3.2\)</span>).  Unfortunately, we don’t know what that energy is so this becomes a bit tricky. We will see a more general way to approach this in the next part.</p>
+</section>
+<section id="c-expectation-values-using-operators">
+<h3>c. Expectation values (using operators )<a class="headerlink" href="#c-expectation-values-using-operators" title="Permalink to this heading">#</a></h3>
+<p>So far we’ve computed expectation values for diagonal observables by evaluating the propbability of a particular value of <span class="math notranslate nohighlight">\(x\)</span> and then computing the observable for that value of <span class="math notranslate nohighlight">\(x\)</span>.   Another approach to computing expectation values is to start with an operator corresponding to that observable <span class="math notranslate nohighlight">\(\hat{O}\)</span>  and then evaluate</p>
+<div class="math notranslate nohighlight">
+\[ \langle O \rangle = \langle \Psi | \hat{O} |\Psi \rangle\]</div>
+<p>An operator <span class="math notranslate nohighlight">\(\hat{O}\)</span> is just a matrix in a particular basis.</p>
+<p>For example, to compute the expectation value of the position, we should evaluate it with respect to the <span class="math notranslate nohighlight">\(X\)</span> operator.  In the position basis, the <span class="math notranslate nohighlight">\(X\)</span> operator is particular simple:   down the diagonal there should be the value of <span class="math notranslate nohighlight">\(x\)</span>.  Similarly the matrix for the <span class="math notranslate nohighlight">\(\hat{X^2}\)</span> operator in the position basis is diagonal with <span class="math notranslate nohighlight">\(x^2\)</span> down the diagonal (also equivalent to <code class="docutils literal notranslate"><span class="pre">X</span> <span class="pre">&#64;</span> <span class="pre">X</span></code>)</p>
+<p>Produce these two operators and evaluate the expectation of the relevant observables - i.e. <code class="docutils literal notranslate"><span class="pre">psi</span> <span class="pre">&#64;</span> <span class="pre">X</span> <span class="pre">&#64;</span> <span class="pre">psi.T.conjugate()</span></code></p>
+<p>You should get the same answer as before.  On your probability distribution,  plot a vertical line (<code class="docutils literal notranslate"><span class="pre">plt.axvline(..)</span></code>) where the expected value of the position is.</p>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># answer here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div><p>The advantage of this approach is that we now can actually compute expectation values with respect to different observables.  For example, we might want the</p>
+<p><strong>Momentum:</strong></p>
+<div class="math notranslate nohighlight">
+\[\hat{P} = -i\hbar \frac{\partial}{\partial x}\]</div>
+<p>In order to represent this in the position basis, we need to use the stencil for the first derivative</p>
+<div class="math notranslate nohighlight">
+\[\frac{\partial}{\partial x} = \frac{f(x+\delta)-f(x-\delta)}{2\delta}\]</div>
+<p>As a matrix this will correspond to 1’s on the upper right off-diagonal and -1’s on the lower right off-diagonal.</p>
+<p>Build the matrix for <span class="math notranslate nohighlight">\(P\)</span> and compute the expectation value of the momentum.</p>
+<p><strong>Energy:</strong></p>
+<p>We might also want the expected value of the energy.  The relevant matrix for the energy is actually just the Hamiltonian H.  Go ahead and also compute the expected value of the energy.</p>
+<p>Check that the energy is equal to <code class="docutils literal notranslate"><span class="pre">0.1*e[0]+0.15*e[1]+0.65*e[2]</span></code>.</p>
+<p>You can see why this works if you analytically work out what</p>
+<div class="math notranslate nohighlight">
+\[\left(\sqrt{0.2} \langle v_0| + i \sqrt{0.15} \langle v_1| + \sqrt{0.65} \langle v_2|\right) H \left( \sqrt{0.2} | v_0 \rangle + -i \sqrt{0.15} | v_1 \rangle + \sqrt{0.65} | v_2\rangle\right)\]</div>
+<p>For this you will need to use the fact that <span class="math notranslate nohighlight">\(H |v_i\rangle = \lambda_i |v_i\rangle\)</span> and that the states are orthogonal</p>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#answer here</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div></section>
+<section id="d-how-do-the-two-approaches-for-expectation-values-relate-optional">
+<h3>d. How do the two approaches for expectation values relate?  (optional)<a class="headerlink" href="#d-how-do-the-two-approaches-for-expectation-values-relate-optional" title="Permalink to this heading">#</a></h3>
+<p>We’ve seen two different approaches to computing expectation values.  We’d like to understand how they relate.  For <span class="math notranslate nohighlight">\(\langle x^2 \rangle\)</span> it’s pretty easy to see what’s going on.  Because that matrix is diagonal when we compute <code class="docutils literal notranslate"><span class="pre">psi</span> <span class="pre">&#64;</span> <span class="pre">X2</span> <span class="pre">&#64;</span> <span class="pre">psi.T.conjugate()</span></code> we are actually just summing up <span class="math notranslate nohighlight">\(\sum_x \psi(x) x^2 \psi^*(x) = \sum_x |\psi(x)|^2 x^2\)</span>.</p>
+<p>But what about when we compute the average energy.  We evaluate <code class="docutils literal notranslate"><span class="pre">psi</span> <span class="pre">&#64;</span> <span class="pre">H</span> <span class="pre">&#64;</span> <span class="pre">psi.T.conjugate()</span></code> which is not a diagonal and it’s not obvious how to rewrite it as something like <span class="math notranslate nohighlight">\(\sum_x P(x) E(x)\)</span>.</p>
+<p>It’s an interesting fact that  <code class="docutils literal notranslate"><span class="pre">H</span> <span class="pre">=</span> <span class="pre">v</span> <span class="pre">&#64;</span> <span class="pre">np.diag(e)</span> <span class="pre">&#64;</span> <span class="pre">v.T.conjugate()</span></code>   Verify that this is true.</p>
+<p>Then we could write <code class="docutils literal notranslate"><span class="pre">psi</span> <span class="pre">&#64;</span> <span class="pre">H</span> <span class="pre">&#64;</span> <span class="pre">psi.T.conjugate()</span></code> as <code class="docutils literal notranslate"><span class="pre">psi</span> <span class="pre">&#64;</span> <span class="pre">v</span> <span class="pre">&#64;</span> <span class="pre">np.diag(e)</span> <span class="pre">&#64;</span> <span class="pre">v.T.conjugate()</span> <span class="pre">&#64;</span> <span class="pre">psi.T.conjugate()</span></code> which is equal to</p>
+<p><code class="docutils literal notranslate"><span class="pre">(psi</span> <span class="pre">&#64;</span> <span class="pre">v)</span> <span class="pre">&#64;</span> <span class="pre">np.diag(e)</span> <span class="pre">&#64;</span> <span class="pre">(psi</span> <span class="pre">&#64;</span> <span class="pre">v).conjugate()</span></code></p>
+<p>This now does very much look like a diagonal matrix sandwhiched between a “new psi” which is <code class="docutils literal notranslate"><span class="pre">psi</span> <span class="pre">&#64;</span> <span class="pre">v</span></code>.</p>
+<p>Let’s compute this new <code class="docutils literal notranslate"><span class="pre">psi_e</span> <span class="pre">=</span> <span class="pre">psi</span> <span class="pre">&#64;</span> <span class="pre">v</span></code> and then</p>
+<ul class="simple">
+<li><p>evaluate <code class="docutils literal notranslate"><span class="pre">psi_e</span> <span class="pre">&#64;</span> <span class="pre">np.diag(e)</span> <span class="pre">&#64;</span> <span class="pre">psi_e.T.conjugate()</span></code></p></li>
+<li><p>and plot the absolute value squared of <code class="docutils literal notranslate"><span class="pre">psi_e</span></code>.  You may find it fruitful to only zoom in to the first ten points (<code class="docutils literal notranslate"><span class="pre">plt.xlim(0,10)</span></code>)</p></li>
+</ul>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># answer here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div><p>What we have here is still the wave-function but it’s a wave-function written in a different basis.  It’s written in the energy basis.  If you measured the energy instead of the position, you would have a 10% chance of seeing the energy corresponding to <span class="math notranslate nohighlight">\(e_0\)</span>, a 25% chance of seeing the energy corresponding to <span class="math notranslate nohighlight">\(e_1\)</span> and a 65% chance of seeing the energy corresponding to <span class="math notranslate nohighlight">\(e_2\)</span>.</p>
+</section>
+</section>
+<section id="exercise-3-time-evolution">
+<h2>Exercise 3. Time Evolution<a class="headerlink" href="#exercise-3-time-evolution" title="Permalink to this heading">#</a></h2>
+<p>We found the eigenstates by solving the time-independent Schrodinger equation. This equation was originally derived from the time-dependent Schrodinger equation</p>
+<div class="math notranslate nohighlight">
+\[-\frac{\hbar^2}{2m} \frac{\partial^2 \Psi}{\partial x^2}  + V\Psi = i \hbar \frac{\partial}{\partial t}\Psi \]</div>
+<p>or more generically</p>
+<div class="math notranslate nohighlight">
+\[ \frac{-i}{\hbar} H \Psi = \frac{\partial}{\partial t}\Psi \]</div>
+<p>Let’s think for a moment about what this equation is telling us.   It’s telling us that the way that the wave-function changes in a moment of time <span class="math notranslate nohighlight">\(\delta t\)</span> is by <span class="math notranslate nohighlight">\(-i/\hbar \delta t H\Psi\)</span></p>
+<p>This gives us a mechanism to time-evolve our state:</p>
+<div class="math notranslate nohighlight">
+\[\Psi(t+\delta t) = \Psi(t)+ -i \frac{\delta t}{\hbar} H\Psi(t)\]</div>
+<p>If we want to time evolve it a time <span class="math notranslate nohighlight">\(T\)</span>, we get
+$<span class="math notranslate nohighlight">\(\Psi(t+T) = (1-i \frac{\delta t}{\hbar} H)^{T/\delta t}\Psi(t)\)</span>$</p>
+<p>In the limit where <span class="math notranslate nohighlight">\(\delta t \rightarrow 0\)</span> this is equal to</p>
+<div class="math notranslate nohighlight">
+\[\Psi(t+T) = \exp[-i H \delta t]^{T/\delta t} \Psi(t)\]</div>
+<p>This latter formula is much more numerically stable and has the advantage that it is correct for any value of <span class="math notranslate nohighlight">\(\delta t\)</span> (which can be easily derived algebraically).</p>
+<section id="a-time-evolution">
+<h3>a. Time Evolution<a class="headerlink" href="#a-time-evolution" title="Permalink to this heading">#</a></h3>
+<p>Again starting with our wave-function</p>
+<div class="math notranslate nohighlight">
+\[|\Psi\rangle = \sqrt{0.1}|v_0\rangle + \sqrt{0.25}|v_1\rangle + i \sqrt{0.65}|v_2\rangle\]</div>
+<p>let’s do time evolution using a time step of <span class="math notranslate nohighlight">\(\Delta t=0.5\)</span> for 400 steps (i.e. to <span class="math notranslate nohighlight">\(T=200\)</span>). At each time step, save a snapshop of the entire wave-function - i.e. <code class="docutils literal notranslate"><span class="pre">myData.append(psi)</span></code></p>
+<p>To take a matrix exponential, you can use <code class="docutils literal notranslate"><span class="pre">scipy.linalg.expm</span></code>.  It will not work if you just naively call exp.</p>
+<p>First, go ahead and plot the wave-function probability at time-steps 0, 50, 200, and 350 all on the same graph.</p>
+<p>Secondly, we will want to animate the wave-function probability as a function of time.  To do this, you can use the following code (where myData is a list of wave-functions)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="n">max_value</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">cla</span><span class="p">()</span>  <span class="c1"># Clear the current plot</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">myData</span><span class="p">[</span><span class="n">frame</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>  
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">max_value</span><span class="p">)</span>  <span class="c1"># Set the y-axis limit</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Probability&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Frame </span><span class="si">{</span><span class="n">frame</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s1">/</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">arrays</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>  <span class="c1"># Display the frame number</span>
+
+<span class="c1"># Create a figure and axis</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+
+<span class="c1"># Generate the animation</span>
+<span class="n">max_value</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">array</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="k">for</span> <span class="n">array</span> <span class="ow">in</span> <span class="n">myData</span><span class="p">[</span><span class="mi">1</span><span class="p">:]])</span>
+<span class="n">animation</span> <span class="o">=</span> <span class="n">FuncAnimation</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">update</span><span class="p">,</span> <span class="n">frames</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">myData</span><span class="p">),</span> <span class="n">interval</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">fargs</span><span class="o">=</span><span class="p">(</span><span class="n">max_value</span><span class="p">,))</span>
+<span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="n">animation</span><span class="o">.</span><span class="n">to_jshtml</span><span class="p">()))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Run this code and generate the animation. Play it and see how the wave-function changes as a function of time.</p>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># answer here</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#answer here</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># answer here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div></section>
+<section id="b-time-evolution-of-expectation-values">
+<h3>b.  Time evolution of expectation values<a class="headerlink" href="#b-time-evolution-of-expectation-values" title="Permalink to this heading">#</a></h3>
+<p>Above we’ve animated the wave-function. Sometimes, we are just interested in how the expectation values change with time.</p>
+<p>In particular, we would like to compute the time-evoluation of the expected values of</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\langle x \rangle(t)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\langle p \rangle(t)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\langle H \rangle(t)\)</span> (which is the energy)</p></li>
+</ul>
+<p>Loop over your already computed wave-functions and make a (length 400) list for these three observables recording their value at each moment in time.</p>
+<p>Also compute the derivative of the position <span class="math notranslate nohighlight">\(\partial \langle x \rangle(t)/\partial t\)</span>.   You can do this either with finite differences or by doing <code class="docutils literal notranslate"><span class="pre">np.gradient(position,delta_t)</span></code></p>
+<p>We want to plot the position and the momentum on separate plots but on top of each other so that you can see when things happen at the same time. You can do that using</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">ts</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">position</span><span class="p">)))</span><span class="o">*</span><span class="n">delta_t</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span><span class="n">position</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Position&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Position&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span><span class="n">velocity</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Velocity&quot;</span><span class="p">,</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span><span class="n">momentum</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Momentum&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Momentum&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;time&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(position, momentum and velocity are the three list names…you may have to change it for your list names)</p>
+<p>Notice</p>
+<ul class="simple">
+<li><p>whenever the expectation value of the position is at a local minima the expectation value of the momentum is zero.  This is what we expect but it’s not obvious that it should happen for the expectation value of the wave-functions (which are just complicated averages of things you measure after all).</p></li>
+<li><p>the derivative of the expectation value of the position is the expectation value of the momentum. Again, what we expect but it’s not obvious this should happen for the expcation value of wave-functions (but for an understanding of both of these see Ehrenfest theorem)</p></li>
+</ul>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># answer here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># answer here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div><p>Here we’ve plotted the expectation value of position and momentum against time.  It’s also interesting to make a phase plot where we plot the expectation value of the position and momentum against each other.  Go ahead and make this plot</p>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># answer here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div><p>In addition, modify the animation code above to plot a vertical line (<code class="docutils literal notranslate"><span class="pre">plt.axvline(...)</span></code>) at the average position of <span class="math notranslate nohighlight">\(x\)</span> at each moment in time.  This will require adding an additional line into the <code class="docutils literal notranslate"><span class="pre">update</span></code> function.</p>
+<p>Finally, let’s plot the energy as a function of time.  Use some reasonable limits like <code class="docutils literal notranslate"><span class="pre">plt.ylim(0,1)</span></code> What do you notice and why?</p>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># answer here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div></section>
+<section id="c-time-evolution-of-eigenstates">
+<h3>c.  Time evolution of eigenstates<a class="headerlink" href="#c-time-evolution-of-eigenstates" title="Permalink to this heading">#</a></h3>
+<p>Finally, we believe that the eigenstate should be stationary.  This means that they shouldn’t change as a function of time.  Starting your state at <span class="math notranslate nohighlight">\(\Psi(t=0)\)</span> into the second eigenstate, time evolve it as above and plot the state at time 0, 10, 20, and 40 all on the same graph.</p>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># answer here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div></section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Welcome to your Jupyter Book</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-particle-in-a-infinite-box">Exercise 1. Particle in a Infinite Box</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-hamiltonian-and-eigenvalues">a. Hamiltonian and Eigenvalues</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-eigenvectors">b. Eigenvectors</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-expectation-values">Exercise 2. Expectation values</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-measuring">a. Measuring</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-expectation-in-the-diagonal-basis">b. Expectation in the diagonal basis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-expectation-values-using-operators">c. Expectation values (using operators )</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-how-do-the-two-approaches-for-expectation-values-relate-optional">d. How do the two approaches for expectation values relate?  (optional)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-time-evolution">Exercise 3. Time Evolution</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-time-evolution">a. Time Evolution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-time-evolution-of-expectation-values">b.  Time evolution of expectation values</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-time-evolution-of-eigenstates">c.  Time evolution of eigenstates</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Bryan Clark
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
