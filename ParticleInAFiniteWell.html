@@ -1,0 +1,811 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Particle with a Finite Potential &#8212; Computation in Quantum Mechanics  (for Phys486)# The title of the book. Will be placed in the left navbar.</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'ParticleInAFiniteWell';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Harmonic Oscillator" href="HarmonicOscillator.html" />
+    <link rel="prev" title="Particle in a Box" href="ParticleInABox.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Computation in Quantum Mechanics  (for Phys486)# The title of the book. Will be placed in the left navbar. - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Computation in Quantum Mechanics  (for Phys486)# The title of the book. Will be placed in the left navbar. - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Quantum Mechanics
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="ParticleInABox.html">Particle in a Box</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Particle with a Finite Potential</a></li>
+<li class="toctree-l1"><a class="reference internal" href="HarmonicOscillator.html">Harmonic Oscillator</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/illinois-compphys/QM/blob/main/quantum_mechanics/ParticleInAFiniteWell.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/ParticleInAFiniteWell.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Particle with a Finite Potential</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-particle-in-a-finite-well">Exercise 1. Particle in a Finite Well</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-setting-up-the-hamiltonian">a. Setting up the Hamiltonian</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-eigenstates-in-the-forbidden-region">b.  Eigenstates in the forbidden region</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-dynamics">c. Dynamics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-dynamics-above-the-potential-barrier">d.  Dynamics above the potential barrier</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#e-dynamics-of-a-wave-packet-optional">e.  Dynamics of a wave packet (optional)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-finite-barriers">Exercise 2.  Finite Barriers</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-diagonalize">a. Diagonalize</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-effects-of-barrier-height-and-width-on-eigenstates">b. Effects of barrier height and width on eigenstates</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-scattering-off-a-potential-wall">c. Scattering off a potential wall</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="particle-with-a-finite-potential">
+<h1>Particle with a Finite Potential<a class="headerlink" href="#particle-with-a-finite-potential" title="Permalink to this heading">#</a></h1>
+<ul class="simple">
+<li><p><strong>Author:</strong></p></li>
+<li><p><strong>Date:</strong></p></li>
+<li><p><strong>Time spent on this assignment:</strong></p></li>
+</ul>
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">scipy</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">from</span> <span class="nn">matplotlib.animation</span> <span class="kn">import</span> <span class="n">FuncAnimation</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">HTML</span>
+<span class="kn">import</span> <span class="nn">matplotlib.animation</span> <span class="k">as</span> <span class="nn">animation</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">HTML</span>
+<span class="k">def</span> <span class="nf">resetMe</span><span class="p">(</span><span class="n">keepList</span><span class="o">=</span><span class="p">[]):</span>
+    <span class="n">ll</span><span class="o">=%</span><span class="k">who_ls</span>
+    <span class="n">keepList</span><span class="o">=</span><span class="n">keepList</span><span class="o">+</span><span class="p">[</span><span class="s1">&#39;FuncAnimation&#39;</span><span class="p">,</span><span class="s1">&#39;HTML&#39;</span><span class="p">,</span><span class="s1">&#39;resetMe&#39;</span><span class="p">,</span><span class="s1">&#39;scipy&#39;</span><span class="p">,</span><span class="s1">&#39;np&#39;</span><span class="p">,</span><span class="s1">&#39;plt&#39;</span><span class="p">,</span><span class="s1">&#39;math&#39;</span><span class="p">,</span><span class="s1">&#39;jax&#39;</span><span class="p">,</span><span class="s1">&#39;jnp&#39;</span><span class="p">,</span><span class="s1">&#39;jit&#39;</span><span class="p">,</span><span class="s1">&#39;grad&#39;</span><span class="p">,</span><span class="s1">&#39;HTML&#39;</span><span class="p">,</span><span class="s1">&#39;animation&#39;</span><span class="p">,</span><span class="s1">&#39;animateMe_singlePendula&#39;</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">iiii</span> <span class="ow">in</span> <span class="n">keepList</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">iiii</span> <span class="ow">in</span> <span class="n">ll</span><span class="p">:</span>
+            <span class="n">ll</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">iiii</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">iiii</span> <span class="ow">in</span> <span class="n">ll</span><span class="p">:</span>
+        <span class="n">jjjj</span><span class="o">=</span><span class="s2">&quot;^&quot;</span><span class="o">+</span><span class="n">iiii</span><span class="o">+</span><span class="s2">&quot;$&quot;</span>
+        <span class="o">%</span><span class="k">reset_selective</span> -f {jjjj}
+    <span class="n">ll</span><span class="o">=%</span><span class="k">who_ls</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s2">&quot;font.size&quot;</span><span class="p">:</span> <span class="mi">14</span><span class="p">})</span>
+    <span class="k">return</span>
+<span class="n">resetMe</span><span class="p">()</span>
+<span class="kn">import</span> <span class="nn">datetime</span><span class="p">;</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">scipy</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">import</span> <span class="nn">math</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;scipy&#39;
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<p>In this assignment, we will consistently use grids and observables that we will set up in this way. This is very similar to how you set things for the particle in the box assignment.  We’ve also updated your animation code to include a skip parameter which will allow you to only show every skip’th frame.  This will make your animation generate much faster (if you choose a big skip).  It can’t be called like</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">skip</span><span class="o">=</span><span class="mi">10</span>
+<span class="n">animation</span> <span class="o">=</span> <span class="n">FuncAnimation</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">update</span><span class="p">,</span> <span class="n">frames</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">arrays</span><span class="p">)</span><span class="o">//</span><span class="n">skip</span><span class="p">,</span> <span class="n">interval</span><span class="o">=</span><span class="mi">10</span><span class="o">*</span><span class="n">skip</span><span class="p">,</span> <span class="n">fargs</span><span class="o">=</span><span class="p">(</span><span class="n">max_value</span><span class="p">,</span><span class="n">skip</span><span class="p">),</span><span class="n">repeat</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">SetupGrid</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="n">delta_x</span><span class="p">):</span>
+    <span class="n">ns</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">int</span><span class="p">((</span><span class="n">L</span><span class="o">+</span><span class="mi">2</span><span class="o">*</span><span class="n">delta_x</span><span class="p">)</span><span class="o">//</span><span class="n">delta_x</span><span class="p">)))</span>
+    <span class="n">xs</span><span class="o">=</span><span class="n">ns</span><span class="o">*</span><span class="n">delta_x</span><span class="o">-</span><span class="n">L</span><span class="o">/</span><span class="mi">2</span>
+    <span class="k">return</span> <span class="n">xs</span>
+
+<span class="k">def</span> <span class="nf">SetupObservables</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span><span class="n">delta_x</span><span class="p">):</span>
+    <span class="n">X</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
+    <span class="n">P</span><span class="o">=</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">([</span><span class="mf">1.</span><span class="n">j</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">delta_x</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)],</span><span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">([</span><span class="o">-</span><span class="mf">1.</span><span class="n">j</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">delta_x</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)],</span><span class="n">k</span><span class="o">=-</span><span class="mi">1</span><span class="p">))</span>
+
+    <span class="n">P2</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">P</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">xs</span><span class="p">)):</span>
+        <span class="n">P2</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="mf">2.0</span><span class="o">/</span><span class="n">delta_x</span><span class="o">**</span><span class="mi">2</span>
+        <span class="k">if</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="o">&lt;</span><span class="nb">len</span><span class="p">(</span><span class="n">xs</span><span class="p">):</span>
+            <span class="n">P2</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">=-</span><span class="mf">1.0</span><span class="o">/</span><span class="n">delta_x</span><span class="o">**</span><span class="mi">2</span>
+            <span class="n">P2</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">i</span><span class="p">]</span><span class="o">=-</span><span class="mf">1.0</span><span class="o">/</span><span class="n">delta_x</span><span class="o">**</span><span class="mi">2</span>  
+    <span class="k">return</span> <span class="n">X</span><span class="p">,</span><span class="n">P</span><span class="p">,</span><span class="n">P2</span>
+
+
+
+<span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="n">max_value</span><span class="p">,</span><span class="n">skip</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">cla</span><span class="p">()</span>  <span class="c1"># Clear the current plot</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">arrays</span><span class="p">[::</span><span class="n">skip</span><span class="p">][</span><span class="n">frame</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>  <span class="c1"># Plot the current array</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">arrays</span><span class="p">[::</span><span class="n">skip</span><span class="p">][</span><span class="n">frame</span><span class="p">]</span><span class="nd">@X@arrays</span><span class="p">[::</span><span class="n">skip</span><span class="p">][</span><span class="n">frame</span><span class="p">]</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">conjugate</span><span class="p">())</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">max_value</span><span class="p">)</span>  <span class="c1"># Set the y-axis limit</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Value&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Frame </span><span class="si">{</span><span class="n">skip</span><span class="o">*</span><span class="n">frame</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s1">/</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">arrays</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>  <span class="c1"># Display the frame number</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="exercise-1-particle-in-a-finite-well">
+<h2>Exercise 1. Particle in a Finite Well<a class="headerlink" href="#exercise-1-particle-in-a-finite-well" title="Permalink to this heading">#</a></h2>
+<p>In the previous assignment we worked on a particle in a box with infinite walls.  In this assignment, we are going to work instead with a potential well again looking at properties such as eigenstates and time dynamics.</p>
+<section id="a-setting-up-the-hamiltonian">
+<h3>a. Setting up the Hamiltonian<a class="headerlink" href="#a-setting-up-the-hamiltonian" title="Permalink to this heading">#</a></h3>
+<p>Consider a particle in a box of length 40 spanning</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(-10 \leq x \leq 10\)</span> at <span class="math notranslate nohighlight">\(V=0\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(-20 \leq x \leq -10\)</span> at <span class="math notranslate nohighlight">\(V=0.5\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(10 \leq x \leq 20\)</span> at <span class="math notranslate nohighlight">\(V=0.5\)</span></p></li>
+</ul>
+<p>Generate a discretize <code class="docutils literal notranslate"><span class="pre">xs</span></code> with the same <span class="math notranslate nohighlight">\(\delta x=0.01\)</span> that you used previously - i.e. <code class="docutils literal notranslate"><span class="pre">xs=SetupGrid(L,delta_x)</span></code>
+Also generate a numpy array <code class="docutils literal notranslate"><span class="pre">V</span></code> which has the correct potential at each value of <span class="math notranslate nohighlight">\(x\)</span>.  Verify this all looks correct by plotting <span class="math notranslate nohighlight">\(V\)</span> vs. <span class="math notranslate nohighlight">\(x\)</span>.</p>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### answer here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div><p>We know need to again set up the Hamiltonian</p>
+<div class="math notranslate nohighlight">
+\[ H \equiv \left( -\frac{\hbar^2}{2m} \frac{\partial^2}{\partial x^2}  + V \right)  \]</div>
+<p>You already know how to turn the first term into a matrix.  Because we are working in the <span class="math notranslate nohighlight">\(x\)</span> basis, the <span class="math notranslate nohighlight">\(V\)</span> term is also very simple:  it is just a matrix with <span class="math notranslate nohighlight">\(V(x)\)</span> on the diagonal.   To get the matrix for the total Hamiltonian, we just add these two matrices.</p>
+<p>Set up this Hamiltonian, and then get the eigenvalues and eigenvectors.</p>
+<p>Plot the first 20 eigenvalues.  You should notice that there is two qualitatively different behavior happening that switches over right when the eigenvalue energy gets greater then 0.5 (where our potential wall is.)</p>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### answer here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### answer here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div><p>Now we would like to plot the energies in a slightly different way and plot the eigenvectors on top of them.  Let’s start by again plotting the potential as a function of distance.</p>
+<p>On top of this potential we are going to plot the lowest 10 energy levels.  Plot them with <code class="docutils literal notranslate"><span class="pre">plt.axhline(values,linestyle='--',alpha=0.5)</span></code>  You should notice that some of the energies are less then the potential and some of them more then the potential.</p>
+<p>Now on top of this, we want to plot the lowest 10 eigenstates.   To make them easier to understand, let’s shift each eigensstate vertically by adding <code class="docutils literal notranslate"><span class="pre">e[i]</span></code> to the i’th eigenstate - i.e. <code class="docutils literal notranslate"><span class="pre">plt.plot(v[:,i]+e[i])</span></code>.  Notice that if you do this, you have each eigenstate whose origin is centered on their energy.</p>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### answer here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div></section>
+<section id="b-eigenstates-in-the-forbidden-region">
+<h3>b.  Eigenstates in the forbidden region<a class="headerlink" href="#b-eigenstates-in-the-forbidden-region" title="Permalink to this heading">#</a></h3>
+<p>We now want to look at the eigenstates in the forbidden region.  To begin with, let’s just qualitatively notice the difference between the eigenstates which are lower in energy then the finite wall and the ones that are higher in energy then the finite wall.</p>
+<p>Q:  As the wave-function goes to <span class="math notranslate nohighlight">\(x&gt;10\)</span>, do the eigenstates approach zero</p>
+<ul class="simple">
+<li><p>for the eigenstates whose energy is greater then 0.5</p></li>
+<li><p>for the eigenstates whose energy is less then 0.5</p></li>
+</ul>
+<p>When the energy is larger then the potential, notice that the larger tha value of (E-V) (at a given <span class="math notranslate nohighlight">\(x\)</span>), the shorter the wavelength of the wave.</p>
+<p>When the energy is smaller then the potential (i.e. in the forbidden region), we know that the eigenstate should decay exponentially.</p>
+<p>We have learned that when an eigenstate is in the forbidden region it should decay exponentially.<br />
+That means that if we look at any of the eigenstates with <span class="math notranslate nohighlight">\(e_i&lt;0.5\)</span>, we should find that they approach zero exponentially.  It might look that way by eye, but we want to check this explicitly.</p>
+<p>First, we need to learn how to extract the part of the wave-function where the energy is less then 0.5.  To do this, we should define a mask - i.e. <code class="docutils literal notranslate"><span class="pre">mask=xs&gt;10</span></code> to focus on the forbidden region.</p>
+<p>Then we can plot the absolute value of the eigenstate (because the eigenstate can approach zero from below) against xs only in this region - i.e. <code class="docutils literal notranslate"><span class="pre">plt.plot(xs[mask],v[:,0][mask])</span></code> for eigenstates 0,2,4.  Label each of your plots by including as a keyword <code class="docutils literal notranslate"><span class="pre">label=n</span></code> and then add a <code class="docutils literal notranslate"><span class="pre">plt.legend()</span></code> at the end.</p>
+<p>Then go ahead and plot it on a log-scale - <code class="docutils literal notranslate"><span class="pre">plt.yscale('log')</span></code>.  If it looks linear on a log scale, this means that the wave-function is decaying exponentially.  In practice, it may look like it diverges from that linear curve at large <span class="math notranslate nohighlight">\(x\)</span>.  This is essentially because you are running into machine precision.  *Notice that the lower-energy eigenstates have larger slopes (i.e. decay faster);  this is because they are deeper in the forbidden region.</p>
+<p>We can actually quantify this (<em>this part is optional but interesting if you want to show that you get exactly the correct exponential decay</em>).  Our expectation is that the wave-function goes as <span class="math notranslate nohighlight">\(e^{-kx}\)</span> where</p>
+<div class="math notranslate nohighlight">
+\[k=\sqrt{\frac{2m(E-V_0)}{\hbar^2}}\]</div>
+<p>This means that if we plot the slopes squared of these three lines versus <span class="math notranslate nohighlight">\(e_i-0.5\)</span> where <span class="math notranslate nohighlight">\(e_i\)</span> is the eigenstate energy, it should be a straight line with a slope of 2.</p>
+<p>In order to get the slpoes of the three lines, we can use python to fit them.  Again let’s define a mask that is simultaneously both in the forbidden region and not at large <span class="math notranslate nohighlight">\(x\)</span> where the machine precision starts to cause trouble: <code class="docutils literal notranslate"><span class="pre">mask=np.logical_and(xs&gt;10,xs&lt;16)</span></code></p>
+<p>Now use <code class="docutils literal notranslate"><span class="pre">np.polyfit(x,y,1)[0]</span></code> to get the slope.  Remember that <code class="docutils literal notranslate"><span class="pre">y</span></code> needs to be the log of the wave-function (appropriately masked).</p>
+<p>Then plot the slope-squared versus the energy difference from 0.5  You should fine a straight line.</p>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### answer here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div></section>
+<section id="c-dynamics">
+<h3>c. Dynamics<a class="headerlink" href="#c-dynamics" title="Permalink to this heading">#</a></h3>
+<p>Like we did in the particle in the box, we are going to do some dynamics.</p>
+<p>Because we are going to do some non-trivial time evolution in this assignment, it’s worth enapsulating your time-evolution into two functions:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">TimeEvolutionOperator(H,delta_t)</span></code> should take the Hamiltonian and your time step and return <span class="math notranslate nohighlight">\(e^{-iHt}\)</span>.   It’s important to note that for each Hamiltonian, you only need to compute this time-evolution operator once even if you are time-evolving many different wave-functions. If you are careful about this, you will save yourself significant gime.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TimeEvolution(psi,M,steps)</span></code> which takes the initial wave-function <code class="docutils literal notranslate"><span class="pre">psi</span></code>, the time-evolution operator <code class="docutils literal notranslate"><span class="pre">M</span></code> and the number of steps and returns a list of arrays that include the snapshot of the wave-function at every time step.</p></li>
+</ul>
+<p>We also want to do an update of the update function so that the animation is slightly more informative. In particular, we are going to want to plot some information about the potential and energy of our state.  Because our y-axis is currently probability (which is at most 1), we will need to rescale the energy (which can get large) so that everything sanely fits on the same axis. To do this, we are going to rescale all our energies by <code class="docutils literal notranslate"><span class="pre">scale=max_value/energy</span></code> where <code class="docutils literal notranslate"><span class="pre">max_value</span></code> is the largest probability your wave-function gets (which we’ve already been calculating for animation) and <code class="docutils literal notranslate"><span class="pre">energy</span></code> is the energy of our initial wave-function, which you can compute (recall the energy doesn’t change as a function of time).</p>
+<p><strong>Modifications of the Update Function</strong></p>
+<ul class="simple">
+<li><p>Add a line to compute the energy as well as the relevant scale</p></li>
+<li><p>Plot the Harmonic Oscillator potential on your animation as <code class="docutils literal notranslate"><span class="pre">plt.plot(xs,potential*scale)</span></code></p></li>
+<li><p>Draw a red-dashed line at the energy of our state - i.e. <code class="docutils literal notranslate"><span class="pre">plt.axhline(energy*scale)</span></code></p></li>
+<li><p>Increaese the <code class="docutils literal notranslate"><span class="pre">ylim</span></code> to 1.5 of max_value</p></li>
+</ul>
+<p>We will start with the wave-function (same superposition of eigenstates as our particle-in-the-box but somewhat different eigenstates so a somewhat different wave-function)</p>
+<div class="math notranslate nohighlight">
+\[|\Psi\rangle = \sqrt{0.1}|v_0\rangle + \sqrt{0.25}|v_1\rangle + i \sqrt{0.65}|v_2\rangle \]</div>
+<p>Go ahead and animate this wave-function as a function of time again for a time-step <span class="math notranslate nohighlight">\(\delta t=0.5\)</span> and out to time <span class="math notranslate nohighlight">\(T=200\)</span>.</p>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### answer here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div><p>If you go back and look at your animation from the particle-in-a-box, it actually should look very similar.  The main different here is that the particle has leaked out slightly of the hard box (-10 to 10) and so you see some weight out there.</p>
+<p>Let’s also go ahead and plot some observables.  Like you did in the particle-in-a-box go ahead and plot</p>
+<ul class="simple">
+<li><p>the momentum and position as a function of time (on the same subplot)</p></li>
+<li><p>the phase plot of momentum vs position</p></li>
+<li><p>the energy as a function of time (making sure your scale is sane)</p></li>
+</ul>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### answer here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### answer here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div><p>Again notice the marked similarity to a particle in a box with infinite walls.</p>
+</section>
+<section id="d-dynamics-above-the-potential-barrier">
+<h3>d.  Dynamics above the potential barrier<a class="headerlink" href="#d-dynamics-above-the-potential-barrier" title="Permalink to this heading">#</a></h3>
+<p>In this problem, let us consider a superposition of eigenstates that is above the potential barrier. For example, let’s take the superposition of eigenstates 9 and 10 (both above the potential) as</p>
+<div class="math notranslate nohighlight">
+\[\Psi= \sqrt{0.35}|e_9\rangle + i \sqrt{0.65}|e_{10}\rangle\]</div>
+<p>Produce the same set of animations and observable plots for this wave-function.</p>
+<p>Notice in this case that significant chunks of the wave-function are in the forbidden region.</p>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### answer here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div></section>
+<section id="e-dynamics-of-a-wave-packet-optional">
+<h3>e.  Dynamics of a wave packet (optional)<a class="headerlink" href="#e-dynamics-of-a-wave-packet-optional" title="Permalink to this heading">#</a></h3>
+<p>For the final piece, we’d like to watch a wave-packet hit into the finite wall.  For this we need a slighlty higher potential. Change the finite wall to be at <span class="math notranslate nohighlight">\(V=2.5\)</span>.  This requires you below to rebuild the Hamiltonian, get the eigenvalues, and rebuild the time evolution operator. Once you’ve done that, time evolve a normalized version of</p>
+<div class="math notranslate nohighlight">
+\[\Psi(x) = e^{-\frac{1}{2}(x+4\sqrt{2})^2+2ix}\]</div>
+<p>using <span class="math notranslate nohighlight">\(\Delta t=0.1\)</span> for 200 time steps.</p>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### answer here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div></section>
+</section>
+<section id="exercise-2-finite-barriers">
+<h2>Exercise 2.  Finite Barriers<a class="headerlink" href="#exercise-2-finite-barriers" title="Permalink to this heading">#</a></h2>
+<section id="a-diagonalize">
+<h3>a. Diagonalize<a class="headerlink" href="#a-diagonalize" title="Permalink to this heading">#</a></h3>
+<p>Now we will consider a potential with a finite barrier.  Set the potential to be zero except for the range <span class="math notranslate nohighlight">\(-1&lt;x&lt;1\)</span> where we will have the potential be <span class="math notranslate nohighlight">\(V_0\)</span>.  We will start with <span class="math notranslate nohighlight">\(V_0=5\)</span></p>
+<p>Start by plotting the potential.</p>
+<p>Then plot the lowest two eigenvalues and eigenvectors.   What you will find is that these two eigenvectors are nearly degenerate - they have almost the same energy.</p>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### answer here </span>
+</pre></div>
+</div>
+</div>
+</div>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div></section>
+<section id="b-effects-of-barrier-height-and-width-on-eigenstates">
+<h3>b. Effects of barrier height and width on eigenstates<a class="headerlink" href="#b-effects-of-barrier-height-and-width-on-eigenstates" title="Permalink to this heading">#</a></h3>
+<p>We would like to understand how the barrier height and width effects the 0’th eigenstate. Given that we know that there is an exponential decay of the eigenstate in the forbidden region, one interesting thing to look at is the minimum value of the eigenstate around zero.  One way to look at this is to do <code class="docutils literal notranslate"><span class="pre">np.min(np.abs(v[:,0][mask]))</span></code> where <code class="docutils literal notranslate"><span class="pre">mask=np.logical_and(xs&gt;-10,xs&lt;10)</span></code> is centered away from 20 and -20 where it gets tiny simply because of the hard walls there.</p>
+<p>Produce a series of potentials with width 2 centered around zero but height which scales from 0 to 4 (do jumps of 0.1 between 0 and 2 and jumps of 0.4 between 2 and 4 to avoid things being too slow).</p>
+<p>Then plot this minimum value as a function of the height.</p>
+<p>Do a similar calculation where you let the height be fixed to <span class="math notranslate nohighlight">\(V_0=1\)</span> and let the width change from 0 to 4 (with similar jumps).</p>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### answer here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div></section>
+<section id="c-scattering-off-a-potential-wall">
+<h3>c. Scattering off a potential wall<a class="headerlink" href="#c-scattering-off-a-potential-wall" title="Permalink to this heading">#</a></h3>
+<p>Consider a potential barrier with height 5 and width 1.  Do time evolution with <span class="math notranslate nohighlight">\(\Delta t=0.1\)</span> for 100 steps starting from an initial wave-function of</p>
+<div class="math notranslate nohighlight">
+\[\Psi = e^{-\frac{1}{2} (x+15)^2 + 2ix}\]</div>
+<p>and animate it.</p>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### answer here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div></section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="ParticleInABox.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Particle in a Box</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="HarmonicOscillator.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Harmonic Oscillator</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-particle-in-a-finite-well">Exercise 1. Particle in a Finite Well</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-setting-up-the-hamiltonian">a. Setting up the Hamiltonian</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-eigenstates-in-the-forbidden-region">b.  Eigenstates in the forbidden region</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-dynamics">c. Dynamics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-dynamics-above-the-potential-barrier">d.  Dynamics above the potential barrier</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#e-dynamics-of-a-wave-packet-optional">e.  Dynamics of a wave packet (optional)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-finite-barriers">Exercise 2.  Finite Barriers</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-diagonalize">a. Diagonalize</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-effects-of-barrier-height-and-width-on-eigenstates">b. Effects of barrier height and width on eigenstates</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-scattering-off-a-potential-wall">c. Scattering off a potential wall</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Bryan Clark
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
