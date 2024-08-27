@@ -358,13 +358,17 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-eigenstates-in-the-forbidden-region">b.  Eigenstates in the forbidden region</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-dynamics">c. Dynamics</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-dynamics-above-the-potential-barrier">d.  Dynamics above the potential barrier</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#e-dynamics-of-a-wave-packet-optional">e.  Dynamics of a wave packet (optional)</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-finite-barriers">Exercise 2.  Finite Barriers</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exerices-2-eigenstates-of-finite-barriers">Exerices 2. Eigenstates of Finite Barriers</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-diagonalize">a. Diagonalize</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-effects-of-barrier-height-and-width-on-eigenstates">b. Effects of barrier height and width on eigenstates</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-scattering-off-a-potential-wall">c. Scattering off a potential wall</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-faster-dynamics-and-finite-barriers">Exercise 3. Faster Dynamics and Finite Barriers</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-setting-up-your-new-time-evolution-and-a-test">a. Setting up your new time-evolution and a test</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-time-evolution-of-a-stationary-gaussian">b. Time evolution of a “stationary” gaussian</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-hitting-a-potential-barrier">c. Hitting a potential barrier.</a></li>
 </ul>
 </li>
 </ul>
@@ -437,6 +441,7 @@ document.write(`
 <span class="n">animation</span> <span class="o">=</span> <span class="n">FuncAnimation</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">update</span><span class="p">,</span> <span class="n">frames</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">arrays</span><span class="p">)</span><span class="o">//</span><span class="n">skip</span><span class="p">,</span> <span class="n">interval</span><span class="o">=</span><span class="mi">10</span><span class="o">*</span><span class="n">skip</span><span class="p">,</span> <span class="n">fargs</span><span class="o">=</span><span class="p">(</span><span class="n">max_value</span><span class="p">,</span><span class="n">skip</span><span class="p">),</span><span class="n">repeat</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
+<p><strong>Note: You will modify and improve your animation funtion later in the assignment</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">SetupGrid</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="n">delta_x</span><span class="p">):</span>
@@ -497,13 +502,6 @@ Also generate a numpy array <code class="docutils literal notranslate"><span cla
 <p>Set up this Hamiltonian, and then get the eigenvalues and eigenvectors.</p>
 <p>Plot the first 20 eigenvalues.  You should notice that there is two qualitatively different behavior happening that switches over right when the eigenvalue energy gets greater then 0.5 (where our potential wall is.)</p>
 <div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### answer here</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### answer here</span>
 </pre></div>
@@ -592,13 +590,6 @@ That means that if we look at any of the eigenstates with <span class="math notr
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### answer here</span>
-</pre></div>
-</div>
-</div>
-</div>
 <div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div><p>Again notice the marked similarity to a particle in a box with infinite walls.</p>
 </section>
 <section id="d-dynamics-above-the-potential-barrier">
@@ -616,23 +607,9 @@ That means that if we look at any of the eigenstates with <span class="math notr
 </div>
 </div>
 <div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div></section>
-<section id="e-dynamics-of-a-wave-packet-optional">
-<h3>e.  Dynamics of a wave packet (optional)<a class="headerlink" href="#e-dynamics-of-a-wave-packet-optional" title="Permalink to this heading">#</a></h3>
-<p>For the final piece, we’d like to watch a wave-packet hit into the finite wall.  For this we need a slighlty higher potential. Change the finite wall to be at <span class="math notranslate nohighlight">\(V=2.5\)</span>.  This requires you below to rebuild the Hamiltonian, get the eigenvalues, and rebuild the time evolution operator. Once you’ve done that, time evolve a normalized version of</p>
-<div class="math notranslate nohighlight">
-\[\Psi(x) = e^{-\frac{1}{2}(x+4\sqrt{2})^2+2ix}\]</div>
-<p>using <span class="math notranslate nohighlight">\(\Delta t=0.1\)</span> for 200 time steps.</p>
-<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### answer here</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div></section>
 </section>
-<section id="exercise-2-finite-barriers">
-<h2>Exercise 2.  Finite Barriers<a class="headerlink" href="#exercise-2-finite-barriers" title="Permalink to this heading">#</a></h2>
+<section id="exerices-2-eigenstates-of-finite-barriers">
+<h2>Exerices 2. Eigenstates of Finite Barriers<a class="headerlink" href="#exerices-2-eigenstates-of-finite-barriers" title="Permalink to this heading">#</a></h2>
 <section id="a-diagonalize">
 <h3>a. Diagonalize<a class="headerlink" href="#a-diagonalize" title="Permalink to this heading">#</a></h3>
 <p>Now we will consider a potential with a finite barrier.  Set the potential to be zero except for the range <span class="math notranslate nohighlight">\(-1&lt;x&lt;1\)</span> where we will have the potential be <span class="math notranslate nohighlight">\(V_0\)</span>.  We will start with <span class="math notranslate nohighlight">\(V_0=5\)</span></p>
@@ -640,7 +617,7 @@ That means that if we look at any of the eigenstates with <span class="math notr
 <p>Then plot the lowest two eigenvalues and eigenvectors.   What you will find is that these two eigenvectors are nearly degenerate - they have almost the same energy.</p>
 <div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### answer here </span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### answer here</span>
 </pre></div>
 </div>
 </div>
@@ -660,12 +637,101 @@ That means that if we look at any of the eigenstates with <span class="math notr
 </div>
 </div>
 <div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div></section>
-<section id="c-scattering-off-a-potential-wall">
-<h3>c. Scattering off a potential wall<a class="headerlink" href="#c-scattering-off-a-potential-wall" title="Permalink to this heading">#</a></h3>
-<p>Consider a potential barrier with height 5 and width 1.  Do time evolution with <span class="math notranslate nohighlight">\(\Delta t=0.1\)</span> for 100 steps starting from an initial wave-function of</p>
+</section>
+<section id="exercise-3-faster-dynamics-and-finite-barriers">
+<h2>Exercise 3. Faster Dynamics and Finite Barriers<a class="headerlink" href="#exercise-3-faster-dynamics-and-finite-barriers" title="Permalink to this heading">#</a></h2>
+<p>So far we’ve done dynamics by evaluating <span class="math notranslate nohighlight">\(\exp[-i \Delta t H]\)</span> for a finite <span class="math notranslate nohighlight">\(\Delta t\)</span>. This has the advantage of being the exact dynamics but when <span class="math notranslate nohighlight">\(L\)</span> is large or <span class="math notranslate nohighlight">\(\Delta x\)</span> is small this gets very expensive to calculate limiting our ability to do interesting calculations.</p>
+<p>Here we are going to introduce an alternative approach.   Consider the time-evolution operator</p>
 <div class="math notranslate nohighlight">
-\[\Psi = e^{-\frac{1}{2} (x+15)^2 + 2ix}\]</div>
-<p>and animate it.</p>
+\[\exp\left[-i\Delta t\left(-\frac{\hat{P}^2}{2m} + \hat{V} \right) \right]^{T/\Delta t}  |\Psi\rangle\]</div>
+<p>When <span class="math notranslate nohighlight">\(\Delta t \rightarrow 0\)</span>, we can write this as</p>
+<div class="math notranslate nohighlight">
+\[\left(\exp\left[-i\Delta t\left(-\frac{\hat{P}^2}{2m}\right)\right] \exp\left[-i \Delta t \hat{V} \right]\right)^{T/\Delta t}  |\Psi\rangle\]</div>
+<p>Instead of thinking of time-evolution as applying the exponential of the Hamiltonian, we can think of time evolution as alternatively applying the exponential of the potential and kinetic terms.</p>
+<p>If our wave-function is a vector in the position basis (which it mainly has been), then applying the potential term is very easy because multiplying by a diagonal matrix is the same as pointwise multiplying by a vector - i.e.  all three of these lines below are equivalent:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">scipy</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">expm</span><span class="p">(</span><span class="o">-</span><span class="mf">1.</span><span class="n">j</span><span class="o">*</span><span class="n">dt</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">V</span><span class="p">))</span> <span class="o">@</span> <span class="n">psi</span>
+<span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">1.</span><span class="n">j</span><span class="o">*</span><span class="n">dt</span><span class="o">*</span><span class="n">V</span><span class="p">))</span> <span class="o">@</span> <span class="n">psi</span>
+<span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">1.</span><span class="n">j</span><span class="o">*</span><span class="n">dt</span><span class="o">*</span><span class="n">V</span><span class="p">)</span> <span class="o">*</span> <span class="n">psi</span>
+</pre></div>
+</div>
+<p>The first line is the sort of thing we’ve been doing all along (but just with the potential piece).
+The last line doesn’t involve a matrix at all but just a vector.  Let us define <code class="docutils literal notranslate"><span class="pre">M_half_x=np.exp(-1.j*dt/2*np.diag(V))</span></code></p>
+<p>Unfortunately, the potential piece is complicated if our wave-function is in the position basis. But…. if our wave-function is in the momentum basis, then it would be easy because in the momentum basis that matrix is diagonal so we can just pointwise multiply by the vector <code class="docutils literal notranslate"><span class="pre">M_p=np.exp(-1.j*</span> <span class="pre">dt*</span> <span class="pre">-(ks**2)/(2*m))</span></code>.</p>
+<p>But it’s easy to move the wave-function back and forth between the position and momentum basis via an FFT so we can always be in the “good” basis when we have to apply the operator.</p>
+<p>This leaves us with the following algorithm to apply a single time-step <span class="math notranslate nohighlight">\(\Delta t\)</span> starting with a wave-function <code class="docutils literal notranslate"><span class="pre">psi</span></code> in the position basis:</p>
+<ul class="simple">
+<li><p>(1) apply  M_half_x to psi</p></li>
+<li><p>(2) apply  M_half_x to psi</p></li>
+<li><p>(3) switch to the momentum basis <code class="docutils literal notranslate"><span class="pre">psi_k=np.fft.fft(psi)</span></code></p></li>
+<li><p>(4) apply M_p to psi_k</p></li>
+<li><p>(5) switch to the real space basis <code class="docutils literal notranslate"><span class="pre">psi=np.fft.ifft(psi_k)</span></code></p></li>
+</ul>
+<p>We then need to do this over and over again for many time-steps  (for technical reasons, it’s actually more accurate to put (1) after (5)).</p>
+<p>You are making a tiny error in <span class="math notranslate nohighlight">\(\Delta t\)</span> but this algorithm is much better then our previous approaches.  You never need to build a big matrix diagonalize a Hamiltonian, etc.  To implement this you will need the k-vectors <code class="docutils literal notranslate"><span class="pre">ks=np.fft.fftfreq(len(xs),</span> <span class="pre">delta_x)*(2*np.pi)</span></code></p>
+<p>There is one additional wart.  This will only work on wave-functions that go to zero at the edge of your box but since you can use such a large box this shouldn’t be a problem.</p>
+<section id="a-setting-up-your-new-time-evolution-and-a-test">
+<h3>a. Setting up your new time-evolution and a test<a class="headerlink" href="#a-setting-up-your-new-time-evolution-and-a-test" title="Permalink to this heading">#</a></h3>
+<p>Set up code to use this new algorithm.</p>
+<p>Start by doing a test for the particle in a finite well with the initial state</p>
+<div class="math notranslate nohighlight">
+\[|\Psi\rangle = \sqrt{0.1}|v_0\rangle + \sqrt{0.25}|v_1\rangle + i \sqrt{0.65}|v_2\rangle \]</div>
+<p>in a potential well where <span class="math notranslate nohighlight">\(V(x)=0.5\)</span> when <span class="math notranslate nohighlight">\(|x|&gt;10\)</span> and <span class="math notranslate nohighlight">\(V(x)=0\)</span> otherwise. (to get <span class="math notranslate nohighlight">\(\Psi\)</span>, you will need to work with your Hamiltonian again which is slow - this is just for a test)</p>
+<p>Use</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\Delta x=0.1\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(L=40\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\Delta t=0.01\)</span>.</p></li>
+<li><p>Go to <span class="math notranslate nohighlight">\(T=400\)</span> taking a snapshot to graph every <span class="math notranslate nohighlight">\(T=1\)</span>.</p></li>
+</ul>
+<p>Your animation wants to know what the energy of your wave-function is to rescale the potential.  You don’t have to get this working to test your animation but you should fix it after that looks good.</p>
+<p>Previously we got this by computing the expectation value with respect to the Hamiltonian.  That is no longer efficient.  Here, we are going to go back to computing expectation values as we did originally for position.</p>
+<p>To compute the average potential energy you have</p>
+<div class="math notranslate nohighlight">
+\[\sum_x |\Psi(x)|^2 V(x)\]</div>
+<p>and to compute the average kinetic energy you have</p>
+<div class="math notranslate nohighlight">
+\[\sum_k |\Psi(k)|^2 k^2/2m\]</div>
+<p>remembering that for this latter quantity you need to switch to k-space.   The total energy is just the same of the kinetic and potential energy.</p>
+<p>Compare your result against what the time-evolution for the same system you did earlier in the assignment.</p>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### answer here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div></section>
+<section id="b-time-evolution-of-a-stationary-gaussian">
+<h3>b. Time evolution of a “stationary” gaussian<a class="headerlink" href="#b-time-evolution-of-a-stationary-gaussian" title="Permalink to this heading">#</a></h3>
+<p>We should now be ready to choose any potential and any initial state to do time-evolution over.  Let’s begin with no potential <span class="math notranslate nohighlight">\(V=0\)</span> and the guassian</p>
+<div class="math notranslate nohighlight">
+\[\frac{1}{N} \exp[-\frac{1}{2} x^2]\]</div>
+<p>where <span class="math notranslate nohighlight">\(N\)</span> is the normalization constant on a grid of <span class="math notranslate nohighlight">\(L=200\)</span>, <span class="math notranslate nohighlight">\(\Delta x=0.1\)</span> and <span class="math notranslate nohighlight">\(\Delta t=0.01\)</span> taking a snapshot every 10 time-steps out to a total time of T=1.  You should find that a stationary gaussian simply spreads out as a function of time.</p>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### answer here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div></section>
+<section id="c-hitting-a-potential-barrier">
+<h3>c. Hitting a potential barrier.<a class="headerlink" href="#c-hitting-a-potential-barrier" title="Permalink to this heading">#</a></h3>
+<p>Let us now consider a potential barrier with</p>
+<div class="math notranslate nohighlight">
+\[V(x) = V_0 \textrm{ for }  -a&lt;x&lt;a \]</div>
+<p>and 0 otherwise.<br />
+Let us start with</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(V_0=10\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(a=0.5\)</span>.</p></li>
+</ul>
+<p>Taking as an initial wave-function</p>
+<div class="math notranslate nohighlight">
+\[\frac{1}{N} \exp[-0.5 (x+20)^2 + 5i x]\]</div>
+<p>where <span class="math notranslate nohighlight">\(N\)</span> is the normalization, do time-evolution to <span class="math notranslate nohighlight">\(T=10\)</span> with a snapshot every <span class="math notranslate nohighlight">\(t=0.1\)</span></p>
+<p>Plot also (as a function of t), the amount of probability to the left and right of <span class="math notranslate nohighlight">\(x=0\)</span>.</p>
+<p>While not required, it’s fun to play with barrier height and width and see what happens. Another interesting thing is to .</p>
 <div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### answer here</span>
@@ -745,13 +811,17 @@ That means that if we look at any of the eigenstates with <span class="math notr
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-eigenstates-in-the-forbidden-region">b.  Eigenstates in the forbidden region</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-dynamics">c. Dynamics</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-dynamics-above-the-potential-barrier">d.  Dynamics above the potential barrier</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#e-dynamics-of-a-wave-packet-optional">e.  Dynamics of a wave packet (optional)</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-finite-barriers">Exercise 2.  Finite Barriers</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exerices-2-eigenstates-of-finite-barriers">Exerices 2. Eigenstates of Finite Barriers</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-diagonalize">a. Diagonalize</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-effects-of-barrier-height-and-width-on-eigenstates">b. Effects of barrier height and width on eigenstates</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-scattering-off-a-potential-wall">c. Scattering off a potential wall</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-faster-dynamics-and-finite-barriers">Exercise 3. Faster Dynamics and Finite Barriers</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-setting-up-your-new-time-evolution-and-a-test">a. Setting up your new time-evolution and a test</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-time-evolution-of-a-stationary-gaussian">b. Time evolution of a “stationary” gaussian</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-hitting-a-potential-barrier">c. Hitting a potential barrier.</a></li>
 </ul>
 </li>
 </ul>
