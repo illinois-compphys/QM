@@ -7,3 +7,4 @@ chapters:
 - file: ParticleInABox.ipynb
 - file: ParticleInAFiniteWell.ipynb
 - file: HarmonicOscillator.ipynb
+- file: Hydrogen.ipynb
