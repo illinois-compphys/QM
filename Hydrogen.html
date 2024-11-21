@@ -370,7 +370,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-hydrogen-atom-on-a-grid">Exercise 3. Hydrogen Atom on a Grid</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-the-hamiltonian">a. The Hamiltonian</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-eigenvalues">b. Eigenvalues</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-eigen-values">c. Eigen-values</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-eigenvectors">c. Eigenvectors</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-three-dimensional-plots">c.  Three-dimensional plots</a></li>
 </ul>
 </li>
@@ -673,7 +673,7 @@ Recall that</p>
 <li><p>a potential term coming from the angular momentum</p></li>
 <li><p>a potential term coming from the coulomb potential.</p></li>
 </ul>
-<p>To solve this analytically required a significant amount of work.  We will see that solving it numerically is relatively straightforward. For each of the terms in <span class="math notranslate nohighlight">\(H_{eff} we need to write out a \)</span>N \times N<span class="math notranslate nohighlight">\( Hamiltonian matrix  (where \)</span>N$ is the number of points in our grid which discretizes space).</p>
+<p>To solve this analytically required a significant amount of work.  We will see that solving it numerically is relatively straightforward. For each of the terms in <span class="math notranslate nohighlight">\(H_{eff}\)</span> we need to write out a <span class="math notranslate nohighlight">\(N \times N\)</span> Hamiltonian matrix  (where <span class="math notranslate nohighlight">\(N\)</span> is the number of points in our grid which discretizes space).</p>
 <section id="a-the-kinetic-term">
 <h3>a. The Kinetic Term<a class="headerlink" href="#a-the-kinetic-term" title="Permalink to this heading">#</a></h3>
 <p>We will start by working with a discretized grid which is <span class="math notranslate nohighlight">\(N=200\)</span> points defined by</p>
@@ -688,7 +688,7 @@ Recall that</p>
 \[\frac{d^2}{dr^2} = \frac{2 f(r) - f(r+dr ) - f(r-dr)}{dr^2} \]</div>
 <p>As a matrix this means:</p>
 <ul class="simple">
-<li><p>the elements that connect the r’th column to the r’th row should get a <span class="math notranslate nohighlight">\(1/dr^2\)</span>.  This is just the diagonal of the matrix</p></li>
+<li><p>the elements that connect the r’th column to the r’th row should get a <span class="math notranslate nohighlight">\(2/dr^2\)</span>.  This is just the diagonal of the matrix</p></li>
 <li><p>the elements that connect the (r+1)’st column to the r’th row should get a <span class="math notranslate nohighlight">\(-1/dr^2\)</span>. This is just one row above the diagonal</p></li>
 <li><p>the elements that connect the (r-1)’st column to the r’th row should get a <span class="math notranslate nohighlight">\(-1/dr^2\)</span>. This is just one row below the diagonal.</p></li>
 </ul>
@@ -866,8 +866,8 @@ From this it should be straightforward to produce $R$ as a three-dimensional gri
 </details>
 </div>
 <div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div></section>
-<section id="c-eigen-values">
-<h3>c. Eigen-values<a class="headerlink" href="#c-eigen-values" title="Permalink to this heading">#</a></h3>
+<section id="c-eigenvectors">
+<h3>c. Eigenvectors<a class="headerlink" href="#c-eigenvectors" title="Permalink to this heading">#</a></h3>
 <p>Now we can also look at the eigenstates.  For this section, let’s use a grid with 80 points.</p>
 <p>Let’s start by looking at the s-states.  First, we will make some two-dimensional slices of the three-dimensional wave-functions we’ve found.  To get your 2d visualization, you first need to reshape your wave-function into a 3d grid - if you have a <span class="math notranslate nohighlight">\(80 \times 80 \times 80\)</span> grid this can be done for the <span class="math notranslate nohighlight">\(i\)</span> th eigenstate by doing <code class="docutils literal notranslate"><span class="pre">A=psi[:,i].reshape(80,80,80)</span></code>.   Now you can go ahead and plot it by <code class="docutils literal notranslate"><span class="pre">plt.matshow(A[40,:,:])</span></code> where 40 is the slice that you want.  You probably want to use <code class="docutils literal notranslate"><span class="pre">plt.colorbar()</span></code> so you can see the magnitude and sign of things.</p>
 <p>If you look at the 0 (1s),1 (2s) or 5 (3s) eigenstate you will find that it should have a clear “S” character - symmetric around the origin.</p>
@@ -986,7 +986,7 @@ From this it should be straightforward to produce $R$ as a three-dimensional gri
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-hydrogen-atom-on-a-grid">Exercise 3. Hydrogen Atom on a Grid</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-the-hamiltonian">a. The Hamiltonian</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-eigenvalues">b. Eigenvalues</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-eigen-values">c. Eigen-values</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-eigenvectors">c. Eigenvectors</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-three-dimensional-plots">c.  Three-dimensional plots</a></li>
 </ul>
 </li>
