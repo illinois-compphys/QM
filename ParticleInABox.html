@@ -397,15 +397,15 @@ document.write(`
 <span class="expanded">Hide code cell content</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">scipy</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">math</span>
-<span class="kn">from</span> <span class="nn">matplotlib.animation</span> <span class="kn">import</span> <span class="n">FuncAnimation</span>
-<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">HTML</span>
-<span class="kn">import</span> <span class="nn">matplotlib.animation</span> <span class="k">as</span> <span class="nn">animation</span>
-<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">HTML</span>
-<span class="k">def</span> <span class="nf">resetMe</span><span class="p">(</span><span class="n">keepList</span><span class="o">=</span><span class="p">[]):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">scipy</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.animation</span><span class="w"> </span><span class="kn">import</span> <span class="n">FuncAnimation</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">HTML</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.animation</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">animation</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">HTML</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">resetMe</span><span class="p">(</span><span class="n">keepList</span><span class="o">=</span><span class="p">[]):</span>
     <span class="n">ll</span><span class="o">=%</span><span class="k">who_ls</span>
     <span class="n">keepList</span><span class="o">=</span><span class="n">keepList</span><span class="o">+</span><span class="p">[</span><span class="s1">&#39;FuncAnimation&#39;</span><span class="p">,</span><span class="s1">&#39;HTML&#39;</span><span class="p">,</span><span class="s1">&#39;resetMe&#39;</span><span class="p">,</span><span class="s1">&#39;scipy&#39;</span><span class="p">,</span><span class="s1">&#39;np&#39;</span><span class="p">,</span><span class="s1">&#39;plt&#39;</span><span class="p">,</span><span class="s1">&#39;math&#39;</span><span class="p">,</span><span class="s1">&#39;jax&#39;</span><span class="p">,</span><span class="s1">&#39;jnp&#39;</span><span class="p">,</span><span class="s1">&#39;jit&#39;</span><span class="p">,</span><span class="s1">&#39;grad&#39;</span><span class="p">,</span><span class="s1">&#39;HTML&#39;</span><span class="p">,</span><span class="s1">&#39;animation&#39;</span><span class="p">,</span><span class="s1">&#39;animateMe_singlePendula&#39;</span><span class="p">]</span>
     <span class="k">for</span> <span class="n">iiii</span> <span class="ow">in</span> <span class="n">keepList</span><span class="p">:</span>
@@ -418,7 +418,7 @@ document.write(`
     <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s2">&quot;font.size&quot;</span><span class="p">:</span> <span class="mi">14</span><span class="p">})</span>
     <span class="k">return</span>
 <span class="n">resetMe</span><span class="p">()</span>
-<span class="kn">import</span> <span class="nn">datetime</span><span class="p">;</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">datetime</span><span class="p">;</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -426,10 +426,10 @@ document.write(`
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
 <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">scipy</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">import</span> <span class="nn">math</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="kn">import</span><span class="w"> </span><span class="nn">scipy</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
 
 <span class="ne">ModuleNotFoundError</span>: No module named &#39;scipy&#39;
 </pre></div>
@@ -452,7 +452,7 @@ document.write(`
 \[ H \equiv \left( -\frac{\hbar^2}{2m} \frac{\partial^2}{\partial x^2}  + V \right)  \]</div>
 <p>For a particle in a box, the V=0 (other then the infinite hard walls) and so we can ignore it for here.  We will have to pay more attention to it when we have a finite-walled box. We will also work in units where <span class="math notranslate nohighlight">\(\hbar=m=1\)</span>.  For most of this assignment we will be working in the <span class="math notranslate nohighlight">\(x\)</span> basis.</p>
 <p>To write it as a matrix equation, we need to discretize <span class="math notranslate nohighlight">\(x\)</span>.  We will do that in <span class="math notranslate nohighlight">\(\Delta x\)</span> steps of 0.01 as</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">SetupGrid</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="n">delta_x</span><span class="p">):</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">SetupGrid</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="n">delta_x</span><span class="p">):</span>
     <span class="n">ns</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">int</span><span class="p">((</span><span class="n">L</span><span class="o">+</span><span class="mi">2</span><span class="o">*</span><span class="n">delta_x</span><span class="p">)</span><span class="o">//</span><span class="n">delta_x</span><span class="p">)))</span>
     <span class="n">xs</span><span class="o">=</span><span class="n">ns</span><span class="o">*</span><span class="n">delta_x</span><span class="o">-</span><span class="n">L</span><span class="o">/</span><span class="mi">2</span>
     <span class="k">return</span> <span class="n">xs</span>
@@ -732,7 +732,7 @@ $<span class="math notranslate nohighlight">\(\Psi(t+T) = (1-i \frac{\delta t}{\
 <p>To take a matrix exponential, you can use <code class="docutils literal notranslate"><span class="pre">scipy.linalg.expm</span></code>.  It will not work if you just naively call exp.</p>
 <p>First, go ahead and plot the wave-function probability at time-steps 0, 50, 200, and 350 all on the same graph.</p>
 <p>Secondly, we will want to animate the wave-function probability as a function of time.  To do this, you can use the following code (where myData is a list of wave-functions)</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="n">max_value</span><span class="p">):</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">update</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="n">max_value</span><span class="p">):</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">cla</span><span class="p">()</span>  <span class="c1"># Clear the current plot</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">myData</span><span class="p">[</span><span class="n">frame</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>  
     <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">max_value</span><span class="p">)</span>  <span class="c1"># Set the y-axis limit</span>

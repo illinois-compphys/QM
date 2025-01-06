@@ -402,20 +402,20 @@ document.write(`
 <span class="expanded">Hide code cell content</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">scipy</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">math</span>
-<span class="kn">from</span> <span class="nn">matplotlib.animation</span> <span class="kn">import</span> <span class="n">FuncAnimation</span>
-<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">HTML</span>
-<span class="kn">import</span> <span class="nn">numpy.polynomial.hermite</span> <span class="k">as</span> <span class="nn">Herm</span>
-<span class="kn">import</span> <span class="nn">math</span>
-<span class="kn">import</span> <span class="nn">scipy.optimize</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">scipy</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.animation</span><span class="w"> </span><span class="kn">import</span> <span class="n">FuncAnimation</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">HTML</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy.polynomial.hermite</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">Herm</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">scipy.optimize</span>
 
 
-<span class="kn">import</span> <span class="nn">matplotlib.animation</span> <span class="k">as</span> <span class="nn">animation</span>
-<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">HTML</span>
-<span class="k">def</span> <span class="nf">resetMe</span><span class="p">(</span><span class="n">keepList</span><span class="o">=</span><span class="p">[]):</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.animation</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">animation</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">HTML</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">resetMe</span><span class="p">(</span><span class="n">keepList</span><span class="o">=</span><span class="p">[]):</span>
     <span class="n">ll</span><span class="o">=%</span><span class="k">who_ls</span>
     <span class="n">keepList</span><span class="o">=</span><span class="n">keepList</span><span class="o">+</span><span class="p">[</span><span class="s1">&#39;FuncAnimation&#39;</span><span class="p">,</span><span class="s1">&#39;Herm&#39;</span><span class="p">,</span><span class="s1">&#39;HTML&#39;</span><span class="p">,</span><span class="s1">&#39;resetMe&#39;</span><span class="p">,</span><span class="s1">&#39;scipy&#39;</span><span class="p">,</span><span class="s1">&#39;np&#39;</span><span class="p">,</span><span class="s1">&#39;plt&#39;</span><span class="p">,</span><span class="s1">&#39;math&#39;</span><span class="p">,</span><span class="s1">&#39;jax&#39;</span><span class="p">,</span><span class="s1">&#39;jnp&#39;</span><span class="p">,</span><span class="s1">&#39;jit&#39;</span><span class="p">,</span><span class="s1">&#39;grad&#39;</span><span class="p">,</span><span class="s1">&#39;HTML&#39;</span><span class="p">,</span><span class="s1">&#39;animation&#39;</span><span class="p">,</span><span class="s1">&#39;animateMe_singlePendula&#39;</span><span class="p">]</span>
     <span class="k">for</span> <span class="n">iiii</span> <span class="ow">in</span> <span class="n">keepList</span><span class="p">:</span>
@@ -428,7 +428,7 @@ document.write(`
     <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s2">&quot;font.size&quot;</span><span class="p">:</span> <span class="mi">14</span><span class="p">})</span>
     <span class="k">return</span>
 <span class="n">resetMe</span><span class="p">()</span>
-<span class="kn">import</span> <span class="nn">datetime</span><span class="p">;</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">datetime</span><span class="p">;</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -436,10 +436,10 @@ document.write(`
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
 <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">scipy</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">import</span> <span class="nn">math</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="kn">import</span><span class="w"> </span><span class="nn">scipy</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
 
 <span class="ne">ModuleNotFoundError</span>: No module named &#39;scipy&#39;
 </pre></div>
@@ -450,12 +450,12 @@ document.write(`
 <p>In this assignment, we will consistently use grids and observables that we will set up in this way. This is very similar to how you set things for the particle in the box assignment.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">SetupGrid</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="n">delta_x</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">SetupGrid</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="n">delta_x</span><span class="p">):</span>
     <span class="n">ns</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">int</span><span class="p">((</span><span class="n">L</span><span class="o">+</span><span class="mi">2</span><span class="o">*</span><span class="n">delta_x</span><span class="p">)</span><span class="o">//</span><span class="n">delta_x</span><span class="p">)))</span>
     <span class="n">xs</span><span class="o">=</span><span class="n">ns</span><span class="o">*</span><span class="n">delta_x</span><span class="o">-</span><span class="n">L</span><span class="o">/</span><span class="mi">2</span>
     <span class="k">return</span> <span class="n">xs</span>
 
-<span class="k">def</span> <span class="nf">SetupObservables</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span><span class="n">delta_x</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">SetupObservables</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span><span class="n">delta_x</span><span class="p">):</span>
     <span class="n">X</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
     <span class="n">P</span><span class="o">=</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">([</span><span class="mf">1.</span><span class="n">j</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">delta_x</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)],</span><span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">([</span><span class="o">-</span><span class="mf">1.</span><span class="n">j</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">delta_x</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)],</span><span class="n">k</span><span class="o">=-</span><span class="mi">1</span><span class="p">))</span>
 
@@ -468,7 +468,7 @@ document.write(`
     <span class="k">return</span> <span class="n">X</span><span class="p">,</span><span class="n">P</span><span class="p">,</span><span class="n">P2</span>
 
 
-<span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="n">max_value</span><span class="p">,</span><span class="n">skip</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">update</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="n">max_value</span><span class="p">,</span><span class="n">skip</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">cla</span><span class="p">()</span>  <span class="c1"># Clear the current plot</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">arrays</span><span class="p">[::</span><span class="n">skip</span><span class="p">][</span><span class="n">frame</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>  <span class="c1"># Plot the current array</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">arrays</span><span class="p">[::</span><span class="n">skip</span><span class="p">][</span><span class="n">frame</span><span class="p">]</span><span class="nd">@X@arrays</span><span class="p">[::</span><span class="n">skip</span><span class="p">][</span><span class="n">frame</span><span class="p">]</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">conjugate</span><span class="p">())</span>
@@ -517,7 +517,7 @@ document.write(`
 <p>So we’d like to replot the wave-function as a function of <span class="math notranslate nohighlight">\(p\)</span> and not <span class="math notranslate nohighlight">\(x\)</span>.  Mind you, this is the same wave-function.  It’s just a different way of representing it.  If I show you a curve and I don’t tell label the axis so you know whether you are in the <span class="math notranslate nohighlight">\(x\)</span> basis or <span class="math notranslate nohighlight">\(p\)</span> basis, you don’t really know what you’re looking at.</p>
 <p>To change a basis you mutiply by a unitary matrix that corresponds to that basis change.  We need the unitary matrix that multiplies a wave-function in the x-basis and converts it to the p-basis.  Then we can plot it in the p-basis.
 You can get this unitary (along with the basis of p-points) by doing</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">MomentumBasis</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="n">delta_x</span><span class="p">):</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">MomentumBasis</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="n">delta_x</span><span class="p">):</span>
     <span class="n">ns</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">int</span><span class="p">((</span><span class="n">L</span><span class="o">+</span><span class="mi">2</span><span class="o">*</span><span class="n">delta_x</span><span class="p">)</span><span class="o">//</span><span class="n">delta_x</span><span class="p">)))</span>
     <span class="n">xs</span><span class="o">=</span><span class="n">ns</span><span class="o">*</span><span class="n">delta_x</span><span class="o">-</span><span class="n">L</span><span class="o">/</span><span class="mi">2</span>
     <span class="n">ks</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">ns</span><span class="o">*</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="p">(</span><span class="n">ns</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
