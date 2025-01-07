@@ -606,7 +606,7 @@ Recall that</p>
 <h2>Exercise 2. Solving the Hydrogen Atom Radial Equation Numerically<a class="headerlink" href="#exercise-2-solving-the-hydrogen-atom-radial-equation-numerically" title="Permalink to this heading">#</a></h2>
 <p>Recall that the Hydrogen atom Hamiltonian is</p>
 <div class="math notranslate nohighlight">
-\[H =  -\nabla^2 - \frac{1}{r} \]</div>
+\[H =  -\frac{1}{2}\nabla^2 - \frac{1}{r} \]</div>
 <p>We solve the hydrogen atom using separation of variables eventually finding that</p>
 <div class="math notranslate nohighlight">
 \[\Psi(R,\theta,\phi) = R_{nl}(r) Y_{lm}(\theta,\phi)\]</div>
@@ -686,7 +686,7 @@ Recall that</p>
 <li><p>Change <code class="docutils literal notranslate"><span class="pre">V</span></code> and <code class="docutils literal notranslate"><span class="pre">Laplacian</span></code> to return sparse matrices.  You can do this by just having the return be <code class="docutils literal notranslate"><span class="pre">return</span>&#160; <span class="pre">scipy.sparse.csr_matrix(oldMatrix)</span></code></p></li>
 <li><p>When you diagonalize, take <code class="docutils literal notranslate"><span class="pre">e,v=scipy.sparse.linalg.eigsh(H,k=6,which='SA')</span></code> This will give you sparse versions of the lowest six eigenstates.</p></li>
 </ul>
-<p>Use now a grid of <span class="math notranslate nohighlight">\(N=4000\)</span> from <span class="math notranslate nohighlight">\(L=-60\)</span> to <span class="math notranslate nohighlight">\(L=60\)</span></p>
+<p>Use now a grid of <span class="math notranslate nohighlight">\(N=4000\)</span> out to <span class="math notranslate nohighlight">\(L=60\)</span></p>
 <p>Go ahead and plot the same curves as above and verify you get more reasonable results.</p>
 <div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell docutils container">
 <div class="cell_input docutils container">
