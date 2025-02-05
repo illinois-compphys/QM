@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="./" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Particle in a Box &#8212; Computation in Quantum Mechanics  (for Phys486)# The title of the book. Will be placed in the left navbar.</title>
   
@@ -15,53 +14,52 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-  
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
-
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'ParticleInABox';</script>
@@ -71,6 +69,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="prev" title="Quantum Mechanics" href="intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -78,32 +77,16 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="search.html"
       method="get">
@@ -111,7 +94,6 @@ const thebe_selector_output = ".output, .cell_output"
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -119,16 +101,25 @@ const thebe_selector_output = ".output, .cell_output"
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -143,6 +134,8 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="sidebar-primary-item">
 
   
+    
+  
 
 <a class="navbar-brand logo" href="intro.html">
   
@@ -156,11 +149,18 @@ const thebe_selector_output = ".output, .cell_output"
     
     
     <img src="_static/logo.png" class="logo__image only-light" alt="Computation in Quantum Mechanics  (for Phys486)# The title of the book. Will be placed in the left navbar. - Home"/>
-    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Computation in Quantum Mechanics  (for Phys486)# The title of the book. Will be placed in the left navbar. - Home"/>`);</script>
+    <img src="_static/logo.png" class="logo__image only-dark pst-js-only" alt="Computation in Quantum Mechanics  (for Phys486)# The title of the book. Will be placed in the left navbar. - Home"/>
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -175,6 +175,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="ParticleInAFiniteWell.html">Particle with a Finite Potential</a></li>
 <li class="toctree-l1"><a class="reference internal" href="HarmonicOscillator.html">Harmonic Oscillator and the Uncertainty Principle</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Hydrogen.html">Hydrogen Atom</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PerturbationTheory.html">Perturbation Theory</a></li>
 </ul>
 
     </div>
@@ -183,14 +184,19 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -199,14 +205,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -231,14 +237,14 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="https://colab.research.google.com/github/illinois-compphys/QM/blob/main/quantum_mechanics/ParticleInABox.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
-   title="Launch onColab"
+   title="Launch on Colab"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
 <span class="btn__icon-container">
   
-    <img src="_static/images/logo_colab.png">
+    <img alt="Colab logo" src="_static/images/logo_colab.png">
   </span>
 <span class="btn__text-container">Colab</span>
 </a>
@@ -313,27 +319,19 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
-  </button>
-`);
-</script>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-  </button>
-`);
-</script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -381,10 +379,10 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="particle-in-a-box">
-<h1>Particle in a Box<a class="headerlink" href="#particle-in-a-box" title="Permalink to this heading">#</a></h1>
+<h1>Particle in a Box<a class="headerlink" href="#particle-in-a-box" title="Link to this heading">#</a></h1>
 <ul class="simple">
 <li><p><strong>Author:</strong></p></li>
 <li><p><strong>Date:</strong></p></li>
@@ -438,9 +436,9 @@ document.write(`
 </details>
 </div>
 <section id="exercise-1-particle-in-a-infinite-box">
-<h2>Exercise 1. Particle in a Infinite Box<a class="headerlink" href="#exercise-1-particle-in-a-infinite-box" title="Permalink to this heading">#</a></h2>
+<h2>Exercise 1. Particle in a Infinite Box<a class="headerlink" href="#exercise-1-particle-in-a-infinite-box" title="Link to this heading">#</a></h2>
 <section id="a-hamiltonian-and-eigenvalues">
-<h3>a. Hamiltonian and Eigenvalues<a class="headerlink" href="#a-hamiltonian-and-eigenvalues" title="Permalink to this heading">#</a></h3>
+<h3>a. Hamiltonian and Eigenvalues<a class="headerlink" href="#a-hamiltonian-and-eigenvalues" title="Link to this heading">#</a></h3>
 <p>Consider a particle in a box of length 20 spanning <span class="math notranslate nohighlight">\(-10 \leq x \leq 10\)</span></p>
 <p>We are going to start by solving the time-independent schrodinger equation:</p>
 <div class="math notranslate nohighlight">
@@ -531,7 +529,7 @@ which builds a matrix of size len(xs) x len(xs)</p>
 </div>
 <div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div></section>
 <section id="b-eigenvectors">
-<h3>b. Eigenvectors<a class="headerlink" href="#b-eigenvectors" title="Permalink to this heading">#</a></h3>
+<h3>b. Eigenvectors<a class="headerlink" href="#b-eigenvectors" title="Link to this heading">#</a></h3>
 <p>We would also like to look at the eigenvectors.  We know that the eigenvectors are supposed to be orthonormal.  This means that their dot product <span class="math notranslate nohighlight">\(e_i e_j^\dagger\)</span> (also written <span class="math notranslate nohighlight">\(\langle e_i | e_j\rangle\)</span>) is either zero if they are different (<span class="math notranslate nohighlight">\(i \neq j\)</span>) or equal to one (if they are the same).</p>
 <p>Go ahead and verify that the three lowest states are orthonormal with respect to each other.  (Note: numbers that are near 1e-16 you should treat as zero).</p>
 <p>In python <span class="math notranslate nohighlight">\(ab^\dagger\)</span> can be computed by</p>
@@ -567,9 +565,9 @@ which builds a matrix of size len(xs) x len(xs)</p>
 <div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div></section>
 </section>
 <section id="exercise-2-expectation-values">
-<h2>Exercise 2. Expectation values<a class="headerlink" href="#exercise-2-expectation-values" title="Permalink to this heading">#</a></h2>
+<h2>Exercise 2. Expectation values<a class="headerlink" href="#exercise-2-expectation-values" title="Link to this heading">#</a></h2>
 <section id="a-measuring">
-<h3>a. Measuring<a class="headerlink" href="#a-measuring" title="Permalink to this heading">#</a></h3>
+<h3>a. Measuring<a class="headerlink" href="#a-measuring" title="Link to this heading">#</a></h3>
 <p>In the previous problem, you plotted the wave-function amplitude <span class="math notranslate nohighlight">\(\Psi(x)\)</span> for various eigenstates of the Hamiltonian. Experimentally, though, you aren’t measuring the amplitudes.  Instead you are measuring the probability or expectation values.</p>
 <p>In this section, let’s start by working with the wave-function</p>
 <div class="math notranslate nohighlight">
@@ -594,7 +592,7 @@ it will choose an <span class="math notranslate nohighlight">\(x\)</span> approp
 </div>
 <div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div></section>
 <section id="b-expectation-in-the-diagonal-basis">
-<h3>b. Expectation in the diagonal basis<a class="headerlink" href="#b-expectation-in-the-diagonal-basis" title="Permalink to this heading">#</a></h3>
+<h3>b. Expectation in the diagonal basis<a class="headerlink" href="#b-expectation-in-the-diagonal-basis" title="Link to this heading">#</a></h3>
 <p>When an experimentalist measures their particle many times, they could report all the places where the electron is.  But often it is easier just to report the average of those locations. This is called the expectation value of <span class="math notranslate nohighlight">\(x\)</span> or <span class="math notranslate nohighlight">\(\langle x \rangle\)</span>.</p>
 <p>In this and the next part and the next, we will compute the expectation value of <span class="math notranslate nohighlight">\(x\)</span> in three different ways:
 First, let’s just take the code that you wrote above but now measure 10,000 times. Instead of plotting it, just report the aveage of all the <span class="math notranslate nohighlight">\(x\)</span> that you see.</p>
@@ -637,7 +635,7 @@ First, let’s just take the code that you wrote above but now measure 10,000 ti
 <div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div><p>We would also like to find the energy, which is the expectation value of the Hamiltonian.  This would be <span class="math notranslate nohighlight">\(\sum_x P(x) E(x)\)</span> where <span class="math notranslate nohighlight">\(E(x)\)</span> is the energy of the state when it is at a particular <span class="math notranslate nohighlight">\(x\)</span> (for example, the energy of the state when you <span class="math notranslate nohighlight">\(x=3.2\)</span>).  Unfortunately, we don’t know what that energy is so this becomes a bit tricky. We will see a more general way to approach this in the next part.</p>
 </section>
 <section id="c-expectation-values-using-operators">
-<h3>c. Expectation values (using operators )<a class="headerlink" href="#c-expectation-values-using-operators" title="Permalink to this heading">#</a></h3>
+<h3>c. Expectation values (using operators )<a class="headerlink" href="#c-expectation-values-using-operators" title="Link to this heading">#</a></h3>
 <p>So far we’ve computed expectation values for diagonal observables by evaluating the propbability of a particular value of <span class="math notranslate nohighlight">\(x\)</span> and then computing the observable for that value of <span class="math notranslate nohighlight">\(x\)</span>.   Another approach to computing expectation values is to start with an operator corresponding to that observable <span class="math notranslate nohighlight">\(\hat{O}\)</span>  and then evaluate</p>
 <div class="math notranslate nohighlight">
 \[ \langle O \rangle = \langle \Psi | \hat{O} |\Psi \rangle\]</div>
@@ -683,7 +681,7 @@ First, let’s just take the code that you wrote above but now measure 10,000 ti
 </div>
 <div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div></section>
 <section id="d-how-do-the-two-approaches-for-expectation-values-relate-optional">
-<h3>d. How do the two approaches for expectation values relate?  (optional)<a class="headerlink" href="#d-how-do-the-two-approaches-for-expectation-values-relate-optional" title="Permalink to this heading">#</a></h3>
+<h3>d. How do the two approaches for expectation values relate?  (optional)<a class="headerlink" href="#d-how-do-the-two-approaches-for-expectation-values-relate-optional" title="Link to this heading">#</a></h3>
 <p>We’ve seen two different approaches to computing expectation values.  We’d like to understand how they relate.  For <span class="math notranslate nohighlight">\(\langle x^2 \rangle\)</span> it’s pretty easy to see what’s going on.  Because that matrix is diagonal when we compute <code class="docutils literal notranslate"><span class="pre">psi</span> <span class="pre">&#64;</span> <span class="pre">X2</span> <span class="pre">&#64;</span> <span class="pre">psi.T.conjugate()</span></code> we are actually just summing up <span class="math notranslate nohighlight">\(\sum_x \psi(x) x^2 \psi^*(x) = \sum_x |\psi(x)|^2 x^2\)</span>.</p>
 <p>But what about when we compute the average energy.  We evaluate <code class="docutils literal notranslate"><span class="pre">psi</span> <span class="pre">&#64;</span> <span class="pre">H</span> <span class="pre">&#64;</span> <span class="pre">psi.T.conjugate()</span></code> which is not a diagonal and it’s not obvious how to rewrite it as something like <span class="math notranslate nohighlight">\(\sum_x P(x) E(x)\)</span>.</p>
 <p>It’s an interesting fact that  <code class="docutils literal notranslate"><span class="pre">H</span> <span class="pre">=</span> <span class="pre">v</span> <span class="pre">&#64;</span> <span class="pre">np.diag(e)</span> <span class="pre">&#64;</span> <span class="pre">v.T.conjugate()</span></code>   Verify that this is true.</p>
@@ -706,7 +704,7 @@ First, let’s just take the code that you wrote above but now measure 10,000 ti
 </section>
 </section>
 <section id="exercise-3-time-evolution">
-<h2>Exercise 3. Time Evolution<a class="headerlink" href="#exercise-3-time-evolution" title="Permalink to this heading">#</a></h2>
+<h2>Exercise 3. Time Evolution<a class="headerlink" href="#exercise-3-time-evolution" title="Link to this heading">#</a></h2>
 <p>We found the eigenstates by solving the time-independent Schrodinger equation. This equation was originally derived from the time-dependent Schrodinger equation</p>
 <div class="math notranslate nohighlight">
 \[-\frac{\hbar^2}{2m} \frac{\partial^2 \Psi}{\partial x^2}  + V\Psi = i \hbar \frac{\partial}{\partial t}\Psi \]</div>
@@ -724,7 +722,7 @@ $<span class="math notranslate nohighlight">\(\Psi(t+T) = (1-i \frac{\delta t}{\
 \[\Psi(t+T) = \exp[-i H \delta t]^{T/\delta t} \Psi(t)\]</div>
 <p>This latter formula is much more numerically stable and has the advantage that it is correct for any value of <span class="math notranslate nohighlight">\(\delta t\)</span> (which can be easily derived algebraically).</p>
 <section id="a-time-evolution">
-<h3>a. Time Evolution<a class="headerlink" href="#a-time-evolution" title="Permalink to this heading">#</a></h3>
+<h3>a. Time Evolution<a class="headerlink" href="#a-time-evolution" title="Link to this heading">#</a></h3>
 <p>Again starting with our wave-function</p>
 <div class="math notranslate nohighlight">
 \[|\Psi\rangle = \sqrt{0.1}|v_0\rangle + \sqrt{0.25}|v_1\rangle + i \sqrt{0.65}|v_2\rangle\]</div>
@@ -786,7 +784,7 @@ $<span class="math notranslate nohighlight">\(\Psi(t+T) = (1-i \frac{\delta t}{\
 </div>
 <div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div></section>
 <section id="b-time-evolution-of-expectation-values">
-<h3>b.  Time evolution of expectation values<a class="headerlink" href="#b-time-evolution-of-expectation-values" title="Permalink to this heading">#</a></h3>
+<h3>b.  Time evolution of expectation values<a class="headerlink" href="#b-time-evolution-of-expectation-values" title="Link to this heading">#</a></h3>
 <p>Above we’ve animated the wave-function. Sometimes, we are just interested in how the expectation values change with time.</p>
 <p>In particular, we would like to compute the time-evoluation of the expected values of</p>
 <ul class="simple">
@@ -849,7 +847,7 @@ $<span class="math notranslate nohighlight">\(\Psi(t+T) = (1-i \frac{\delta t}{\
 </div>
 <div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div></section>
 <section id="c-time-evolution-of-eigenstates">
-<h3>c.  Time evolution of eigenstates<a class="headerlink" href="#c-time-evolution-of-eigenstates" title="Permalink to this heading">#</a></h3>
+<h3>c.  Time evolution of eigenstates<a class="headerlink" href="#c-time-evolution-of-eigenstates" title="Link to this heading">#</a></h3>
 <p>Finally, we believe that the eigenstate should be stationary.  This means that they shouldn’t change as a function of time.  Starting your state at <span class="math notranslate nohighlight">\(\Psi(t=0)\)</span> into the second eigenstate, time evolve it as above and plot the state at time 0, 10, 20, and 40 all on the same graph.</p>
 <div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -889,7 +887,7 @@ $<span class="math notranslate nohighlight">\(\Psi(t+T) = (1-i \frac{\delta t}{\
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -917,7 +915,9 @@ $<span class="math notranslate nohighlight">\(\Psi(t+T) = (1-i \frac{\delta t}{\
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -991,8 +991,8 @@ By Bryan Clark
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
   </footer>

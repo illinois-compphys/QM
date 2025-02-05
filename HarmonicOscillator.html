@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="./" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Harmonic Oscillator and the Uncertainty Principle &#8212; Computation in Quantum Mechanics  (for Phys486)# The title of the book. Will be placed in the left navbar.</title>
   
@@ -15,53 +14,52 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-  
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
-
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'HarmonicOscillator';</script>
@@ -71,6 +69,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="prev" title="Particle with a Finite Potential" href="ParticleInAFiniteWell.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -78,32 +77,16 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="search.html"
       method="get">
@@ -111,7 +94,6 @@ const thebe_selector_output = ".output, .cell_output"
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -119,16 +101,25 @@ const thebe_selector_output = ".output, .cell_output"
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -143,6 +134,8 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="sidebar-primary-item">
 
   
+    
+  
 
 <a class="navbar-brand logo" href="intro.html">
   
@@ -156,11 +149,18 @@ const thebe_selector_output = ".output, .cell_output"
     
     
     <img src="_static/logo.png" class="logo__image only-light" alt="Computation in Quantum Mechanics  (for Phys486)# The title of the book. Will be placed in the left navbar. - Home"/>
-    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Computation in Quantum Mechanics  (for Phys486)# The title of the book. Will be placed in the left navbar. - Home"/>`);</script>
+    <img src="_static/logo.png" class="logo__image only-dark pst-js-only" alt="Computation in Quantum Mechanics  (for Phys486)# The title of the book. Will be placed in the left navbar. - Home"/>
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -175,6 +175,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="ParticleInAFiniteWell.html">Particle with a Finite Potential</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Harmonic Oscillator and the Uncertainty Principle</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Hydrogen.html">Hydrogen Atom</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PerturbationTheory.html">Perturbation Theory</a></li>
 </ul>
 
     </div>
@@ -183,14 +184,19 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -199,14 +205,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -231,14 +237,14 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="https://colab.research.google.com/github/illinois-compphys/QM/blob/main/quantum_mechanics/HarmonicOscillator.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
-   title="Launch onColab"
+   title="Launch on Colab"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
 <span class="btn__icon-container">
   
-    <img src="_static/images/logo_colab.png">
+    <img alt="Colab logo" src="_static/images/logo_colab.png">
   </span>
 <span class="btn__text-container">Colab</span>
 </a>
@@ -313,27 +319,19 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
-  </button>
-`);
-</script>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-  </button>
-`);
-</script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -385,10 +383,10 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="harmonic-oscillator-and-the-uncertainty-principle">
-<h1>Harmonic Oscillator and the Uncertainty Principle<a class="headerlink" href="#harmonic-oscillator-and-the-uncertainty-principle" title="Permalink to this heading">#</a></h1>
+<h1>Harmonic Oscillator and the Uncertainty Principle<a class="headerlink" href="#harmonic-oscillator-and-the-uncertainty-principle" title="Link to this heading">#</a></h1>
 <ul class="simple">
 <li><p><strong>Author:</strong></p></li>
 <li><p><strong>Date:</strong></p></li>
@@ -481,10 +479,10 @@ document.write(`
 </div>
 </div>
 <section id="exercise-1-the-uncertainty-principle">
-<h2>Exercise 1.  The Uncertainty Principle<a class="headerlink" href="#exercise-1-the-uncertainty-principle" title="Permalink to this heading">#</a></h2>
+<h2>Exercise 1.  The Uncertainty Principle<a class="headerlink" href="#exercise-1-the-uncertainty-principle" title="Link to this heading">#</a></h2>
 <p>In this exercise, we’d like to think about the uncertainty principle.</p>
 <section id="a-the-fourier-basis">
-<h3>a. The Fourier Basis<a class="headerlink" href="#a-the-fourier-basis" title="Permalink to this heading">#</a></h3>
+<h3>a. The Fourier Basis<a class="headerlink" href="#a-the-fourier-basis" title="Link to this heading">#</a></h3>
 <p>The uncertainty principle tells us that you can’t simultaneously know a particle’s position and momentum.  It’s typically quantified as</p>
 <div class="math notranslate nohighlight">
 \[ \Delta X \Delta P &gt; \frac{1}{2} \]</div>
@@ -546,7 +544,7 @@ You can get this unitary (along with the basis of p-points) by doing</p>
 <div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div><p>While our position resolution is good, our momentum resolution is not that great - it seems we can locate the momentum to within 5’sh.</p>
 </section>
 <section id="b-measuring-uncertainty">
-<h3>b. Measuring Uncertainty<a class="headerlink" href="#b-measuring-uncertainty" title="Permalink to this heading">#</a></h3>
+<h3>b. Measuring Uncertainty<a class="headerlink" href="#b-measuring-uncertainty" title="Link to this heading">#</a></h3>
 <p>To get a better handle on this, we want to be able to quantify the uncertainty.   The measure of certainty essentially needs to be a measure of the spread of the wave-function which can be quantified by the variance of the wavefunction in the position or momentum basis - i.e.</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(\Delta X = \sqrt{\langle X^2 \rangle - \langle X \rangle^2}\)</span></p></li>
@@ -595,7 +593,7 @@ You can get this unitary (along with the basis of p-points) by doing</p>
 </div>
 <div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div></section>
 <section id="c-minimizing-uncertainty">
-<h3>c. Minimizing Uncertainty<a class="headerlink" href="#c-minimizing-uncertainty" title="Permalink to this heading">#</a></h3>
+<h3>c. Minimizing Uncertainty<a class="headerlink" href="#c-minimizing-uncertainty" title="Link to this heading">#</a></h3>
 <p>So far we’ve been having trouble finding something that is compact both in real space and in momentum space.  In particular, we haven’t found a wave-function that matches the Heisenberg limit.  In this section, we are going to try to optimize for the minimum uncertainty.  (<em>you want to do this section with a grid spacing of <code class="docutils literal notranslate"><span class="pre">delta_x=0.1</span></code></em>).</p>
 <p>We will perform this optimization using python’s <code class="docutils literal notranslate"><span class="pre">scipy.optimize</span></code>.  To do this, we need to write an objective function <code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">f(psi)</span></code> that takes the wave-function <code class="docutils literal notranslate"><span class="pre">psi</span></code> and returns the thing we want to minimize.</p>
 <p>You could do this by calling your <code class="docutils literal notranslate"><span class="pre">uncertainty</span></code> function and just returning <span class="math notranslate nohighlight">\(\Delta X \Delta P\)</span>.  It will be useful to add to our objective function a small penalty for cases where either <span class="math notranslate nohighlight">\(\Delta x\)</span> or <span class="math notranslate nohighlight">\(\Delta P\)</span> are very large (we want to avoid this because we want to know <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(p\)</span> both pretty well and this helps the optimization because there is a subtle issue with our discretization as <span class="math notranslate nohighlight">\(\Delta x \rightarrow 0\)</span> and <span class="math notranslate nohighlight">\(\Delta p\)</span> gets very large).  Therefore, also add <span class="math notranslate nohighlight">\(\text{Real}(0.01 \max(\Delta X,\Delta P))\)</span>  to the return of our objective function.</p>
@@ -629,7 +627,7 @@ You can get this unitary (along with the basis of p-points) by doing</p>
 </div>
 <div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div></section>
 <section id="d-coherent-states">
-<h3>d. Coherent States<a class="headerlink" href="#d-coherent-states" title="Permalink to this heading">#</a></h3>
+<h3>d. Coherent States<a class="headerlink" href="#d-coherent-states" title="Link to this heading">#</a></h3>
 <p>There is a special wave-function that we will consider later called a coherent state.</p>
 <p>The wave-function for coherent states are</p>
 <div class="math notranslate nohighlight">
@@ -652,7 +650,7 @@ Also plot the state.</p>
 </div>
 <div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div></section>
 <section id="e-not-coherent-states">
-<h3>e.  Not coherent states<a class="headerlink" href="#e-not-coherent-states" title="Permalink to this heading">#</a></h3>
+<h3>e.  Not coherent states<a class="headerlink" href="#e-not-coherent-states" title="Link to this heading">#</a></h3>
 <p>So far we’ve seen examples of states which satiate the uncertainty bound while simultaneously having the same uncertainty in <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(p\)</span>.  Verify that this state satiates the Heisenberg uncertainty bound while having different values of <span class="math notranslate nohighlight">\(\Delta X\)</span> and <span class="math notranslate nohighlight">\(\Delta P\)</span></p>
 <div class="math notranslate nohighlight">
 \[\Psi(x) =  N \exp[-0.3 x^2]\]</div>
@@ -673,7 +671,7 @@ Also plot the state.</p>
 <div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (start)"></img><br></div></section>
 </section>
 <section id="exercise-2-harmonic-oscillator-in-real-space">
-<h2>Exercise 2. Harmonic Oscillator in Real Space<a class="headerlink" href="#exercise-2-harmonic-oscillator-in-real-space" title="Permalink to this heading">#</a></h2>
+<h2>Exercise 2. Harmonic Oscillator in Real Space<a class="headerlink" href="#exercise-2-harmonic-oscillator-in-real-space" title="Link to this heading">#</a></h2>
 <p>The Hamiltonian for the simple harmonic oscillator is</p>
 <div class="math notranslate nohighlight">
 \[H=\frac{\hat{P}^2}{2m} + \frac{1}{2}m\omega^2 \hat{X}^2\]</div>
@@ -684,7 +682,7 @@ Also plot the state.</p>
 <div class="math notranslate nohighlight">
 \[H=\frac{1}{2}\left(-\frac{\partial^2}{\partial x^2} + x^2\right)\]</div>
 <section id="a-hamiltonian-and-eigenvalues">
-<h3>a. Hamiltonian and Eigenvalues<a class="headerlink" href="#a-hamiltonian-and-eigenvalues" title="Permalink to this heading">#</a></h3>
+<h3>a. Hamiltonian and Eigenvalues<a class="headerlink" href="#a-hamiltonian-and-eigenvalues" title="Link to this heading">#</a></h3>
 <p>Let’s start by generating the matrix for this Hamiltonian.  We are again going to use <span class="math notranslate nohighlight">\(-10 \leq x \leq 10\)</span> via</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">delta_x</span><span class="o">=</span><span class="mf">0.01</span>
 <span class="n">xs</span><span class="o">=</span><span class="n">SetupGrid</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="n">delta_x</span><span class="p">)</span>
@@ -707,7 +705,7 @@ Also plot the state.</p>
 </div>
 <div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div></section>
 <section id="b-eigenstates">
-<h3>b.  Eigenstates<a class="headerlink" href="#b-eigenstates" title="Permalink to this heading">#</a></h3>
+<h3>b.  Eigenstates<a class="headerlink" href="#b-eigenstates" title="Link to this heading">#</a></h3>
 <p>Now we want to plot the lowest three eigenstates.  Put a label on the lowest three eigenstates by adding a keyword argument to your plot command (<code class="docutils literal notranslate"><span class="pre">label=&quot;Eigenstate</span> <span class="pre">0&quot;</span></code>) and including a legend <code class="docutils literal notranslate"><span class="pre">plt.legend()</span></code> before your <code class="docutils literal notranslate"><span class="pre">plt.show()</span></code>.</p>
 <p>Notice how many nodes (zeros) the n’th eigenstate has.</p>
 <p>In class, you learned that the expected solution to the Harmonic Oscillator involves Hermite polynomials.  In particular, the n’th eigenstate should be</p>
@@ -741,7 +739,7 @@ Also plot the state.</p>
 </div>
 <div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div></section>
 <section id="c-dynamics-and-ehrenfest-theorem">
-<h3>c. Dynamics and Ehrenfest theorem<a class="headerlink" href="#c-dynamics-and-ehrenfest-theorem" title="Permalink to this heading">#</a></h3>
+<h3>c. Dynamics and Ehrenfest theorem<a class="headerlink" href="#c-dynamics-and-ehrenfest-theorem" title="Link to this heading">#</a></h3>
 <p>Let’s start with the wave-function <code class="docutils literal notranslate"><span class="pre">psi=(np.sqrt(0.1)*v[:,0]+np.sqrt(0.25)*v[:,1]+1.j*np.sqrt(0.65)*v[:,2]).astype(np.complex128)</span> </code></p>
 <p>We want to do time-evolution with this wave-function. You can use your two functions:</p>
 <ul class="simple">
@@ -836,7 +834,7 @@ Also plot the state.</p>
 </div>
 <div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div></section>
 <section id="id1">
-<h3>d. Coherent States<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<h3>d. Coherent States<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
 <p>We now wish to run time dynamics on a coherent state. Recall the coherent state (as above) is</p>
 <div class="math notranslate nohighlight">
 \[\Psi(x) = \frac{1}{N} e^{-\frac{1}{2}(x-\alpha\sqrt{2})^2}\]</div>
@@ -882,9 +880,9 @@ Also plot the state.</p>
 <div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div></section>
 </section>
 <section id="exercise-3-raising-and-lowering-operators">
-<h2>Exercise 3. Raising and Lowering Operators<a class="headerlink" href="#exercise-3-raising-and-lowering-operators" title="Permalink to this heading">#</a></h2>
+<h2>Exercise 3. Raising and Lowering Operators<a class="headerlink" href="#exercise-3-raising-and-lowering-operators" title="Link to this heading">#</a></h2>
 <section id="a-raising-and-lowering-operators">
-<h3>a. Raising and Lowering Operators<a class="headerlink" href="#a-raising-and-lowering-operators" title="Permalink to this heading">#</a></h3>
+<h3>a. Raising and Lowering Operators<a class="headerlink" href="#a-raising-and-lowering-operators" title="Link to this heading">#</a></h3>
 <p>With the Harmonic oscillator, we’ve learned that it is useful to look at raising and lowering operators.</p>
 <div class="math notranslate nohighlight">
 \[a=\sqrt{\frac{m\omega}{2\hbar}}\left(\hat{X}+\frac{i}{mw}\hat{P}\right)\]</div>
@@ -913,7 +911,7 @@ Also plot the state.</p>
 </div>
 <div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div></section>
 <section id="b-verifying-the-norms-and-number-operators">
-<h3>b. Verifying the norms and number operators<a class="headerlink" href="#b-verifying-the-norms-and-number-operators" title="Permalink to this heading">#</a></h3>
+<h3>b. Verifying the norms and number operators<a class="headerlink" href="#b-verifying-the-norms-and-number-operators" title="Link to this heading">#</a></h3>
 <p>Now we would like to further verify that the raising and lowering operators always act with the additional <span class="math notranslate nohighlight">\(\sqrt{N}\)</span> term.  Since our eigenstates start normalized, if we compute the norm (<code class="docutils literal notranslate"><span class="pre">np.linalg.norm</span></code>) of the eigenstates after they’ve been hit by the raising and lowering operators you should find that their norm is <span class="math notranslate nohighlight">\(\sqrt{N}\)</span>.  Verify this by</p>
 <ul class="simple">
 <li><p>plotting the norm of the eigenstates (separately for the raising and lower operator) hitting the first ten eigenstates</p></li>
@@ -936,7 +934,7 @@ Also plot the state.</p>
 </div>
 <div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div></section>
 <section id="c-write-it-in-the-basis-of-number-operators">
-<h3>c.  Write it in the basis of number operators<a class="headerlink" href="#c-write-it-in-the-basis-of-number-operators" title="Permalink to this heading">#</a></h3>
+<h3>c.  Write it in the basis of number operators<a class="headerlink" href="#c-write-it-in-the-basis-of-number-operators" title="Link to this heading">#</a></h3>
 <p>So far we’ve been looking at We would like to go ahead and write <span class="math notranslate nohighlight">\(a^\dagger\)</span> and <span class="math notranslate nohighlight">\(a\)</span> in the Harmonic Oscillator basis.  In this basis, what we expect to see is that both the raising and lowering operators are just off-diagonal above and below. To rotate an operator from the position basis into the ?Harmonic oscillator basis, you want to do <code class="docutils literal notranslate"> <span class="pre">v.T.conjugate()</span> <span class="pre">&#64;</span> <span class="pre">O</span> <span class="pre">&#64;</span> <span class="pre">v</span></code> for an operator <code class="docutils literal notranslate"><span class="pre">O</span></code>.  Go ahead and rotate <span class="math notranslate nohighlight">\(a\)</span>, <span class="math notranslate nohighlight">\(a^\dagger\)</span> and <span class="math notranslate nohighlight">\(aa^\dagger\)</span> into the Harmonic oscillator basis and look at up the top <span class="math notranslate nohighlight">\(10 \times 10\)</span> chunk. Does it make sense</p>
 <div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -947,7 +945,7 @@ Also plot the state.</p>
 </div>
 <div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div></section>
 <section id="d-warts">
-<h3>d. Warts<a class="headerlink" href="#d-warts" title="Permalink to this heading">#</a></h3>
+<h3>d. Warts<a class="headerlink" href="#d-warts" title="Link to this heading">#</a></h3>
 <p>So far everything has worked out well when we discretized things.  In this section, we just mention a couple warts that you need to look out for.</p>
 <ul class="simple">
 <li><p>The simplest thing is just that the eigenstates and eigenvalues start diverging from the true answer due to the finite L and discretization. This is very standard but you can see this here by plotting the eigenstates out to <span class="math notranslate nohighlight">\(n=100\)</span>.  What do you notice? To fix this, you can go ahead and increase <span class="math notranslate nohighlight">\(L=40\)</span> and see that the eigenstates out to <span class="math notranslate nohighlight">\(n=100\)</span> look fine.</p></li>
@@ -1058,7 +1056,7 @@ Also plot the state.</p>
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -1086,7 +1084,9 @@ Also plot the state.</p>
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -1164,8 +1164,8 @@ By Bryan Clark
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
   </footer>

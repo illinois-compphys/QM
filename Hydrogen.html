@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="./" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Hydrogen Atom &#8212; Computation in Quantum Mechanics  (for Phys486)# The title of the book. Will be placed in the left navbar.</title>
   
@@ -15,61 +14,62 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-  
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
-
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'Hydrogen';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Perturbation Theory" href="PerturbationTheory.html" />
     <link rel="prev" title="Harmonic Oscillator and the Uncertainty Principle" href="HarmonicOscillator.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -77,32 +77,16 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="search.html"
       method="get">
@@ -110,7 +94,6 @@ const thebe_selector_output = ".output, .cell_output"
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -118,16 +101,25 @@ const thebe_selector_output = ".output, .cell_output"
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -142,6 +134,8 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="sidebar-primary-item">
 
   
+    
+  
 
 <a class="navbar-brand logo" href="intro.html">
   
@@ -155,11 +149,18 @@ const thebe_selector_output = ".output, .cell_output"
     
     
     <img src="_static/logo.png" class="logo__image only-light" alt="Computation in Quantum Mechanics  (for Phys486)# The title of the book. Will be placed in the left navbar. - Home"/>
-    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Computation in Quantum Mechanics  (for Phys486)# The title of the book. Will be placed in the left navbar. - Home"/>`);</script>
+    <img src="_static/logo.png" class="logo__image only-dark pst-js-only" alt="Computation in Quantum Mechanics  (for Phys486)# The title of the book. Will be placed in the left navbar. - Home"/>
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -174,6 +175,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="ParticleInAFiniteWell.html">Particle with a Finite Potential</a></li>
 <li class="toctree-l1"><a class="reference internal" href="HarmonicOscillator.html">Harmonic Oscillator and the Uncertainty Principle</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Hydrogen Atom</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PerturbationTheory.html">Perturbation Theory</a></li>
 </ul>
 
     </div>
@@ -182,14 +184,19 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -198,14 +205,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -230,14 +237,14 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="https://colab.research.google.com/github/illinois-compphys/QM/blob/main/quantum_mechanics/Hydrogen.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
-   title="Launch onColab"
+   title="Launch on Colab"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
 <span class="btn__icon-container">
   
-    <img src="_static/images/logo_colab.png">
+    <img alt="Colab logo" src="_static/images/logo_colab.png">
   </span>
 <span class="btn__text-container">Colab</span>
 </a>
@@ -312,27 +319,19 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
-  </button>
-`);
-</script>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-  </button>
-`);
-</script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -382,10 +381,10 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="hydrogen-atom">
-<h1>Hydrogen Atom<a class="headerlink" href="#hydrogen-atom" title="Permalink to this heading">#</a></h1>
+<h1>Hydrogen Atom<a class="headerlink" href="#hydrogen-atom" title="Link to this heading">#</a></h1>
 <ul class="simple">
 <li><p><strong>Author:</strong></p></li>
 <li><p><strong>Date:</strong></p></li>
@@ -430,13 +429,13 @@ document.write(`
 </div>
 <p>Throughout this exercise, we are going to work in atomic units where <span class="math notranslate nohighlight">\(\hbar=m=e=1/(4\pi\epsilon_0)=1\)</span>.  This gives us the Bohr radius which is also equal to 1 in these units (and <span class="math notranslate nohighlight">\(0.529 \times 10^{-10}\)</span> m in SI units).  All distances in this unit will be measured in Bohr radii.</p>
 <section id="exercise-1-plotting-the-hydrogen-atom-orbitals">
-<h2>Exercise 1.  Plotting the Hydrogen Atom Orbitals<a class="headerlink" href="#exercise-1-plotting-the-hydrogen-atom-orbitals" title="Permalink to this heading">#</a></h2>
+<h2>Exercise 1.  Plotting the Hydrogen Atom Orbitals<a class="headerlink" href="#exercise-1-plotting-the-hydrogen-atom-orbitals" title="Link to this heading">#</a></h2>
 <p>In this exercise, we are going to plot the orbitals of the Hydrogen atom starting from the relevant solutions that you found analytically.  In future exercises, we will see how to get these results from scratch without using the analytic solutions.</p>
 <p>Recall that the Hydrogen atom wave-function is</p>
 <div class="math notranslate nohighlight">
 \[ \Psi_{nlm}(r,\theta,\phi) = R_{nl}(r) Y_{lm}(\theta,\phi)\]</div>
 <section id="a-radial-function">
-<h3>a. Radial Function<a class="headerlink" href="#a-radial-function" title="Permalink to this heading">#</a></h3>
+<h3>a. Radial Function<a class="headerlink" href="#a-radial-function" title="Link to this heading">#</a></h3>
 <p>Let us start by getting the radial wave-function of the Hydrogen atom working.  Recall that the radial wave-function is</p>
 <div class="math notranslate nohighlight">
 \[
@@ -483,7 +482,7 @@ R_{nl}(r) = \frac{u_{nl}(r)}{r} = N \exp(-\rho / 2)  \rho^l  L^{n-l-1}_{2l+1}(\r
 </div>
 <div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div></section>
 <section id="b-hydrogen-orbitals">
-<h3>b. Hydrogen Orbitals<a class="headerlink" href="#b-hydrogen-orbitals" title="Permalink to this heading">#</a></h3>
+<h3>b. Hydrogen Orbitals<a class="headerlink" href="#b-hydrogen-orbitals" title="Link to this heading">#</a></h3>
 <p>We can now combine the radial wave-function with the spherical Harmonics to write down the Hydrogen orbitals</p>
 <div class="math notranslate nohighlight">
 \[\Psi_{nlm}(x,y,z) = R_{nl}(x,y,z)Y_{lm}(\theta,\phi)\]</div>
@@ -563,7 +562,7 @@ Recall that</p>
 </div>
 <div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div></section>
 <section id="c-getting-the-energy-of-the-hydrogen-atom">
-<h3>c. Getting the Energy of the Hydrogen Atom<a class="headerlink" href="#c-getting-the-energy-of-the-hydrogen-atom" title="Permalink to this heading">#</a></h3>
+<h3>c. Getting the Energy of the Hydrogen Atom<a class="headerlink" href="#c-getting-the-energy-of-the-hydrogen-atom" title="Link to this heading">#</a></h3>
 <p>Now we are going to compute the energy of the Hydrogen atom.   Recall that the Hamiltonian for the Hydrogen atom is</p>
 <div class="math notranslate nohighlight">
 \[ H =  -\frac{1}{2} \nabla^2 + \frac{1}{r} \]</div>
@@ -603,7 +602,7 @@ Recall that</p>
 <div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div></section>
 </section>
 <section id="exercise-2-solving-the-hydrogen-atom-radial-equation-numerically">
-<h2>Exercise 2. Solving the Hydrogen Atom Radial Equation Numerically<a class="headerlink" href="#exercise-2-solving-the-hydrogen-atom-radial-equation-numerically" title="Permalink to this heading">#</a></h2>
+<h2>Exercise 2. Solving the Hydrogen Atom Radial Equation Numerically<a class="headerlink" href="#exercise-2-solving-the-hydrogen-atom-radial-equation-numerically" title="Link to this heading">#</a></h2>
 <p>Recall that the Hydrogen atom Hamiltonian is</p>
 <div class="math notranslate nohighlight">
 \[H =  -\frac{1}{2}\nabla^2 - \frac{1}{r} \]</div>
@@ -624,7 +623,7 @@ Recall that</p>
 </ul>
 <p>To solve this analytically required a significant amount of work.  We will see that solving it numerically is relatively straightforward. For each of the terms in <span class="math notranslate nohighlight">\(H_{eff}\)</span> we need to write out a <span class="math notranslate nohighlight">\(N \times N\)</span> Hamiltonian matrix  (where <span class="math notranslate nohighlight">\(N\)</span> is the number of points in our grid which discretizes space).</p>
 <section id="a-the-kinetic-term">
-<h3>a. The Kinetic Term<a class="headerlink" href="#a-the-kinetic-term" title="Permalink to this heading">#</a></h3>
+<h3>a. The Kinetic Term<a class="headerlink" href="#a-the-kinetic-term" title="Link to this heading">#</a></h3>
 <p>We will start by working with a discretized grid which is <span class="math notranslate nohighlight">\(N=200\)</span> points defined by</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">N</span><span class="o">=</span><span class="mi">200</span>
 <span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">endpoint</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
@@ -652,7 +651,7 @@ Recall that</p>
 </div>
 <div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div></section>
 <section id="b-the-potential-terms">
-<h3>b. The potential terms<a class="headerlink" href="#b-the-potential-terms" title="Permalink to this heading">#</a></h3>
+<h3>b. The potential terms<a class="headerlink" href="#b-the-potential-terms" title="Link to this heading">#</a></h3>
 <p>The two potential terms are a function of <span class="math notranslate nohighlight">\(r\)</span> and ther matrices for these two terms therefore only connect the r’th row to the r’th column. This means both additional terms only exist on the diagonal.   Build a function <code class="docutils literal notranslate"><span class="pre">V(r,l)</span></code> that takes the <code class="docutils literal notranslate"><span class="pre">r</span></code> grid and returns the matrix corresponding to the potential</p>
 <div class="math notranslate nohighlight">
 \[V(r,l) = \frac{l(l+1)}{2r^2} - \frac{1}{r}\]</div>
@@ -666,7 +665,7 @@ Recall that</p>
 </div>
 <div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div></section>
 <section id="c-putting-it-together">
-<h3>c. Putting it together<a class="headerlink" href="#c-putting-it-together" title="Permalink to this heading">#</a></h3>
+<h3>c. Putting it together<a class="headerlink" href="#c-putting-it-together" title="Link to this heading">#</a></h3>
 <p>Now we simply want to add the full Hamiltonian matrix together and diagonalize it using <code class="docutils literal notranslate"><span class="pre">e,v=np.linalg.eigh(H)</span></code></p>
 <p>Both print and plot the lowest 6 energies - <code class="docutils literal notranslate"><span class="pre">plt.plot(e[0:6]*27.2)</span></code>.  Also on your plot make some straight lines - <code class="docutils literal notranslate"><span class="pre">plt.axhline(the_energy)</span></code> where the energies for the n’th eignenstate should be - i.e. <span class="math notranslate nohighlight">\(-13.6/n^2\)</span>.  How close are you getting?</p>
 <p>Also plot the lowest three eigenstates and see if the radial functions match the ones from above.  To normalize the plot correctly you have to divide your eigenvectors by <span class="math notranslate nohighlight">\(\sqrt{h}\)</span>.</p>
@@ -679,7 +678,7 @@ Recall that</p>
 </div>
 <div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div></section>
 <section id="d-finer-grids">
-<h3>d. Finer Grids<a class="headerlink" href="#d-finer-grids" title="Permalink to this heading">#</a></h3>
+<h3>d. Finer Grids<a class="headerlink" href="#d-finer-grids" title="Link to this heading">#</a></h3>
 <p>We are not getting an accuracy as high as we might desire.  What we need is a better grid: finer and going out to larger <span class="math notranslate nohighlight">\(r\)</span>.    Unfortunately, if there are more grid points, the matrix gets larger and using dense matrices and solving for all the eigenstates becomes intractable.  Instead we need to work with sparse matrices.</p>
 <p>To do this, you need to do the following:</p>
 <ul class="simple">
@@ -698,7 +697,7 @@ Recall that</p>
 <div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div></section>
 </section>
 <section id="exercise-3-hydrogen-atom-on-a-grid">
-<h2>Exercise 3. Hydrogen Atom on a Grid<a class="headerlink" href="#exercise-3-hydrogen-atom-on-a-grid" title="Permalink to this heading">#</a></h2>
+<h2>Exercise 3. Hydrogen Atom on a Grid<a class="headerlink" href="#exercise-3-hydrogen-atom-on-a-grid" title="Link to this heading">#</a></h2>
 <p>So far we’ve plotted the orbitals for the Hydrogen atom by</p>
 <ul class="simple">
 <li><p>using the formula for the orbitals that one derives analytically</p></li>
@@ -706,7 +705,7 @@ Recall that</p>
 </ul>
 <p>In both cases, we (somebody?) had to do a lot of analytic work to get something that we then worked with computationally.  Now we just want to envision a situation where we have a Hamiltonian and want to directly work with and diagonalize this on a grid.</p>
 <section id="a-the-hamiltonian">
-<h3>a. The Hamiltonian<a class="headerlink" href="#a-the-hamiltonian" title="Permalink to this heading">#</a></h3>
+<h3>a. The Hamiltonian<a class="headerlink" href="#a-the-hamiltonian" title="Link to this heading">#</a></h3>
 <p>Our goal here is to be able to solve for the eigenstates and eigenvalues of the Hydrogen atom.</p>
 <p>The hydrogen atom has a single electron and a Hamiltonian of</p>
 <div class="math notranslate nohighlight">
@@ -783,7 +782,7 @@ From this it should be straightforward to produce $R$ as a three-dimensional gri
 </div>
 <div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div></section>
 <section id="b-eigenvalues">
-<h3>b. Eigenvalues<a class="headerlink" href="#b-eigenvalues" title="Permalink to this heading">#</a></h3>
+<h3>b. Eigenvalues<a class="headerlink" href="#b-eigenvalues" title="Link to this heading">#</a></h3>
 <p>Diagonalize your full Hamiltonian using <code class="docutils literal notranslate"><span class="pre">scipy.sparse.linalg.eigsh</span></code> on your <span class="math notranslate nohighlight">\(12 \times 12 \times 12\)</span> grid.</p>
 <p>We would like to see that you get the expected eigenenergies and eigenstates.</p>
 <p>Recall the standard hydrogen orbitals from chemistry each with an energy of <span class="math notranslate nohighlight">\(-13.6/n^2\)</span> eV</p>
@@ -811,7 +810,7 @@ From this it should be straightforward to produce $R$ as a three-dimensional gri
 </div>
 <div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div></section>
 <section id="c-eigenvectors">
-<h3>c. Eigenvectors<a class="headerlink" href="#c-eigenvectors" title="Permalink to this heading">#</a></h3>
+<h3>c. Eigenvectors<a class="headerlink" href="#c-eigenvectors" title="Link to this heading">#</a></h3>
 <p>Now we can also look at the eigenstates.  For this section, let’s use a grid with 80 points.</p>
 <p>Let’s start by looking at the s-states.  First, we will make some two-dimensional slices of the three-dimensional wave-functions we’ve found.  To get your 2d visualization, you first need to reshape your wave-function into a 3d grid - if you have a <span class="math notranslate nohighlight">\(80 \times 80 \times 80\)</span> grid this can be done for the <span class="math notranslate nohighlight">\(i\)</span> th eigenstate by doing <code class="docutils literal notranslate"><span class="pre">A=psi[:,i].reshape(80,80,80)</span></code>.   Now you can go ahead and plot it by <code class="docutils literal notranslate"><span class="pre">plt.matshow(A[40,:,:])</span></code> where 40 is the slice that you want.  You probably want to use <code class="docutils literal notranslate"><span class="pre">plt.colorbar()</span></code> so you can see the magnitude and sign of things.</p>
 <p>If you look at the 0 (1s),1 (2s) or 5 (3s) eigenstate you will find that it should have a clear “S” character - symmetric around the origin.   (This ordering of eigentstates )</p>
@@ -833,7 +832,7 @@ From this it should be straightforward to produce $R$ as a three-dimensional gri
 </div>
 <div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div></section>
 <section id="c-three-dimensional-plots">
-<h3>c.  Three-dimensional plots<a class="headerlink" href="#c-three-dimensional-plots" title="Permalink to this heading">#</a></h3>
+<h3>c.  Three-dimensional plots<a class="headerlink" href="#c-three-dimensional-plots" title="Link to this heading">#</a></h3>
 <p>Now we’d like to make some three-dimensional plots.</p>
 <p>Make some three-dimensional plots.   To do this, you need to put your wave-function back on a grid - i.e. psi[:,i].reshape(80,80,80).  Then use your <code class="docutils literal notranslate"><span class="pre">PlotMe</span></code> function from above.   Compare these orbitals to the ones you got by directly plotting the analytic formula.</p>
 <div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell docutils container">
@@ -874,7 +873,7 @@ From this it should be straightforward to produce $R$ as a three-dimensional gri
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -886,6 +885,15 @@ From this it should be straightforward to produce $R$ as a three-dimensional gri
         <p class="prev-next-title">Harmonic Oscillator and the Uncertainty Principle</p>
       </div>
     </a>
+    <a class="right-next"
+       href="PerturbationTheory.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Perturbation Theory</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -893,7 +901,9 @@ From this it should be straightforward to produce $R$ as a three-dimensional gri
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -969,8 +979,8 @@ By Bryan Clark
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
   </footer>
