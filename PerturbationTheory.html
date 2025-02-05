@@ -358,9 +358,9 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-the-interaction">d. The Interaction</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#e-first-order-correction-to-the-energy">e. First order correction to the energy</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#f-first-order-correction-to-the-wave-function">f. First order correction to the wave-function</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#e-second-order-correction-to-the-energy">e. Second order correction to the energy</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#f-exact-answer">f. Exact Answer</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#g-higher-order-corrections-to-the-energy-optional">g. Higher order corrections to the energy  (<em>optional</em>)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#g-second-order-correction-to-the-energy">g. Second order correction to the energy</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#h-exact-answer">h. Exact Answer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#i-higher-order-corrections-to-the-energy-optional">i. Higher order corrections to the energy  (<em>optional</em>)</a></li>
 </ul>
 </li>
 </ul>
@@ -665,8 +665,8 @@ E_1 = \langle n^{(0)} | V | n^{(0)} \rangle
 </div>
 </div>
 <div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div></section>
-<section id="e-second-order-correction-to-the-energy">
-<h3>e. Second order correction to the energy<a class="headerlink" href="#e-second-order-correction-to-the-energy" title="Link to this heading">#</a></h3>
+<section id="g-second-order-correction-to-the-energy">
+<h3>g. Second order correction to the energy<a class="headerlink" href="#g-second-order-correction-to-the-energy" title="Link to this heading">#</a></h3>
 <p>There are two (equivalent) ways to get the energy to second order.</p>
 <p>Either you can do</p>
 <div class="math notranslate nohighlight">
@@ -687,8 +687,8 @@ E_2 = \sum_{k \neq n} \frac{ |\langle k^{(0)} | V | n^{(0)} \rangle|^2}{E_n^{(0)
 </div>
 </div>
 <div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div></section>
-<section id="f-exact-answer">
-<h3>f. Exact Answer<a class="headerlink" href="#f-exact-answer" title="Link to this heading">#</a></h3>
+<section id="h-exact-answer">
+<h3>h. Exact Answer<a class="headerlink" href="#h-exact-answer" title="Link to this heading">#</a></h3>
 <p>Now we are going to try to get the exact answer.</p>
 <p>To get the part of the Hamiltonian for the interaction we now do need to make a matrix where <span class="math notranslate nohighlight">\(V\)</span> is on the diagonal. Before we were avoiding that because doing so would consume all our RAM. Now, we are going to generate it in a sparse matrix to avoid this problem by doing</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">V</span><span class="o">=</span><span class="n">scipy</span><span class="o">.</span><span class="n">sparse</span><span class="o">.</span><span class="n">diags</span><span class="p">(</span><span class="n">H</span><span class="o">.</span><span class="n">V</span><span class="p">)</span>
@@ -725,8 +725,8 @@ E_2 = \sum_{k \neq n} \frac{ |\langle k^{(0)} | V | n^{(0)} \rangle|^2}{E_n^{(0)
 </div>
 </div>
 <div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (start)"></img><br></div></section>
-<section id="g-higher-order-corrections-to-the-energy-optional">
-<h3>g. Higher order corrections to the energy  (<em>optional</em>)<a class="headerlink" href="#g-higher-order-corrections-to-the-energy-optional" title="Link to this heading">#</a></h3>
+<section id="i-higher-order-corrections-to-the-energy-optional">
+<h3>i. Higher order corrections to the energy  (<em>optional</em>)<a class="headerlink" href="#i-higher-order-corrections-to-the-energy-optional" title="Link to this heading">#</a></h3>
 <p><strong>This exercise is optional</strong></p>
 <p>In a large majority of cases, if you’re using perturbation theory it’s only out to second order in the energy.  Nonetheless, you can go to higher order in perturbation theory and (depending on the convergence of the series) get better results.  There’s a separate question in what cases, it is easy to do so with limited computer time.  In this situation, let’s not worry too much about that and just compute the perturbative corrections out to 30’th order.</p>
 <p>To get the k’th order correction to the wave-function you can do</p>
@@ -816,9 +816,9 @@ E_0^{(m+1)}=\langle n^{(0)} | V | n^{(m)}\rangle
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-the-interaction">d. The Interaction</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#e-first-order-correction-to-the-energy">e. First order correction to the energy</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#f-first-order-correction-to-the-wave-function">f. First order correction to the wave-function</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#e-second-order-correction-to-the-energy">e. Second order correction to the energy</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#f-exact-answer">f. Exact Answer</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#g-higher-order-corrections-to-the-energy-optional">g. Higher order corrections to the energy  (<em>optional</em>)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#g-second-order-correction-to-the-energy">g. Second order correction to the energy</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#h-exact-answer">h. Exact Answer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#i-higher-order-corrections-to-the-energy-optional">i. Higher order corrections to the energy  (<em>optional</em>)</a></li>
 </ul>
 </li>
 </ul>
