@@ -8,3 +8,4 @@ chapters:
 - file: ParticleInAFiniteWell.ipynb
 - file: HarmonicOscillator.ipynb
 - file: Hydrogen.ipynb
+- file: PerturbationTheory.ipynb
