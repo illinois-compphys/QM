@@ -465,9 +465,9 @@
 <li><p>make the vector for the wave-function <span class="math notranslate nohighlight">\(\Psi(x_1,x_2)= \phi_a(x_1)\phi_b(x_2)\)</span></p></li>
 <li><p>Verify this new vector is of length <span class="math notranslate nohighlight">\(200\)</span>^2</p></li>
 </ul>
-<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell docutils container">
+<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell tag_answer-cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### ANSWER HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
 </pre></div>
 </div>
 </div>
@@ -499,9 +499,9 @@
 </pre></div>
 </div>
 <p>Go ahead and plot your two particle wave-function that you’ve produced above. (you can also check what happens when you set <code class="docutils literal notranslate"><span class="pre">plot_3d=True</span></code>).   Think about why the result you are getting is reasonable.</p>
-<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell docutils container">
+<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell tag_answer-cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### ANSWER HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
 </pre></div>
 </div>
 </div>
@@ -510,7 +510,7 @@
 <h3>b.  The Simple Harmonic Oscillator: Non-interacting wave-functions<a class="headerlink" href="#b-the-simple-harmonic-oscillator-non-interacting-wave-functions" title="Link to this heading">#</a></h3>
 <p>We are going to work with two particles in the simple Harmonic oscillator.   We know that the Hamiltonian for a single particle in a Harmonic oscillator is</p>
 <div class="math notranslate nohighlight">
-\[ 
+\[
 H^\textrm{SHO}(x) = -\frac{1}{2}\frac{\partial^2}{\partial x^2} + \frac{1}{2} x^2
 \]</div>
 <p>and then the Hamiltonian for two non-interacting particles is</p>
@@ -529,7 +529,7 @@ H_0 = H^\textrm{SHO}(x_1) + H^\textrm{SHO}(x_2)
         <span class="bp">self</span><span class="o">.</span><span class="n">oneParticleStates</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">evals_oneParticle</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">V</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Interaction</span><span class="p">()</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">Build_H_SHO</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="c1"># set up the H^SHO matrix and get the eigenvalues </span>
+        <span class="c1"># set up the H^SHO matrix and get the eigenvalues</span>
         <span class="c1">#### do stuff</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">H_SHO</span><span class="o">=</span><span class="c1"># the H you built.</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">Interaction</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -556,9 +556,9 @@ H_0 = H^\textrm{SHO}(x_1) + H^\textrm{SHO}(x_2)
 <p>Once you write the full one-particle Hamiltonian notice that the <code class="docutils literal notranslate"><span class="pre">__init__</span></code> function should then diagonalize it.    This means that if you call
 <code class="docutils literal notranslate"><span class="pre">H.evecs_oneParticle[:,i]</span></code> you should get the i’th eigenstate of the one-particle Harmonic oscillator.</p>
 <p>Go ahead and plot (in one dimension) the lowest two eigenstates and make sure that they are correct (i.e. what you know the lowest eigenstates of the Harmonic oscillator are).  You can plot with <code class="docutils literal notranslate"><span class="pre">plt.plot(H.xs,H.evecs_oneParticle[:,0])</span></code>.  Also verify that the two lowest eigenenergies (i.e <code class="docutils literal notranslate"><span class="pre">H0.evals_oneParticle[0]</span></code> for the lowest energy) are correct.</p>
-<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell docutils container">
+<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell tag_answer-cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### ANSWER HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
 </pre></div>
 </div>
 </div>
@@ -569,7 +569,7 @@ H_0 = H^\textrm{SHO}(x_1) + H^\textrm{SHO}(x_2)
 <p>Now that you have the single particle non-interacting eigenstates, we need to be able to get the two-particle non-interacting eigenstates using <code class="docutils literal notranslate"><span class="pre">np.kron</span></code>.</p>
 <p>Add a function to your class <code class="docutils literal notranslate"><span class="pre">get_eigenstate(self,n)</span></code>  so that when you call <code class="docutils literal notranslate"><span class="pre">H0.get_eigenstate(4)</span></code> it returns the fourth eigenstate of the non-interacting problem.  The <span class="math notranslate nohighlight">\(n'\)</span>th eigenstate of the non-interacting Harmonic oscillator should be</p>
 <div class="math notranslate nohighlight">
-\[ 
+\[
 \Psi_{200}(x_1,x_2) = \phi_{n//200}(x_1) \phi_{n \% 200}(x_2)
 \]</div>
 <p>where <span class="math notranslate nohighlight">\(\phi_i\)</span> is the <span class="math notranslate nohighlight">\(i'\)</span>th eigenstate of the non-interacting Harmonic oscillator that you’ve already stored in <code class="docutils literal notranslate"><span class="pre">self.evecs_oneParticle</span></code>.</p>
@@ -582,9 +582,9 @@ H_0 = H^\textrm{SHO}(x_1) + H^\textrm{SHO}(x_2)
 <li><p>Is it likely for the particles to be in the same place?</p></li>
 <li><p>Does one particles location depend on where the other particle is?</p></li>
 </ul>
-<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell docutils container">
+<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell tag_answer-cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### ANSWER HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
 </pre></div>
 </div>
 </div>
@@ -622,9 +622,9 @@ V(x_1,x_2) = e^{-2(x_1-x_2)^2}
 <p>to plot what their difference looks like.</p>
 <p>Once you’ve made <code class="docutils literal notranslate"><span class="pre">x_1-x_2</span></code> you can use this difference to make the full interaction (<code class="docutils literal notranslate"><span class="pre">np.exp</span></code> exponentiates and <code class="docutils literal notranslate"><span class="pre">**</span></code> is how you take things to a power).  Then you can resize it properly and return it from the function.</p>
 <p>To check that everything is working go ahead and plot <code class="docutils literal notranslate"><span class="pre">Plot2d(H.V)</span></code> and understand if that’s what you expected.</p>
-<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell docutils container">
+<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell tag_answer-cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### ANSWER HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
 </pre></div>
 </div>
 </div>
@@ -641,9 +641,9 @@ E_1 = \langle n^{(0)} | V | n^{(0)} \rangle
 <p>where <span class="math notranslate nohighlight">\(|n^{(0)}\rangle\)</span> is the ground state wave-function of <span class="math notranslate nohighlight">\(H_0\)</span>.</p>
 <p>Naively you might want to compute this by turning <span class="math notranslate nohighlight">\(V\)</span> into a <span class="math notranslate nohighlight">\(200^2 \times 200^2\)</span> matrix with the potential down the diagonal.  While correct, this will cause your computer to run out of RAM and crash.  Instead you can compute <span class="math notranslate nohighlight">\(\langle n^{(0)}| V\)</span> by doing  <code class="docutils literal notranslate"><span class="pre">np.multiply(H.get_eigenstate(0).conjugate(),H.V)</span></code>.  This is much more efficient because it scales linearly with the size of the potential.</p>
 <p>Report <span class="math notranslate nohighlight">\(E_1\)</span> and <span class="math notranslate nohighlight">\(E_0+E_1\)</span>.</p>
-<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell docutils container">
+<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell tag_answer-cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### ANSWER HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
 </pre></div>
 </div>
 </div>
@@ -654,12 +654,12 @@ E_1 = \langle n^{(0)} | V | n^{(0)} \rangle
 <p>The first order correction to the wave-function is</p>
 <div class="math notranslate nohighlight">
 \[
-|n^{(1)} \rangle = \sum_{k \neq n} \frac{\langle k^{(0)} | V  | n^{(0)} \rangle }{E_n^0 - E_k^0} |k^{(0)}\rangle 
+|n^{(1)} \rangle = \sum_{k \neq n} \frac{\langle k^{(0)} | V  | n^{(0)} \rangle }{E_n^0 - E_k^0} |k^{(0)}\rangle
 \]</div>
 <p>Go ahead and write a function <code class="docutils literal notranslate"><span class="pre">FirstOrderWaveFunction(H)</span></code> which returns the  correction <code class="docutils literal notranslate"><span class="pre">n1</span></code>.  You will have to loop over the number of eigenstates <code class="docutils literal notranslate"><span class="pre">H.numStates</span></code> and add on the appropraite term.  Remember to use <code class="docutils literal notranslate"><span class="pre">&#64;</span></code> to do matrix multiplication and <code class="docutils literal notranslate"><span class="pre">*</span></code> to multiply a scalar times a vector (which will be needed when you multiply everything else by <span class="math notranslate nohighlight">\(|k^{(0)}\rangle\)</span>).  This should be a <span class="math notranslate nohighlight">\(200^2\)</span> vector.   Make a 2d plot both of <code class="docutils literal notranslate"><span class="pre">n1</span></code> (which tells you how the correction is made) and <code class="docutils literal notranslate"><span class="pre">n0+n1</span></code> (which tells you what the new wave-function looks like).  What is this telling about how the perturbation is changing the wave-function?</p>
-<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell docutils container">
+<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell tag_answer-cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### ANSWER HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
 </pre></div>
 </div>
 </div>
@@ -679,9 +679,9 @@ E_2 = \sum_{k \neq n} \frac{ |\langle k^{(0)} | V | n^{(0)} \rangle|^2}{E_n^{(0)
 \widetilde{E_2} = \langle n^{(1)} | V | n^{(0)}\rangle
 \]</div>
 <p>Write functions that compute the second order energy in both ways and verify that they are the same.</p>
-<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell docutils container">
+<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell tag_answer-cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### ANSWER HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
 </pre></div>
 </div>
 </div>
@@ -710,16 +710,16 @@ E_2 = \sum_{k \neq n} \frac{ |\langle k^{(0)} | V | n^{(0)} \rangle|^2}{E_n^{(0)
 <li><p>Difference between the exact energy and the cumulative perturbative energy (on a log scale)</p></li>
 <li><p>The absolute value of the pertubative correction <span class="math notranslate nohighlight">\(|E^{(i)}|\)</span> as a function of perturbation order (on a log scale)</p></li>
 </ul>
-<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell docutils container">
+<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell tag_answer-cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### ANSWER HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
 </pre></div>
 </div>
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_answer-cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### ANSWER HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
 </pre></div>
 </div>
 </div>
@@ -732,19 +732,19 @@ E_2 = \sum_{k \neq n} \frac{ |\langle k^{(0)} | V | n^{(0)} \rangle|^2}{E_n^{(0)
 <p>To get the k’th order correction to the wave-function you can do</p>
 <div class="math notranslate nohighlight">
 \[
-|n^{(m)}\rangle = \sum_{j \neq n} \frac{1}{E_0^{(0)}-E_j^{(0)}} |j\rangle  \left( - \langle j^{(0)} | V | n^{(k-1)}\rangle  + \sum_{k=1}^{m-1} E^{(k)} \langle j^{(0)} | n^{(m-k)}\rangle \right) 
+|n^{(m)}\rangle = \sum_{j \neq n} \frac{1}{E_0^{(0)}-E_j^{(0)}} |j\rangle  \left( - \langle j^{(0)} | V | n^{(k-1)}\rangle  + \sum_{k=1}^{m-1} E^{(k)} \langle j^{(0)} | n^{(m-k)}\rangle \right)
 \]</div>
 <p>and then use</p>
 <div class="math notranslate nohighlight">
 \[
-E_0^{(m+1)}=\langle n^{(0)} | V | n^{(m)}\rangle 
+E_0^{(m+1)}=\langle n^{(0)} | V | n^{(m)}\rangle
 \]</div>
 <p>You can iterate these equations over and over again until you reach any arbitrary order in perturbation theory.</p>
 <p>Use this to get the corrected energy out to 30’th order in perturbation theory..</p>
 <p>Store your energies in wave-functions in an array <code class="docutils literal notranslate"><span class="pre">Psis</span></code> and <code class="docutils literal notranslate"><span class="pre">Es</span></code> respectively (including the orders you’e already computed).  Plot the 2d version of the 30’th order wave-function and plot the same plots with respect to the energy that you’ve plotted aboe.</p>
-<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell docutils container">
+<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell tag_answer-cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### ANSWER HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
 </pre></div>
 </div>
 </div>
