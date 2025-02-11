@@ -299,7 +299,9 @@
 <button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
 </button>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -315,6 +317,16 @@
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#physics-486">Physics 486</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#physics-487">Physics 487</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#others">Others</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -328,14 +340,24 @@
 <h1>Quantum Mechanics<a class="headerlink" href="#quantum-mechanics" title="Link to this heading">#</a></h1>
 <img src="https://clark.physics.illinois.edu/QMBanner.png" alt="QMBanner" >
 <p>The formalism of quantum mechanics can sometimes look foreboding.  One way to make progress in understanding physics is to teach it to a computer.  This is particularly powerful in quantum mechanics where often the mathematics obscures a number of fundamental concepts.  Below are the computational assignments for for Physics 486 and (coming soon) Physics 487.  They are designed both to help your conceptual understanding of quantum mechanics as well as further develop computational thinking and wherewithall that will serve you well in the future.</p>
+<!-- 
+```{tableofcontents}
+``` -->
+<section id="physics-486">
+<h2>Physics 486<a class="headerlink" href="#physics-486" title="Link to this heading">#</a></h2>
+<p><a class="reference internal" href="ParticleInABox.html"><span class="std std-doc">Particle in a Box</span></a><br>
+<a class="reference internal" href="ParticleInAFiniteWell.html"><span class="std std-doc">Particle in a Finite Well</span></a></p>
+</section>
+<section id="physics-487">
+<h2>Physics 487<a class="headerlink" href="#physics-487" title="Link to this heading">#</a></h2>
+<p><a class="reference internal" href="PerturbationTheory.html"><span class="std std-doc">Perturbation Theory</span></a></p>
+</section>
+<section id="others">
+<h2>Others<a class="headerlink" href="#others" title="Link to this heading">#</a></h2>
+<p><a class="reference internal" href="HarmonicOscillator.html"><span class="std std-doc">Harmonic Oscillator</span></a> <br>
+<a class="reference internal" href="#Hydrogen3.ipynb"><span class="xref myst">Hydrogen Atom</span></a></p>
+</section>
 <div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="ParticleInABox.html">Particle in a Box</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ParticleInAFiniteWell.html">Particle with a Finite Potential</a></li>
-<li class="toctree-l1"><a class="reference internal" href="HarmonicOscillator.html">Harmonic Oscillator and the Uncertainty Principle</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Hydrogen.html">Hydrogen Atom</a></li>
-<li class="toctree-l1"><a class="reference internal" href="PerturbationTheory.html">Perturbation Theory</a></li>
-</ul>
 </div>
 </section>
 
@@ -384,6 +406,24 @@
             </div>
             
             
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#physics-486">Physics 486</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#physics-487">Physics 487</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#others">Others</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
