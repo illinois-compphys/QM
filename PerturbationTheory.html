@@ -449,7 +449,13 @@
 <p>or it could be</p>
 <div class="math notranslate nohighlight">
 \[\Psi(x_1,x_2) = \phi_b(x_1)\phi_a(x_2)\]</div>
-<p>Previously on a computer, we were able to represent the single-particle wave-functions as a vector <code class="docutils literal notranslate"><span class="pre">phi_a</span></code> or <code class="docutils literal notranslate"><span class="pre">phi_b</span></code> that was the length of our grid (say 200 points).  To represent the two particle wave-function, we can represent it by a vector of  length <span class="math notranslate nohighlight">\(200^2\)</span> points - we need an amplitude for every possible value of <span class="math notranslate nohighlight">\(x_1\)</span> and <span class="math notranslate nohighlight">\(x_2\)</span>.  To get that vector, we need to use a linear-algebra tool called the kronecker product.  For this last example, we would have  <code class="docutils literal notranslate"><span class="pre">Psi=np.kron(phi_b,phi_a)</span></code></p>
+<p>Previously on a computer, we were able to represent the single-particle wave-functions as a vector <code class="docutils literal notranslate"><span class="pre">phi_a</span></code> or <code class="docutils literal notranslate"><span class="pre">phi_b</span></code> that was the length of our grid (say 200 points).  To represent the two particle wave-function, we can represent it by a vector of  length <span class="math notranslate nohighlight">\(200^2\)</span> points - we need an amplitude for every possible value of <span class="math notranslate nohighlight">\(x_1\)</span> and <span class="math notranslate nohighlight">\(x_2\)</span>.  To get that vector, we need to use a linear-algebra tool called the Kronecker product.  For this last example, we would have  <code class="docutils literal notranslate"><span class="pre">Psi=np.kron(phi_b,phi_a)</span></code>.</p>
+<p>It is important to realize that that is very different from just multiplying the two wavefuctions!
+Without interactions, the two particles live in their own, separate Hilbert spaces.
+In Dirac notation, the same would be written as</p>
+<div class="math notranslate nohighlight">
+\[\ket{\Psi} = \ket{\phi_a}\otimes\ket{\phi_b}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\otimes\)</span> is the Kronecker product.</p>
 </section>
 <section id="a-a-two-particle-wave-function">
 <h2>a.  A two particle wave-function<a class="headerlink" href="#a-a-two-particle-wave-function" title="Link to this heading">#</a></h2>
@@ -461,9 +467,16 @@
 <p>We then might have a one-particle wave-function <code class="docutils literal notranslate"><span class="pre">phi_a=np.cos(xs*2*np.pi/L)</span></code> and another one particle wave-function <code class="docutils literal notranslate"><span class="pre">phi_b=np.cos(xs*4*np.pi/L)</span></code></p>
 <p>Go ahead and</p>
 <ul class="simple">
-<li><p>plot these two wave-functions <span class="math notranslate nohighlight">\(\phi_a\)</span> and <span class="math notranslate nohighlight">\(\phi_b\)</span></p></li>
+<li><p>plot these two wave-functions <span class="math notranslate nohighlight">\(\phi_a\)</span> and <span class="math notranslate nohighlight">\(\phi_b\)</span>.</p></li>
 <li><p>make the vector for the wave-function <span class="math notranslate nohighlight">\(\Psi(x_1,x_2)= \phi_a(x_1)\phi_b(x_2)\)</span></p></li>
 <li><p>Verify this new vector is of length <span class="math notranslate nohighlight">\(200\)</span>^2</p></li>
+</ul>
+<p>As a reminder on the numerical tools we are using:</p>
+<ul class="simple">
+<li><p>our preferred tool for plotting functions is <a class="reference external" href="https://matplotlib.org/stable/">matplotlib</a>.</p></li>
+<li><p>For plotting simple functions, we can use the <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.plot.html">plot</a> function.</p></li>
+<li><p>Any function from the <code class="docutils literal notranslate"><span class="pre">np</span></code> domain is part or <a class="reference external" href="https://numpy.org/doc/stable/">numpy</a></p></li>
+<li><p>Both matplotlib and numpy have evolved into de-fact standard and daily-use tools for physicists. They come with excellent online documentation. Consult it often when running into problems with syntax or if you struggle to understand any functionality.</p></li>
 </ul>
 <div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell tag_answer-cell docutils container">
 <div class="cell_input docutils container">
@@ -472,7 +485,8 @@
 </div>
 </div>
 </div>
-<div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div><p>We now want to plot our wave-function <span class="math notranslate nohighlight">\(\Psi(x_1,x_2)\)</span>.  To do this, we want to put <span class="math notranslate nohighlight">\(x_1\)</span> on the x-axis and <span class="math notranslate nohighlight">\(x_2\)</span> on the y-axis.  Then we can use contours or height to represent the amplitude.   This will tell us what the probability of simultaneously having one particle at <span class="math notranslate nohighlight">\(x_1\)</span> and another at <span class="math notranslate nohighlight">\(x_2\)</span>.  For example, the diagonal of your plot (<span class="math notranslate nohighlight">\(x=y\)</span>) is showing you how likely the two particles are for being on top of each other.</p>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div><p>We now want to plot our wave-function <span class="math notranslate nohighlight">\(\Psi(x_1,x_2)\)</span>.  To do this, we want to put <span class="math notranslate nohighlight">\(x_1\)</span> on the x-axis and <span class="math notranslate nohighlight">\(x_2\)</span> on the y-axis.  Then we can use contours or height to represent the amplitude of the joint wavefunction. This can be used to infer the probability of simultaneously having one particle at <span class="math notranslate nohighlight">\(x_1\)</span> and another at <span class="math notranslate nohighlight">\(x_2\)</span> (which is of course <span class="math notranslate nohighlight">\(|\Psi(x_1, x_2)|^2\)</span> – feel free to plot that as well. Use <code class="docutils literal notranslate"><span class="pre">np.abs</span></code> to get the absolute of the wavefunction).<br />
+For example, the diagonal of your plot (<span class="math notranslate nohighlight">\(x=y\)</span>) is showing you how likely the two particles are for being on top of each other.</p>
 <p>We can set up this plot using</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">Plot2d_help</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span><span class="n">ys</span><span class="p">,</span><span class="n">Z</span><span class="p">,</span><span class="n">plot_3d</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">)</span>
@@ -498,7 +512,8 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Plot2d</span><span class="p">(</span><span class="n">Psi</span><span class="p">,</span><span class="n">plot_3d</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Go ahead and plot your two particle wave-function that you’ve produced above. (you can also check what happens when you set <code class="docutils literal notranslate"><span class="pre">plot_3d=True</span></code>).   Think about why the result you are getting is reasonable.</p>
+<p>Go ahead and plot your two particle wave-function that you’ve produced above. (you can also check what happens when you set <code class="docutils literal notranslate"><span class="pre">plot_3d=True</span></code>).</p>
+<p><strong>Think about why the result you are getting is reasonable. Write a short note in a separate text or markdown cell in which you interpret the plot, and reason why (or why not) it makes sense from what you know about the physics of the problem.</strong></p>
 <div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell tag_answer-cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
@@ -572,9 +587,14 @@ H_0 = H^\textrm{SHO}(x_1) + H^\textrm{SHO}(x_2)
 \[
 \Psi_{200}(x_1,x_2) = \phi_{n//200}(x_1) \phi_{n \% 200}(x_2)
 \]</div>
-<p>where <span class="math notranslate nohighlight">\(\phi_i\)</span> is the <span class="math notranslate nohighlight">\(i'\)</span>th eigenstate of the non-interacting Harmonic oscillator that you’ve already stored in <code class="docutils literal notranslate"><span class="pre">self.evecs_oneParticle</span></code>.</p>
+<p>\Psi_{n}(x_1,x_2) = \phi_{n//200}(x_1) \phi_{n % 200}(x_2)
+$$</p>
+<p>where <span class="math notranslate nohighlight">\(\phi_i\)</span> is the <span class="math notranslate nohighlight">\(i'\)</span>th eigenstate of the non-interacting Harmonic oscillator that you’ve already stored in <code class="docutils literal notranslate"><span class="pre">self.evecs_oneParticle</span></code>.
+where <span class="math notranslate nohighlight">\(\phi_i\)</span> is the <span class="math notranslate nohighlight">\(i\)</span>’th eigenstate of the non-interacting Harmonic oscillator that you’ve already stored in <code class="docutils literal notranslate"><span class="pre">self.evecs_oneParticle</span></code>.
+Note on the indexing: in the vector of <span class="math notranslate nohighlight">\(\Psi_{n}(x_1,x_2)\)</span>, eigenstates are not ordered by energy, given how we construct the two-particle wavefunction: <span class="math notranslate nohighlight">\(\Psi_0 = \phi_0 \phi_0\)</span>, <span class="math notranslate nohighlight">\(\Psi_1 = \phi_0 \phi_1\)</span>, …, <span class="math notranslate nohighlight">\(\Psi_{199} = \phi_0 \phi_{199}\)</span>, <span class="math notranslate nohighlight">\(\Psi_{200} = \phi_1 \phi_0\)</span>, …, <span class="math notranslate nohighlight">\(\Psi_{200 \times 200 - 1} = \phi_{199} \phi_{199}\)</span>.</p>
 <p>Also write a function <code class="docutils literal notranslate"><span class="pre">get_eigenvalue(self,n)</span></code> which returns the <span class="math notranslate nohighlight">\(n'\)</span>th eigenvalue (recalling that the eigenvalue of the problem is just the sum of the one-particle eigenstates).</p>
-<p>(These eigenvectors and eigenvalues won’t be ordered by energy.  This is ok)</p>
+<p>(These eigenvectors and eigenvalues won’t be ordered by energy.  This is ok)
+Also write a function <code class="docutils literal notranslate"><span class="pre">get_eigenvalue(self,n)</span></code> which returns the <span class="math notranslate nohighlight">\(n'\)</span>th eigenvalue (recalling that the eigenvalue of the problem is just the sum of the one-particle eigenstates).</p>
 <p>Check that the first couple eigenvalues <code class="docutils literal notranslate"><span class="pre">H.get_eigenvalue(0),</span> <span class="pre">H.get_eigenvalue(1)</span></code> are correct.  Also plot your ground state <code class="docutils literal notranslate"><span class="pre">Plot2d(H.get_eigenstate(0)</span></code>.   Think about what it’s telling you.</p>
 <p>Go ahead and do this and then comment on the following thing about the ground state</p>
 <ul class="simple">
@@ -621,7 +641,8 @@ V(x_1,x_2) = e^{-2(x_1-x_2)^2}
 </div>
 <p>to plot what their difference looks like.</p>
 <p>Once you’ve made <code class="docutils literal notranslate"><span class="pre">x_1-x_2</span></code> you can use this difference to make the full interaction (<code class="docutils literal notranslate"><span class="pre">np.exp</span></code> exponentiates and <code class="docutils literal notranslate"><span class="pre">**</span></code> is how you take things to a power).  Then you can resize it properly and return it from the function.</p>
-<p>To check that everything is working go ahead and plot <code class="docutils literal notranslate"><span class="pre">Plot2d(H.V)</span></code> and understand if that’s what you expected.</p>
+<p>To check that everything is working go ahead and plot <code class="docutils literal notranslate"><span class="pre">Plot2d(H.V)</span></code> and understand if that’s what you expected.
+Comment on the result, comparing it to what you already know about the physics from the course.</p>
 <div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell tag_answer-cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
