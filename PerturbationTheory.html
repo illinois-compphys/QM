@@ -351,6 +351,7 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-instructions">Basic instructions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-two-particles-in-a-one-dimensional-harmonic-oscillator">Exercise 1.  Two Particles in a one-dimensional Harmonic Oscillator</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-a-two-particle-wave-function">a.  A two particle wave-function</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-the-simple-harmonic-oscillator-non-interacting-wave-functions">b.  The Simple Harmonic Oscillator: Non-interacting wave-functions</a></li>
@@ -363,6 +364,7 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#i-higher-order-corrections-to-the-energy-optional">i. Higher order corrections to the energy  (<em>optional</em>)</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#printing-as-pdf">Printing as PDF</a></li>
 </ul>
             </nav>
         </div>
@@ -380,6 +382,20 @@
 <li><p><strong>Author:</strong></p></li>
 <li><p><strong>Date:</strong></p></li>
 <li><p><strong>Time spent on this assignment:</strong></p></li>
+</ul>
+<section id="basic-instructions">
+<h2>Basic instructions<a class="headerlink" href="#basic-instructions" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>you can copy this notebook to your Google Colab account (icon at the top of this page; please use your UIUC account!) and work there.</p></li>
+<li><p>you may also work locally on your own computer if you prefer by downloading the <code class="docutils literal notranslate"><span class="pre">.ipynb</span></code> file (also an icon on top of this page).</p></li>
+<li><p>Ask for help in office hours or on Campuswire.</p></li>
+<li><p>To submit your work:</p>
+<ul>
+<li><p>Make sure you answer all interpretation questions! Those will be taken into account for the grading.</p></li>
+<li><p>Convert the notebook to a good-quality PDF (see notes at the bottom)</p></li>
+<li><p>Submission will be on gradescope.</p></li>
+</ul>
+</li>
 </ul>
 <div class="cell tag_hide-output docutils container">
 <div class="cell_input above-output-prompt docutils container">
@@ -440,6 +456,7 @@
 </div>
 </details>
 </div>
+</section>
 <section id="exercise-1-two-particles-in-a-one-dimensional-harmonic-oscillator">
 <h2>Exercise 1.  Two Particles in a one-dimensional Harmonic Oscillator<a class="headerlink" href="#exercise-1-two-particles-in-a-one-dimensional-harmonic-oscillator" title="Link to this heading">#</a></h2>
 <p>So far we’ve looked at the interaction of a single particle in a one-dimensional Harmonic oscillator potential.  In this exercise, we are going to go beyond this and look at two distinguishable particles in a Harmonic oscillator potential.   We are going to start by assuming those particles are not interacting and then we are going to introduce a repulsive interaction between them.</p>
@@ -769,6 +786,18 @@ E_0^{(m+1)}=\langle n^{(0)} | V | n^{(m)}\rangle
 </div>
 <div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div></section>
 </section>
+<section id="printing-as-pdf">
+<h2>Printing as PDF<a class="headerlink" href="#printing-as-pdf" title="Link to this heading">#</a></h2>
+<p>Hopefully just printing to pdf creates a nice version of your document to submit.</p>
+<p>If that is not the case, here is a robust albeit somewhat complicated solution that has worked in previous years:</p>
+<p>Insert this snippet at the bottom of your notebook</p>
+<p><code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">google.colab</span> <span class="pre">import</span> <span class="pre">drive</span> <span class="pre">drive.mount('/content/drive')</span></code></p>
+<p>Refresh your files tab (the folder icon on the left panel of the screen)</p>
+<p>Paste this code at the end of your notebook, with the appropriate path</p>
+<p><code class="docutils literal notranslate"><span class="pre">!jupyter</span> <span class="pre">nbconvert</span> <span class="pre">--to</span> <span class="pre">html</span> <span class="pre">&quot;/content/drive/MyDrive/PathToAssignment/AssignmentName.ipynb&quot;</span></code></p>
+<p>This should generate an html file for your Jupyter notebook, which is saved in your drive.
+Print this generated html file to a pdf file and submit it to canvas.</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -827,6 +856,7 @@ E_0^{(m+1)}=\langle n^{(0)} | V | n^{(m)}\rangle
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-instructions">Basic instructions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-two-particles-in-a-one-dimensional-harmonic-oscillator">Exercise 1.  Two Particles in a one-dimensional Harmonic Oscillator</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-a-two-particle-wave-function">a.  A two particle wave-function</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-the-simple-harmonic-oscillator-non-interacting-wave-functions">b.  The Simple Harmonic Oscillator: Non-interacting wave-functions</a></li>
@@ -839,6 +869,7 @@ E_0^{(m+1)}=\langle n^{(0)} | V | n^{(m)}\rangle
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#i-higher-order-corrections-to-the-energy-optional">i. Higher order corrections to the energy  (<em>optional</em>)</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#printing-as-pdf">Printing as PDF</a></li>
 </ul>
   </nav></div>
 
