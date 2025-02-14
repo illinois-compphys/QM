@@ -582,15 +582,12 @@ H_0 = H^\textrm{SHO}(x_1) + H^\textrm{SHO}(x_2)
 <section id="c-two-particle-non-interacting-eigenstates">
 <h3>c.  Two Particle Non-interacting Eigenstates<a class="headerlink" href="#c-two-particle-non-interacting-eigenstates" title="Link to this heading">#</a></h3>
 <p>Now that you have the single particle non-interacting eigenstates, we need to be able to get the two-particle non-interacting eigenstates using <code class="docutils literal notranslate"><span class="pre">np.kron</span></code>.</p>
-<p>Add a function to your class <code class="docutils literal notranslate"><span class="pre">get_eigenstate(self,n)</span></code>  so that when you call <code class="docutils literal notranslate"><span class="pre">H0.get_eigenstate(4)</span></code> it returns the fourth eigenstate of the non-interacting problem.  The <span class="math notranslate nohighlight">\(n'\)</span>th eigenstate of the non-interacting Harmonic oscillator should be</p>
+<p>Add a function to your class <code class="docutils literal notranslate"><span class="pre">get_eigenstate(self,n)</span></code>  so that when you call <code class="docutils literal notranslate"><span class="pre">H0.get_eigenstate(4)</span></code> it returns the fourth eigenstate of the non-interacting problem.  The <span class="math notranslate nohighlight">\(n\)</span>’th eigenstate of the non-interacting Harmonic oscillator should be</p>
 <div class="math notranslate nohighlight">
-\[
-\Psi_{200}(x_1,x_2) = \phi_{n//200}(x_1) \phi_{n \% 200}(x_2)
+\[ 
+\Psi_{n}(x_1,x_2) = \phi_{n//200}(x_1) \phi_{n \% 200}(x_2)
 \]</div>
-<p>\Psi_{n}(x_1,x_2) = \phi_{n//200}(x_1) \phi_{n % 200}(x_2)
-$$</p>
-<p>where <span class="math notranslate nohighlight">\(\phi_i\)</span> is the <span class="math notranslate nohighlight">\(i'\)</span>th eigenstate of the non-interacting Harmonic oscillator that you’ve already stored in <code class="docutils literal notranslate"><span class="pre">self.evecs_oneParticle</span></code>.
-where <span class="math notranslate nohighlight">\(\phi_i\)</span> is the <span class="math notranslate nohighlight">\(i\)</span>’th eigenstate of the non-interacting Harmonic oscillator that you’ve already stored in <code class="docutils literal notranslate"><span class="pre">self.evecs_oneParticle</span></code>.
+<p>where <span class="math notranslate nohighlight">\(\phi_i\)</span> is the <span class="math notranslate nohighlight">\(i\)</span>’th eigenstate of the non-interacting Harmonic oscillator that you’ve already stored in <code class="docutils literal notranslate"><span class="pre">self.evecs_oneParticle</span></code>.
 Note on the indexing: in the vector of <span class="math notranslate nohighlight">\(\Psi_{n}(x_1,x_2)\)</span>, eigenstates are not ordered by energy, given how we construct the two-particle wavefunction: <span class="math notranslate nohighlight">\(\Psi_0 = \phi_0 \phi_0\)</span>, <span class="math notranslate nohighlight">\(\Psi_1 = \phi_0 \phi_1\)</span>, …, <span class="math notranslate nohighlight">\(\Psi_{199} = \phi_0 \phi_{199}\)</span>, <span class="math notranslate nohighlight">\(\Psi_{200} = \phi_1 \phi_0\)</span>, …, <span class="math notranslate nohighlight">\(\Psi_{200 \times 200 - 1} = \phi_{199} \phi_{199}\)</span>.</p>
 <p>Also write a function <code class="docutils literal notranslate"><span class="pre">get_eigenvalue(self,n)</span></code> which returns the <span class="math notranslate nohighlight">\(n'\)</span>th eigenvalue (recalling that the eigenvalue of the problem is just the sum of the one-particle eigenstates).</p>
 <p>(These eigenvectors and eigenvalues won’t be ordered by energy.  This is ok)
