@@ -14,7 +14,9 @@ The formalism of quantum mechanics can sometimes look foreboding.  One way to ma
 [Particle in a Finite Well](ParticleInAFiniteWell.ipynb)
 
 #### Physics 487
-[Perturbation Theory](PerturbationTheory.ipynb)
+[Perturbation Theory](PerturbationTheory.ipynb) <br>
+[Rabi Oscillations](RabiOscillations.ipynb)
+
 
 #### Others
 [Harmonic Oscillator](HarmonicOscillator.ipynb) <br>
