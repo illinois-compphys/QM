@@ -1,0 +1,941 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Rabi Oscillations &#8212; Computation in Quantum Mechanics  (for Phys486)# The title of the book. Will be placed in the left navbar.</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'RabiOscillations';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Perturbation Theory" href="PerturbationTheory.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Computation in Quantum Mechanics  (for Phys486)# The title of the book. Will be placed in the left navbar. - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Computation in Quantum Mechanics  (for Phys486)# The title of the book. Will be placed in the left navbar. - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Quantum Mechanics
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="ParticleInABox.html">Particle in a Box</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ParticleInAFiniteWell.html">Particle with a Finite Potential</a></li>
+<li class="toctree-l1"><a class="reference internal" href="HarmonicOscillator.html">Harmonic Oscillator and the Uncertainty Principle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Hydrogen.html">Hydrogen Atom</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PerturbationTheory.html">Perturbation Theory</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Rabi Oscillations</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/illinois-compphys/QM/blob/main/quantum_mechanics/RabiOscillations.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/RabiOscillations.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Rabi Oscillations</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-time-dependence-in-the-schrodinger-picture">Exercise 1.  Time Dependence in the Schrodinger Picture</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-the-hamiltonian">a. The Hamiltonian</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-time-evolution">b. Time Evolution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-the-interaction-picture">b.  The Interaction Picture</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-time-evolving-in-the-interaction-picture">Exercise 2. Time evolving in the Interaction Picture</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-time-evolving-in-the-interaction-picture">a. Time evolving in the interaction picture</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-transforming-to-the-schrodinger-picture">b. Transforming to the Schrodinger Picture</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-probability-to-reach-1-rangle">c. Probability to reach <span class="math notranslate nohighlight">\(|1\rangle\)</span></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-time-dependent-perturbation-theory">Exercise 3.  Time dependent perturbation theory</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-probability-at-first-order-to-jump-to-state-1-rangle">a. Probability (at first order) to jump to state <span class="math notranslate nohighlight">\(|1\rangle\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-probability-at-first-order-to-jump-to-state-1-rangle-using-the-formula">b. Probability (at first order) to jump to state <span class="math notranslate nohighlight">\(|1\rangle\)</span> using the formula</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-maximum-probabability-and-probability-at-t-8-3">c. Maximum Probabability and Probability at <span class="math notranslate nohighlight">\(T=8.3\)</span></a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="rabi-oscillations">
+<h1>Rabi Oscillations<a class="headerlink" href="#rabi-oscillations" title="Link to this heading">#</a></h1>
+<ul class="simple">
+<li><p><strong>Author:</strong></p></li>
+<li><p><strong>Date:</strong></p></li>
+<li><p><strong>Time spent on this assignment:</strong></p></li>
+</ul>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input above-output-prompt docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span> 
+<span class="kn">import</span><span class="w"> </span><span class="nn">pylab</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">qutip</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">scipy</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">scipy.linalg</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.animation</span><span class="w"> </span><span class="kn">import</span> <span class="n">FuncAnimation</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">HTML</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.animation</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">animation</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">resetMe</span><span class="p">(</span><span class="n">keepList</span><span class="o">=</span><span class="p">[]):</span>
+    <span class="n">ll</span><span class="o">=%</span><span class="k">who_ls</span>
+    <span class="n">keepList</span><span class="o">=</span><span class="n">keepList</span><span class="o">+</span><span class="p">[</span><span class="s1">&#39;FuncAnimation&#39;</span><span class="p">,</span><span class="s1">&#39;HTML&#39;</span><span class="p">,</span><span class="s1">&#39;resetMe&#39;</span><span class="p">,</span><span class="s1">&#39;scipy&#39;</span><span class="p">,</span><span class="s1">&#39;np&#39;</span><span class="p">,</span><span class="s1">&#39;plt&#39;</span><span class="p">,</span><span class="s1">&#39;math&#39;</span><span class="p">,</span><span class="s1">&#39;jax&#39;</span><span class="p">,</span><span class="s1">&#39;jnp&#39;</span><span class="p">,</span><span class="s1">&#39;jit&#39;</span><span class="p">,</span><span class="s1">&#39;grad&#39;</span><span class="p">,</span><span class="s1">&#39;HTML&#39;</span><span class="p">,</span><span class="s1">&#39;animation&#39;</span><span class="p">,</span><span class="s1">&#39;qutip&#39;</span><span class="p">,</span><span class="s1">&#39;animation&#39;</span><span class="p">,</span><span class="s1">&#39;FuncAnimation&#39;</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">iiii</span> <span class="ow">in</span> <span class="n">keepList</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">iiii</span> <span class="ow">in</span> <span class="n">ll</span><span class="p">:</span>
+            <span class="n">ll</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">iiii</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">iiii</span> <span class="ow">in</span> <span class="n">ll</span><span class="p">:</span>
+        <span class="n">jjjj</span><span class="o">=</span><span class="s2">&quot;^&quot;</span><span class="o">+</span><span class="n">iiii</span><span class="o">+</span><span class="s2">&quot;$&quot;</span>
+        <span class="o">%</span><span class="k">reset_selective</span> -f {jjjj}
+    <span class="n">ll</span><span class="o">=%</span><span class="k">who_ls</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s2">&quot;font.size&quot;</span><span class="p">:</span> <span class="mi">14</span><span class="p">})</span>
+    <span class="k">return</span>
+<span class="n">resetMe</span><span class="p">()</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">datetime</span><span class="p">;</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<details class="hide below-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell output</span>
+<span class="expanded">Hide code cell output</span>
+</summary>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span> 
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span><span class="w"> </span><span class="nn">pylab</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="kn">import</span><span class="w"> </span><span class="nn">qutip</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">import</span><span class="w"> </span><span class="nn">scipy</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">import</span><span class="w"> </span><span class="nn">scipy.linalg</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;qutip&#39;
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">PlotBloch</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">bb</span><span class="p">,</span> <span class="n">makeVector</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="n">vv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">vv</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">conj</span><span class="p">(</span><span class="n">vv</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">vv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">conj</span><span class="p">(</span><span class="n">vv</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">real</span><span class="p">(</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">b</span><span class="o">.</span><span class="n">real</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">real</span><span class="p">(</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">b</span><span class="o">.</span><span class="n">imag</span><span class="p">)</span>
+    <span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">real</span><span class="p">(</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">a</span> <span class="o">-</span> <span class="mf">1.0</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">makeVector</span><span class="p">:</span>
+        <span class="n">old_marker</span> <span class="o">=</span> <span class="n">bb</span><span class="o">.</span><span class="n">point_marker</span>
+        <span class="n">old_size</span> <span class="o">=</span> <span class="n">bb</span><span class="o">.</span><span class="n">point_size</span>
+        <span class="n">old_point_color</span> <span class="o">=</span> <span class="n">bb</span><span class="o">.</span><span class="n">point_color</span>
+
+        <span class="n">bb</span><span class="o">.</span><span class="n">vector_color</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1">#clear the vector color list.</span>
+        <span class="n">bb</span><span class="o">.</span><span class="n">vector_color</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;green&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">bb</span><span class="o">.</span><span class="n">vectors</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># Ensure the list has enough elements</span>
+
+        <span class="c1">#bb.add_vectors([x, y, z])</span>
+        <span class="n">bb</span><span class="o">.</span><span class="n">add_vectors</span><span class="p">([</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">])</span>  <span class="c1"># Pass color to add_vectors</span>
+
+        <span class="n">bb</span><span class="o">.</span><span class="n">point_marker</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;*&#39;</span><span class="p">]</span>
+        <span class="n">bb</span><span class="o">.</span><span class="n">point_color</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;blue&#39;</span><span class="p">]</span>
+
+        <span class="n">bb</span><span class="o">.</span><span class="n">add_points</span><span class="p">([</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">])</span>
+        <span class="n">bb</span><span class="o">.</span><span class="n">point_marker</span> <span class="o">=</span> <span class="n">old_marker</span>
+        <span class="n">bb</span><span class="o">.</span><span class="n">point_size</span> <span class="o">=</span> <span class="n">old_size</span>
+        <span class="n">bb</span><span class="o">.</span><span class="n">point_color</span> <span class="o">=</span> <span class="n">old_point_color</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">old_point_color</span> <span class="o">=</span> <span class="n">bb</span><span class="o">.</span><span class="n">point_color</span>
+        <span class="n">bb</span><span class="o">.</span><span class="n">add_points</span><span class="p">([</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">])</span>
+        <span class="n">bb</span><span class="o">.</span><span class="n">point_color</span> <span class="o">=</span> <span class="n">old_point_color</span>
+
+    <span class="k">return</span>
+
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">SetupBloch</span><span class="p">():</span>
+  <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+  
+<span class="c1">#  ax = fig.add_subplot(111, projection=&#39;3d&#39;)</span>
+  <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">,</span><span class="n">projection</span><span class="o">=</span><span class="s2">&quot;3d&quot;</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">view_init</span><span class="p">(</span><span class="o">-</span><span class="mi">40</span><span class="p">,</span> <span class="o">-</span><span class="mi">15</span><span class="p">)</span> 
+
+
+  <span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">set_axis_off</span><span class="p">()</span>
+  <span class="n">bb</span> <span class="o">=</span> <span class="n">qutip</span><span class="o">.</span><span class="n">Bloch</span><span class="p">(</span><span class="n">axes</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+  <span class="c1">#bb.point_color = [&#39;red&#39;,&#39;orange&#39;,&#39;yellow&#39;,&#39;green&#39;,&#39;blue&#39;,&#39;purple&#39;]</span>
+  <span class="c1">#bb.point_color = [&#39;red&#39;]  </span>
+  <span class="n">bb</span><span class="o">.</span><span class="n">point_marker</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;o&#39;</span><span class="p">]</span>
+  <span class="n">bb</span><span class="o">.</span><span class="n">vector_color</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;green&#39;</span><span class="p">]</span>
+  <span class="c1">#bb.point_size = [15]</span>
+  <span class="n">bb</span><span class="o">.</span><span class="n">point_mode</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;markers&#39;</span><span class="p">]</span>
+  <span class="n">bb</span><span class="o">.</span><span class="n">frame_color</span> <span class="o">=</span> <span class="s1">&#39;black&#39;</span>
+  <span class="n">bb</span><span class="o">.</span><span class="n">frame_width</span> <span class="o">=</span> <span class="mi">1</span>
+  <span class="n">bb</span><span class="o">.</span><span class="n">frame_alpha</span> <span class="o">=</span> <span class="mf">0.5</span>
+  <span class="n">bb</span><span class="o">.</span><span class="n">sphere_alpha</span> <span class="o">=</span> <span class="mf">0.1</span>
+  <span class="n">bb</span><span class="o">.</span><span class="n">vector_width</span> <span class="o">=</span> <span class="mi">3</span>
+  <span class="n">bb</span><span class="o">.</span><span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.1</span>
+  <span class="k">return</span> <span class="n">bb</span>
+
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">animate</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">states</span><span class="p">,</span> <span class="n">sphere</span><span class="p">,</span><span class="n">plotPath</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+  
+  <span class="n">sphere</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+  <span class="c1">#vv = states[i]</span>
+  <span class="k">for</span> <span class="n">vv</span> <span class="ow">in</span> <span class="n">states</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">i</span><span class="p">]:</span>
+    <span class="n">PlotBloch</span><span class="p">(</span><span class="n">vv</span><span class="p">,</span> <span class="n">sphere</span><span class="p">,</span> <span class="n">makeVector</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+  <span class="n">PlotBloch</span><span class="p">(</span><span class="n">states</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">sphere</span><span class="p">,</span> <span class="n">makeVector</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">sphere</span><span class="o">.</span><span class="n">render</span><span class="p">()</span>
+
+
+
+
+<span class="n">sigma_x</span> <span class="o">=</span> <span class="n">qutip</span><span class="o">.</span><span class="n">sigmax</span><span class="p">()</span><span class="o">.</span><span class="n">full</span><span class="p">()</span>
+<span class="n">sigma_y</span><span class="o">=</span> <span class="n">qutip</span><span class="o">.</span><span class="n">sigmay</span><span class="p">()</span><span class="o">.</span><span class="n">full</span><span class="p">()</span>
+<span class="n">sigma_z</span> <span class="o">=</span> <span class="n">qutip</span><span class="o">.</span><span class="n">sigmaz</span><span class="p">()</span><span class="o">.</span><span class="n">full</span><span class="p">()</span>
+<span class="n">hbar</span><span class="o">=</span><span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="exercise-1-time-dependence-in-the-schrodinger-picture">
+<h2>Exercise 1.  Time Dependence in the Schrodinger Picture<a class="headerlink" href="#exercise-1-time-dependence-in-the-schrodinger-picture" title="Link to this heading">#</a></h2>
+<section id="a-the-hamiltonian">
+<h3>a. The Hamiltonian<a class="headerlink" href="#a-the-hamiltonian" title="Link to this heading">#</a></h3>
+<p>In this assignment, we will consider time-dependent Hamiltonians of the form</p>
+<div class="math notranslate nohighlight">
+\[ 
+H = H_0  + V(t)
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(H_0\)</span> has no time-dependence and <span class="math notranslate nohighlight">\(V(t)\)</span> depends on time.</p>
+<p>Let us define</p>
+<div class="math notranslate nohighlight">
+\[ 
+H_0 = E_0 |0\rangle \langle 0| + E_1 |1|\rangle \langle 1|
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(E_0 = -0.4\)</span> and <span class="math notranslate nohighlight">\(E_1=0.6\)</span></p>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[
+V(t) =  \delta/2 \exp[i \omega t] |0\rangle \langle 1| + \delta/2 \exp[-i \omega t] |1 \rangle \langle 0|
+\]</div>
+<p>Define functions <code class="docutils literal notranslate"><span class="pre">build_H0()</span></code> and <code class="docutils literal notranslate"><span class="pre">build_V(t,delta,omega)</span></code> which returns these Hamiltonians. Notice that they are both 2x2 matrices.</p>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell tag_answer-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (start)"></img><br></div></section>
+<section id="b-time-evolution">
+<h3>b. Time Evolution<a class="headerlink" href="#b-time-evolution" title="Link to this heading">#</a></h3>
+<p>The most straightforward way to implement time-evolution is to directly use the time-dependent Schrodinger equation</p>
+<div class="math notranslate nohighlight">
+\[ 
+i \hbar \frac{\partial \psi }{\partial t} = H \psi 
+\]</div>
+<p>which we can turn into a dynamical equation of motion as</p>
+<div class="math notranslate nohighlight">
+\[
+\psi(t + \delta t) =  e^{-i\hbar H(t)  \delta t} \psi(t) 
+\]</div>
+<p>You can assume throughout this assignment that we are working in units where <span class="math notranslate nohighlight">\(\hbar=1\)</span></p>
+<p>Write a function <code class="docutils literal notranslate"><span class="pre">SchrodingerTimeEvolution(T,dt,omega,delta)</span></code> which takes a total time <span class="math notranslate nohighlight">\(T\)</span> and a time step <span class="math notranslate nohighlight">\(dt\)</span> and the values of <span class="math notranslate nohighlight">\(\delta\)</span> and <span class="math notranslate nohighlight">\(\omega\)</span> for the driving potential. It should then perform Schrodinger evolution starting with a configuration that is in state  <span class="math notranslate nohighlight">\(|0\rangle\)</span> (i.e. <code class="docutils literal notranslate"><span class="pre">state</span> <span class="pre">=</span> <span class="pre">np.array([1,0])</span></code>).  It should return a list of times (<code class="docutils literal notranslate"><span class="pre">ts=np.arange(0,T,dt)</span></code>) and the state  (e.g. 2x1 vectors) at each time-step.</p>
+<p>To do this, you want to</p>
+<ul class="simple">
+<li><p>Define the Hamiltonian <span class="math notranslate nohighlight">\(H_0\)</span>.  This should be a 2x2 matrix.</p></li>
+<li><p>Define the initial state <span class="math notranslate nohighlight">\(\Psi(t) = [1,0]\)</span></p></li>
+<li><p>Looping over the time-steps</p>
+<ul>
+<li><p>Get the matrix <span class="math notranslate nohighlight">\(H(t)=H_0 + V(t)\)</span></p></li>
+<li><p>Define the time-evolution matrix  <span class="math notranslate nohighlight">\(M(t) \equiv e^{-i H \delta t}\)</span>  - i.e. <code class="docutils literal notranslate"><span class="pre">scipy.linalg.expm(H_t)</span></code></p></li>
+<li><p>Apply <span class="math notranslate nohighlight">\(M(t)\)</span> to the current state to get the new state.</p></li>
+<li><p>Store in a list the current state.</p></li>
+</ul>
+</li>
+</ul>
+<p>Call your function with</p>
+<ul class="simple">
+<li><p>T=17.0</p></li>
+<li><p><span class="math notranslate nohighlight">\(dt\)</span> = 0.001</p></li>
+<li><p><span class="math notranslate nohighlight">\(\omega = 1.3\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\delta = 0.2\)</span></p></li>
+</ul>
+<p>You are then going to want to plot two things:</p>
+<p>(1) The probability that the state is in one - i.e. <code class="docutils literal notranslate"><span class="pre">np.abs(state[1])**2</span></code> as a function of time.</p>
+<p>(2) The location of the state on the bloch sphere.  To do this you can do</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bb</span><span class="o">=</span><span class="n">SetupBloch</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">state</span> <span class="ow">in</span> <span class="n">states</span><span class="p">[::</span><span class="mi">100</span><span class="p">]:</span>
+    <span class="n">PlotBloch</span><span class="p">(</span><span class="n">state</span><span class="p">,</span><span class="n">bb</span><span class="p">,</span><span class="n">makeVector</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">bb</span><span class="o">.</span><span class="n">render</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(3) Animate it.  To do that you can do</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sphere</span><span class="o">=</span><span class="n">SetupBloch</span><span class="p">()</span>
+<span class="n">anim</span> <span class="o">=</span> <span class="n">FuncAnimation</span><span class="p">(</span><span class="n">plt</span><span class="o">.</span><span class="n">gcf</span><span class="p">(),</span> <span class="n">animate</span><span class="p">,</span> <span class="n">frames</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">states</span><span class="p">[::</span><span class="mi">100</span><span class="p">]),</span> <span class="n">fargs</span><span class="o">=</span><span class="p">(</span><span class="n">states</span><span class="p">[::</span><span class="mi">100</span><span class="p">],</span> <span class="n">sphere</span><span class="p">,</span><span class="kc">True</span><span class="p">),</span> <span class="n">blit</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">interval</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">repeat</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="n">anim</span><span class="o">.</span><span class="n">to_jshtml</span><span class="p">()))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell tag_answer-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_answer-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_answer-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (start)"></img><br></div></section>
+<section id="b-the-interaction-picture">
+<h3>b.  The Interaction Picture<a class="headerlink" href="#b-the-interaction-picture" title="Link to this heading">#</a></h3>
+<p>Given the states represented in the Schrodinger picture, it’s possible to convert them into the interaction picture.  The interaction picture essentially takes away the rotation due to the non-interacting Hamiltonian.  The way to make this conversion is to do</p>
+<div class="math notranslate nohighlight">
+\[
+  \Psi_\textrm{interaction}  = \exp\left(\frac{i}{\hbar} t H_0 \right)\Psi_\textrm{schrodinger}
+\]</div>
+<p>Write a function <code class="docutils literal notranslate"><span class="pre">S2I(psi,t,H0)</span></code> which takes the non-interacting Hamiltonian and the state in the Schrodinger picture and gives back the state in the interaction picture.  Use this function to convert all the Schrodinger picture states into Interaction picture states.   Then plot (and animate) the interaction picture states on the Bloch sphere.  What is different about these states?</p>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell tag_answer-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_answer-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (start)"></img><br></div></section>
+</section>
+<section id="exercise-2-time-evolving-in-the-interaction-picture">
+<h2>Exercise 2. Time evolving in the Interaction Picture<a class="headerlink" href="#exercise-2-time-evolving-in-the-interaction-picture" title="Link to this heading">#</a></h2>
+<section id="a-time-evolving-in-the-interaction-picture">
+<h3>a. Time evolving in the interaction picture<a class="headerlink" href="#a-time-evolving-in-the-interaction-picture" title="Link to this heading">#</a></h3>
+<p>In the previous problem, we time-evolved in the Schrodinger picture.  In this problem we are going to time-evolve directly in the interaction picture.    First let us derive this.</p>
+<p>Consider a Hamiltonian</p>
+<div class="math notranslate nohighlight">
+\[ 
+H = H_0 + V(t) 
+\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[
+|\psi(t) \rangle_I =  e^{iH_0 t/\hbar} |\psi(t)\rangle_S 
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(|\psi(t)\rangle_S\)</span> is the time-dependent wave-function in the Schrodinger picture and <span class="math notranslate nohighlight">\(|\psi(0)\rangle_S  = \psi(0)\rangle_I\)</span></p>
+<p>Then we find that</p>
+<div class="math notranslate nohighlight">
+\[
+i\hbar \partial_t |\psi(t)\rangle_I = V_I(t) |\psi(t)\rangle_I
+\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[
+V_I(t)  = e^{iH_0 t /\hbar}V e^{-i H_0 t/\hbar}
+\]</div>
+<p>Solving, we get a series of first order differential equations</p>
+<div class="math notranslate nohighlight">
+\[
+i\hbar \dot{c_m}(t) = \sum_n V_{mn}(t) e^{i\omega_{mn}t}c_n(t)
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\omega_{mn} \equiv  (E_m-E_n)/\hbar\)</span></p>
+<p>which we can now write as</p>
+<div class="math notranslate nohighlight">
+\[
+c_m(t+dt)= c_m(t) + dt \sum_n V_{mn}(t) e^{i\omega_{mn}t}c_n(t) 
+\]</div>
+<p>Now write a function <code class="docutils literal notranslate"><span class="pre">InteractionTimeEvolution(T,dt,omega,delta)</span></code> which uses this equation of motion to time-evolve in the interaction picture returning both the list of times and the list of states.  Using the PlotBloch function go ahead and plot this evolution on the Bloch sphere.</p>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell tag_answer-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_answer-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (start)"></img><br></div>|</section>
+<section id="b-transforming-to-the-schrodinger-picture">
+<h3>b. Transforming to the Schrodinger Picture<a class="headerlink" href="#b-transforming-to-the-schrodinger-picture" title="Link to this heading">#</a></h3>
+<p>Now go ahead and write a function <code class="docutils literal notranslate"><span class="pre">I2S(psi,t,H0)</span></code> to transform an interaction-picture state to a schrodinger-picture state.  Then use your function to convert all the states generated in part (a) to the Schrodinger picture. After you do this conversion,</p>
+<ul class="simple">
+<li><p>plot the probability of the state being in <span class="math notranslate nohighlight">\(|1\rangle\)</span>.</p></li>
+<li><p>the state on the Bloch sphere</p></li>
+</ul>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell tag_answer-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (start)"></img><br></div></section>
+<section id="c-probability-to-reach-1-rangle">
+<h3>c. Probability to reach <span class="math notranslate nohighlight">\(|1\rangle\)</span><a class="headerlink" href="#c-probability-to-reach-1-rangle" title="Link to this heading">#</a></h3>
+<p>Let’s measure the maximum probability that you get to <span class="math notranslate nohighlight">\(|1\rangle\)</span> as a function of <span class="math notranslate nohighlight">\(\Delta \omega \equiv \omega - \omega_{10}\)</span> - i.e.  <code class="docutils literal notranslate"><span class="pre">omega</span> <span class="pre">-</span> <span class="pre">(E[1]-E[0])/hbar</span></code>.  To do this, you want to let the maximum <span class="math notranslate nohighlight">\(T=50\)</span>.</p>
+<p>Change <span class="math notranslate nohighlight">\(\omega\)</span> from 0.1 to 1.9 in small incremements and then plot the maximum probability to get <span class="math notranslate nohighlight">\(|1\rangle\)</span> versus <span class="math notranslate nohighlight">\(\Delta \omega\)</span>.</p>
+<p>Also plot the probability of being at <span class="math notranslate nohighlight">\(|1\rangle\)</span> at <span class="math notranslate nohighlight">\(T=8.3\)</span> as a function of <span class="math notranslate nohighlight">\(\Delta \omega\)</span></p>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell tag_answer-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_answer-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (start)"></img><br></div></section>
+</section>
+<section id="exercise-3-time-dependent-perturbation-theory">
+<h2>Exercise 3.  Time dependent perturbation theory<a class="headerlink" href="#exercise-3-time-dependent-perturbation-theory" title="Link to this heading">#</a></h2>
+<section id="a-probability-at-first-order-to-jump-to-state-1-rangle">
+<h3>a. Probability (at first order) to jump to state <span class="math notranslate nohighlight">\(|1\rangle\)</span><a class="headerlink" href="#a-probability-at-first-order-to-jump-to-state-1-rangle" title="Link to this heading">#</a></h3>
+<p>We are now going to evaluate these probabilities using time-dependent perturbation theory.</p>
+<p>Time-dependent perturbation theory tells us that, to first order, the probability of going from state <span class="math notranslate nohighlight">\(m \rightarrow n\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[ 
+P_{m\leftarrow n }^{(1)}(t) = \left|\int_0^{t}e^{i\omega_{mn}t'}\frac{V_{mn}(t')}{i\hbar}dt'\right|^2
+\]</div>
+<p>Write a function <code class="docutils literal notranslate"><span class="pre">Prob_10(T,dt,omega,delta)</span></code> which gives the first order probability for going from <span class="math notranslate nohighlight">\(0 \rightarrow 1\)</span> returning both the times and these probabilities.   You may find it useful to use <code class="docutils literal notranslate"><span class="pre">np.cumsum</span></code> to do the integral out to different <span class="math notranslate nohighlight">\(t\)</span>.</p>
+<p>Using <span class="math notranslate nohighlight">\(T=40\)</span>,  graph that probability as a function of time and plot it on top of the actual probabilities.</p>
+<p>Print out <span class="math notranslate nohighlight">\(T=2\pi/\Delta \omega\)</span> and <span class="math notranslate nohighlight">\( | |V|/\hbar \Delta \omega|^2 \)</span> and see that this corresponds to the wave-length and height of the first-order perturbation terms.</p>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell tag_answer-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (start)"></img><br></div></section>
+<section id="b-probability-at-first-order-to-jump-to-state-1-rangle-using-the-formula">
+<h3>b. Probability (at first order) to jump to state <span class="math notranslate nohighlight">\(|1\rangle\)</span> using the formula<a class="headerlink" href="#b-probability-at-first-order-to-jump-to-state-1-rangle-using-the-formula" title="Link to this heading">#</a></h3>
+<p>In exercise (a), we computed the first order perturbative correction using a general formula where we needed to take an integral.  For this specific problem, Griffith’s has done the integral analytically and worked out a general formula,</p>
+<div class="math notranslate nohighlight">
+\[
+P_{10} = -i \frac{\delta}{\hbar} \frac{\sin(\Delta \omega t/2)}{\Delta \omega } e^{i\Delta \omega t/2}
+\]</div>
+<p>Write a function  <code class="docutils literal notranslate"><span class="pre">Prob_10_formula(T,dt,omega,delta)</span></code> that generates these probabilities using the formula and make sure it matches your results from exercise (a).</p>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell tag_answer-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (start)"></img><br></div></section>
+<section id="c-maximum-probabability-and-probability-at-t-8-3">
+<h3>c. Maximum Probabability and Probability at <span class="math notranslate nohighlight">\(T=8.3\)</span><a class="headerlink" href="#c-maximum-probabability-and-probability-at-t-8-3" title="Link to this heading">#</a></h3>
+<p>At first order, let’s measure the maximum probability that you get to <span class="math notranslate nohighlight">\(|1\rangle\)</span> as a function of <span class="math notranslate nohighlight">\(\Delta \omega \equiv \omega - \omega_{10}\)</span> - i.e.  <code class="docutils literal notranslate"><span class="pre">omega</span> <span class="pre">-</span> <span class="pre">(E[1]-E[0])/hbar</span></code>.</p>
+<p>Change <span class="math notranslate nohighlight">\(\omega\)</span> from 0.1 to 5.0 in small incremements and then plot the probability versus <span class="math notranslate nohighlight">\(\Delta \omega\)</span>.</p>
+<p>Also plot the probability of being at <span class="math notranslate nohighlight">\(|1\rangle\)</span> at <span class="math notranslate nohighlight">\(T=8.3\)</span> as a function of <span class="math notranslate nohighlight">\(\Delta \omega\)</span>  Compare it against the exact answer by plotting it on the same plot.</p>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell tag_answer-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_answer-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (start)"></img><br></div></section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="PerturbationTheory.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Perturbation Theory</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-time-dependence-in-the-schrodinger-picture">Exercise 1.  Time Dependence in the Schrodinger Picture</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-the-hamiltonian">a. The Hamiltonian</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-time-evolution">b. Time Evolution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-the-interaction-picture">b.  The Interaction Picture</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-time-evolving-in-the-interaction-picture">Exercise 2. Time evolving in the Interaction Picture</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-time-evolving-in-the-interaction-picture">a. Time evolving in the interaction picture</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-transforming-to-the-schrodinger-picture">b. Transforming to the Schrodinger Picture</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-probability-to-reach-1-rangle">c. Probability to reach <span class="math notranslate nohighlight">\(|1\rangle\)</span></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-time-dependent-perturbation-theory">Exercise 3.  Time dependent perturbation theory</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-probability-at-first-order-to-jump-to-state-1-rangle">a. Probability (at first order) to jump to state <span class="math notranslate nohighlight">\(|1\rangle\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-probability-at-first-order-to-jump-to-state-1-rangle-using-the-formula">b. Probability (at first order) to jump to state <span class="math notranslate nohighlight">\(|1\rangle\)</span> using the formula</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-maximum-probabability-and-probability-at-t-8-3">c. Maximum Probabability and Probability at <span class="math notranslate nohighlight">\(T=8.3\)</span></a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Bryan Clark
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
