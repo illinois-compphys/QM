@@ -384,6 +384,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-maximum-probabability-and-probability-at-t-8-3">c. Maximum Probabability and Probability at <span class="math notranslate nohighlight">\(T=8.3\)</span></a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#printing-as-pdf">Printing as PDF</a></li>
 </ul>
             </nav>
         </div>
@@ -809,6 +810,18 @@ P_{10} = -i \frac{\delta}{\hbar} \frac{\sin(\Delta \omega t/2)}{\Delta \omega } 
 </div>
 <div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (start)"></img><br></div></section>
 </section>
+<section id="printing-as-pdf">
+<h2>Printing as PDF<a class="headerlink" href="#printing-as-pdf" title="Link to this heading">#</a></h2>
+<p>Hopefully just printing to pdf creates a nice version of your document to submit.</p>
+<p>If that is not the case, here is a robust albeit somewhat complicated solution that has worked in previous years:</p>
+<p>Insert this snippet at the bottom of your notebook</p>
+<p><code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">google.colab</span> <span class="pre">import</span> <span class="pre">drive</span> <span class="pre">drive.mount('/content/drive')</span></code></p>
+<p>Refresh your files tab (the folder icon on the left panel of the screen)</p>
+<p>Paste this code at the end of your notebook, with the appropriate path</p>
+<p><code class="docutils literal notranslate"><span class="pre">!jupyter</span> <span class="pre">nbconvert</span> <span class="pre">--to</span> <span class="pre">html</span> <span class="pre">&quot;/content/drive/MyDrive/PathToAssignment/AssignmentName.ipynb&quot;</span></code></p>
+<p>This should generate an html file for your Jupyter notebook, which is saved in your drive.
+Print this generated html file to a pdf file and submit it to canvas.</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -884,6 +897,7 @@ P_{10} = -i \frac{\delta}{\hbar} \frac{\sin(\Delta \omega t/2)}{\Delta \omega } 
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-maximum-probabability-and-probability-at-t-8-3">c. Maximum Probabability and Probability at <span class="math notranslate nohighlight">\(T=8.3\)</span></a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#printing-as-pdf">Printing as PDF</a></li>
 </ul>
   </nav></div>
 
