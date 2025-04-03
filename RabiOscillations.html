@@ -369,7 +369,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-time-dependence-in-the-schrodinger-picture">Exercise 1.  Time Dependence in the Schrodinger Picture</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-the-hamiltonian">a. The Hamiltonian</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-time-evolution">b. Time Evolution</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-the-interaction-picture">b.  The Interaction Picture</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-the-interaction-picture">c.  The Interaction Picture</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-time-evolving-in-the-interaction-picture">Exercise 2. Time evolving in the Interaction Picture</a><ul class="nav section-nav flex-column">
@@ -639,8 +639,8 @@ i \hbar \frac{\partial \psi }{\partial t} = H \psi
 </div>
 </div>
 <div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (start)"></img><br></div></section>
-<section id="b-the-interaction-picture">
-<h3>b.  The Interaction Picture<a class="headerlink" href="#b-the-interaction-picture" title="Link to this heading">#</a></h3>
+<section id="c-the-interaction-picture">
+<h3>c.  The Interaction Picture<a class="headerlink" href="#c-the-interaction-picture" title="Link to this heading">#</a></h3>
 <p>Given the states represented in the Schrodinger picture, it’s possible to convert them into the interaction picture.  The interaction picture essentially takes away the rotation due to the non-interacting Hamiltonian.  The way to make this conversion is to do</p>
 <div class="math notranslate nohighlight">
 \[
@@ -815,7 +815,8 @@ P_{10} = -i \frac{\delta}{\hbar} \frac{\sin(\Delta \omega t/2)}{\Delta \omega } 
 <p>Hopefully just printing to pdf creates a nice version of your document to submit.</p>
 <p>If that is not the case, here is a robust albeit somewhat complicated solution that has worked in previous years:</p>
 <p>Insert this snippet at the bottom of your notebook</p>
-<p><code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">google.colab</span> <span class="pre">import</span> <span class="pre">drive</span> <span class="pre">drive.mount('/content/drive')</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">google.colab</span> <span class="pre">import</span> <span class="pre">drive</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">drive.mount('/content/drive')</span></code></p>
 <p>Refresh your files tab (the folder icon on the left panel of the screen)</p>
 <p>Paste this code at the end of your notebook, with the appropriate path</p>
 <p><code class="docutils literal notranslate"><span class="pre">!jupyter</span> <span class="pre">nbconvert</span> <span class="pre">--to</span> <span class="pre">html</span> <span class="pre">&quot;/content/drive/MyDrive/PathToAssignment/AssignmentName.ipynb&quot;</span></code></p>
@@ -882,7 +883,7 @@ Print this generated html file to a pdf file and submit it to canvas.</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-time-dependence-in-the-schrodinger-picture">Exercise 1.  Time Dependence in the Schrodinger Picture</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-the-hamiltonian">a. The Hamiltonian</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-time-evolution">b. Time Evolution</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-the-interaction-picture">b.  The Interaction Picture</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-the-interaction-picture">c.  The Interaction Picture</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-time-evolving-in-the-interaction-picture">Exercise 2. Time evolving in the Interaction Picture</a><ul class="nav section-nav flex-column">
