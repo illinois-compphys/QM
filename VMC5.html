@@ -1,0 +1,1116 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Variational Monte Carlo &#8212; Computation in Quantum Mechanics  (for Phys486)# The title of the book. Will be placed in the left navbar.</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'VMC5';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Rabi Oscillations" href="RabiOscillations.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Computation in Quantum Mechanics  (for Phys486)# The title of the book. Will be placed in the left navbar. - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Computation in Quantum Mechanics  (for Phys486)# The title of the book. Will be placed in the left navbar. - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Quantum Mechanics
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="ParticleInABox.html">Particle in a Box</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ParticleInAFiniteWell.html">Particle with a Finite Potential</a></li>
+<li class="toctree-l1"><a class="reference internal" href="HarmonicOscillator.html">Harmonic Oscillator and the Uncertainty Principle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Hydrogen.html">Hydrogen Atom</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PerturbationTheory.html">Perturbation Theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RabiOscillations.html">Rabi Oscillations</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Variational Monte Carlo</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/illinois-compphys/QM/blob/main/quantum_mechanics/VMC5.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/VMC5.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Variational Monte Carlo</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-dihydrogen-cation">Exercise 1. Dihydrogen cation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-a-variational-wave-function-attempt-1">a.  A variational wave-function: attempt 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-evaluating-the-energy">b. Evaluating the energy</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-computing-the-energy">c. Computing the energy</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-optimizing-the-energy">d. Optimizing the energy</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-variational-monte-carlo">Exercise 2. Variational Monte Carlo</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-variational-monte-carlo">a. Variational Monte Carlo</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-energy-as-a-function-of-alpha">b.  Energy as a function of <span class="math notranslate nohighlight">\(\alpha\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-a-problematic-wave-function">c.  A problematic wave-function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-a-jastrow">d. A Jastrow</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#e-using-our-jastrow">e. Using our Jastrow</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#f-getting-the-energy-again">f.  Getting the energy again</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#g-bonding">g.  Bonding</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-hydrogen-molecule">Exercise 3. Hydrogen Molecule</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-modify-the-jastrow">a. Modify the Jastrow</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-modify-your-local-energy">b.  Modify your local energy</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-do-a-monte-carlo">c. Do a Monte Carlo</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-get-the-best-alpha-beta-at-this-bond-length">d. Get the best <span class="math notranslate nohighlight">\(\alpha, \beta\)</span> at this bond length</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#e-bonding">e.  Bonding</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="variational-monte-carlo">
+<h1>Variational Monte Carlo<a class="headerlink" href="#variational-monte-carlo" title="Link to this heading">#</a></h1>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input above-output-prompt docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span> 
+<span class="kn">import</span><span class="w"> </span><span class="nn">pylab</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">qutip</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">scipy</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">scipy.linalg</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.animation</span><span class="w"> </span><span class="kn">import</span> <span class="n">FuncAnimation</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">HTML</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.animation</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">animation</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">NamedTuple</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.integrate</span><span class="w"> </span><span class="kn">import</span> <span class="n">tplquad</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">numba</span><span class="w"> </span><span class="kn">import</span> <span class="n">njit</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">resetMe</span><span class="p">(</span><span class="n">keepList</span><span class="o">=</span><span class="p">[]):</span>
+    <span class="n">ll</span><span class="o">=%</span><span class="k">who_ls</span>
+    <span class="n">keepList</span><span class="o">=</span><span class="n">keepList</span><span class="o">+</span><span class="p">[</span><span class="s1">&#39;FuncAnimation&#39;</span><span class="p">,</span><span class="s1">&#39;HTML&#39;</span><span class="p">,</span><span class="s1">&#39;resetMe&#39;</span><span class="p">,</span><span class="s1">&#39;scipy&#39;</span><span class="p">,</span><span class="s1">&#39;np&#39;</span><span class="p">,</span><span class="s1">&#39;plt&#39;</span><span class="p">,</span><span class="s1">&#39;math&#39;</span><span class="p">,</span><span class="s1">&#39;jax&#39;</span><span class="p">,</span><span class="s1">&#39;jnp&#39;</span><span class="p">,</span><span class="s1">&#39;jit&#39;</span><span class="p">,</span><span class="s1">&#39;grad&#39;</span><span class="p">,</span><span class="s1">&#39;HTML&#39;</span><span class="p">,</span><span class="s1">&#39;animation&#39;</span><span class="p">,</span><span class="s1">&#39;qutip&#39;</span><span class="p">,</span><span class="s1">&#39;animation&#39;</span><span class="p">,</span><span class="s1">&#39;FuncAnimation&#39;</span><span class="p">,</span><span class="s1">&#39;NamedTuple&#39;</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">iiii</span> <span class="ow">in</span> <span class="n">keepList</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">iiii</span> <span class="ow">in</span> <span class="n">ll</span><span class="p">:</span>
+            <span class="n">ll</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">iiii</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">iiii</span> <span class="ow">in</span> <span class="n">ll</span><span class="p">:</span>
+        <span class="n">jjjj</span><span class="o">=</span><span class="s2">&quot;^&quot;</span><span class="o">+</span><span class="n">iiii</span><span class="o">+</span><span class="s2">&quot;$&quot;</span>
+        <span class="o">%</span><span class="k">reset_selective</span> -f {jjjj}  
+    <span class="n">ll</span><span class="o">=%</span><span class="k">who_ls</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s2">&quot;font.size&quot;</span><span class="p">:</span> <span class="mi">14</span><span class="p">})</span>
+    <span class="k">return</span>
+<span class="c1">#resetMe()</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">datetime</span><span class="p">;</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">functools</span><span class="w"> </span><span class="kn">import</span> <span class="n">partial</span>
+<span class="c1">#import jax as jnp</span>
+</pre></div>
+</div>
+</div>
+<details class="hide below-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell output</span>
+<span class="expanded">Hide code cell output</span>
+</summary>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span> 
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span><span class="w"> </span><span class="nn">pylab</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="kn">import</span><span class="w"> </span><span class="nn">qutip</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">import</span><span class="w"> </span><span class="nn">scipy</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">import</span><span class="w"> </span><span class="nn">scipy.linalg</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;qutip&#39;
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<p>Our goal in this assignment is to understand molecules and bidning.</p>
+<section id="exercise-1-dihydrogen-cation">
+<h2>Exercise 1. Dihydrogen cation<a class="headerlink" href="#exercise-1-dihydrogen-cation" title="Link to this heading">#</a></h2>
+<p>We are going to start by looking at the Hydrogen H2 molecule but with only one electron - i.e. the dihydrogen cation.  In exercise 3, we will work our way up to standard H2 with two electrons.</p>
+<section id="a-a-variational-wave-function-attempt-1">
+<h3>a.  A variational wave-function: attempt 1<a class="headerlink" href="#a-a-variational-wave-function-attempt-1" title="Link to this heading">#</a></h3>
+<p>In this assignment, we will allow our molecule be centered at the origin with protons at <span class="math notranslate nohighlight">\(\pm L/2 \hat{x}\)</span>  We will start by working with <span class="math notranslate nohighlight">\(L=2\)</span> Bohr radii.</p>
+<p>We now must decide on a variational wave-function.  A reasonable first guess is to assume the electron is spending time in between the two protons - i.e. centered at zero with some spread around it.</p>
+<p>We will begin by using</p>
+<div class="math notranslate nohighlight">
+\[
+\Psi(r_1;\alpha) = \exp[-\alpha(|r_1|^2 )] 
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\alpha\)</span> is a variational parameter.  To store this parameter, we will define a named tuple</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">WavefunctionParams</span><span class="p">(</span><span class="n">NamedTuple</span><span class="p">):</span>
+<span class="w">  </span><span class="sd">&quot;&quot;&quot;Wavefunction Parameters&quot;&quot;&quot;</span>
+  <span class="n">alpha</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.5</span>
+  <span class="n">beta</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="n">params</span><span class="o">=</span><span class="n">WavefunctionParams</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>which can then be accessed by <code class="docutils literal notranslate"><span class="pre">params.alpha</span></code>.  (<code class="docutils literal notranslate"><span class="pre">beta</span></code> will be used later - just ignore it for now)</p>
+<p>Now write a function <code class="docutils literal notranslate"><span class="pre">Psi(e_pos,p_pos,params)</span></code> which takes the electron position, proton positions, and wave-function parameters and returns the wave-function amplitude.  Note that our current wave-function just ignores the proton positions.</p>
+<p>Because the hydrogen atoms are lined up on the x-axis, plot the wave-function as a function of <span class="math notranslate nohighlight">\(x\)</span> - i.e.  <code class="docutils literal notranslate"><span class="pre">xs=np.linspace(-2.1*L/2,2.1*L/2)</span></code>.</p>
+ <div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (end)"></img><br></div><div class="cell tag_answer-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+ <div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div></section>
+<section id="b-evaluating-the-energy">
+<h3>b. Evaluating the energy<a class="headerlink" href="#b-evaluating-the-energy" title="Link to this heading">#</a></h3>
+<p>To use the variational principle, we should compute the energy of the wave-function:</p>
+<div class="math notranslate nohighlight">
+\[
+E = \frac{\int \Psi^*(R) [H\Psi](R) dx dy dz }{\int \Psi^*(R) \Psi(R) dR }
+\]</div>
+<p>where $R=(x,y,z)
+which we will rewrite as</p>
+<div class="math notranslate nohighlight">
+\[
+E = \frac{\int |\Psi(R)|^2 \frac{[H\Psi](R)}{\Psi(R)} dx  }{\int |\Psi(R)|^2 dx} \equiv  \frac{\int |\Psi(R)|^2 E_L(R)}{\int |\Psi(x)|^2 dx}
+\]</div>
+<p>where the local energy
+$<span class="math notranslate nohighlight">\(
+E_L(R) = \frac{[H\Psi](R)}{\Psi(R)} = \frac{[-\nabla^2 \Psi /2+ V \Psi](R) }{\Psi(R)}
+\)</span>$</p>
+<p>where we are using the Hamiltonian</p>
+<div class="math notranslate nohighlight">
+\[
+H = -\sum_i \frac{1}{2} \nabla_i^2 + V(R)
+\]</div>
+<p>Let us start by writing a function <code class="docutils literal notranslate"><span class="pre">Laplacian(e_pos,p_pos,params,Psi</span> <span class="pre">,delta=1e-5)</span></code> which takes the wave-function <code class="docutils literal notranslate"><span class="pre">Psi</span></code> and gives back the laplacian</p>
+<div class="math notranslate nohighlight">
+\[
+\nabla^2 \Psi = \frac{\partial^2}{\partial x^2}+ \frac{\partial^2}{\partial y^2}+ \frac{\partial^2}{\partial z^2}
+\]</div>
+<p>You can do this using the stanadard finite difference stencil for the Laplacian</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial^2 F}{\partial x^2} \approx \frac{F(x+\delta) +F(x-\delta) -2F(x)}{\delta^2} 
+ \]</div>
+<p>You can test your Laplacian by doing</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">L</span><span class="o">=</span><span class="mf">2.0</span>
+<span class="n">p_pos</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="n">L</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="n">L</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]])</span>
+<span class="n">params</span><span class="o">=</span><span class="n">WavefunctionParams</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">e_pos</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">1.2</span><span class="p">,</span><span class="mf">0.3</span><span class="p">,</span><span class="o">-</span><span class="mf">0.4</span><span class="p">]])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Laplacian</span><span class="p">(</span><span class="n">e_pos</span><span class="p">,</span> <span class="n">p_pos</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">Psi</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>and should get <code class="docutils literal notranslate"><span class="pre">-0.23846646879377426</span></code></p>
+ <div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (end)"></img><br></div><div class="cell tag_answer-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+ <div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div><p>The next step is to get the potential piece of the energy</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{V\Psi}{\Psi} = V(R) = -\sum_{Ie} \frac{1}{r_{Ie}} + \sum_{ee} \frac{1}{r_{ee}} + \sum_{II} \frac{1}{r_{II}}
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(I\)</span> is the ion location and <span class="math notranslate nohighlight">\(e\)</span> is the electron location.</p>
+<p>For the dihydrogen cation there is no electron-electron term and so we can ignore that.</p>
+<p>Write a function <code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">VPsiOverPsi(e_pos,p_pos)</span></code> which returns this energy.
+Again, you can test this by evaluating</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">p_pos</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="n">L</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="n">L</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]])</span>
+<span class="n">params</span><span class="o">=</span><span class="n">WavefunctionParams</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">e_pos</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">1.2</span><span class="p">,</span><span class="mf">0.3</span><span class="p">,</span><span class="o">-</span><span class="mf">0.4</span><span class="p">]])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">VPsiOverPsi</span><span class="p">(</span><span class="n">e_pos</span><span class="p">,</span> <span class="n">p_pos</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>and you should get
+<code class="docutils literal notranslate"><span class="pre">-1.8001955889484549</span></code></p>
+ <div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (end)"></img><br></div><div class="cell tag_answer-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+ <div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div><p>Finally, put it all together into a single function <code class="docutils literal notranslate"><span class="pre">LocalEnergy(e_pos,</span> <span class="pre">p_pos,</span> <span class="pre">params,Psi)</span></code> which computes the local energy. Make sure you remember the <span class="math notranslate nohighlight">\(-1/2\)</span>.</p>
+ <div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (end)"></img><br></div><div class="cell tag_answer-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+ <div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div></section>
+<section id="c-computing-the-energy">
+<h3>c. Computing the energy<a class="headerlink" href="#c-computing-the-energy" title="Link to this heading">#</a></h3>
+<p>Now that we have the wave-function <code class="docutils literal notranslate"><span class="pre">Psi</span></code> and the local energy <code class="docutils literal notranslate"><span class="pre">LocalEnergy</span></code> we should be able to compute the local energy by doing the two integrals</p>
+<div class="math notranslate nohighlight">
+\[
+N = \int |\Psi(x,y,z)|^2 E_L(x,y,z) dx dy dz
+\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[
+D = \int |\Psi(x,y,z)|^2 dx dy dz
+\]</div>
+<p>These are both three-dimensional integrals and so it’s possible to still compute them reasonably using a deterministic approach on a grid.   Later on in this assignment, we will have to switch to a Monte Carlo approach.  To compute an integral, we need to (for each integral)  to use the <code class="docutils literal notranslate"><span class="pre">integrate</span></code> function below and implement an approprite <code class="docutils literal notranslate"><span class="pre">integrand</span></code> function (using the spherical coordinates Jacobian that we’ve started you with)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">integrand</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">theta</span><span class="p">,</span> <span class="n">phi</span><span class="p">,</span> <span class="n">p_pos</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculate the integrand for the expectation value in spherical coordinates.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">r</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">r</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span>
+    <span class="n">z</span> <span class="o">=</span> <span class="n">r</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>
+    <span class="n">e_pos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">]])</span>
+    <span class="n">jacobian</span> <span class="o">=</span> <span class="n">r</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>
+    <span class="c1">### compute the other pieces of the integrand </span>
+    <span class="k">return</span> <span class="n">jacobian</span> <span class="o">*</span> <span class="n">rest</span> <span class="n">of</span> <span class="n">integrand</span><span class="o">.</span> 
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">integrate</span><span class="p">(</span><span class="n">p_pos</span><span class="p">,</span><span class="n">params</span><span class="p">,</span><span class="n">limit_r</span><span class="p">,</span><span class="n">integrand</span><span class="p">):</span>
+    <span class="n">integration_result</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">tplquad</span><span class="p">(</span>
+        <span class="n">integrand</span><span class="p">,</span>
+        <span class="mi">0</span><span class="p">,</span> <span class="n">limit_r</span><span class="p">,</span>      <span class="c1"># Limits for r</span>
+        <span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span>         <span class="c1"># Limits for theta</span>
+        <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span>    <span class="c1"># Limits for ph, </span>
+        <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">p_pos</span><span class="p">,</span> <span class="n">params</span><span class="p">,),</span><span class="n">epsabs</span><span class="o">=</span><span class="mf">1.49e-01</span><span class="p">,</span> <span class="n">epsrel</span><span class="o">=</span><span class="mf">1.49e-01</span>
+    <span class="p">)</span>
+    <span class="k">return</span> <span class="n">integration_result</span>
+
+<span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span>
+<span class="n">L</span> <span class="o">=</span> <span class="mf">2.0</span>
+<span class="n">p_pos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="n">L</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="n">L</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]])</span>
+<span class="n">limit_r</span><span class="o">=</span><span class="mf">50.0</span>
+<span class="n">params</span><span class="o">=</span><span class="n">WavefunctionParams</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">)</span>
+<span class="n">N</span><span class="o">=</span><span class="n">integrate_spherical</span><span class="p">(</span><span class="n">p_pos</span><span class="p">,</span><span class="n">params</span><span class="p">,</span><span class="n">limit_r</span><span class="p">,</span><span class="n">integrand_energy_spherical</span><span class="p">)</span>
+<span class="n">D</span><span class="o">=</span><span class="n">integrate_spherical</span><span class="p">(</span><span class="n">p_pos</span><span class="p">,</span><span class="n">params</span><span class="p">,</span><span class="n">limit_r</span><span class="p">,</span><span class="n">integrand_norm_spherical</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">N</span><span class="o">/</span><span class="n">D</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Using <span class="math notranslate nohighlight">\(\alpha=0.5\)</span> and a sphere of <span class="math notranslate nohighlight">\(L=50\)</span> compute the energy.  I get <code class="docutils literal notranslate"><span class="pre">-0.4316921028050629</span></code>.</p>
+ <div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (end)"></img><br></div><div class="cell tag_answer-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+ <div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div></section>
+<section id="d-optimizing-the-energy">
+<h3>d. Optimizing the energy<a class="headerlink" href="#d-optimizing-the-energy" title="Link to this heading">#</a></h3>
+<p>Now, let’s do this again looping over all  <code class="docutils literal notranslate"><span class="pre">alpha=np.linspace(0.1,0.5,20)</span></code>. To have it run at some reasonable rate, turn down <span class="math notranslate nohighlight">\(r_limit=10\)</span>.   We are looking for the variational parameter that makes this wave-function the smallest.  Plot energy vs. <span class="math notranslate nohighlight">\(\alpha\)</span>. Fit a parobola to the function somewhere near the minima and predict what the best <span class="math notranslate nohighlight">\(\alpha\)</span> is.  Compute the energy again with this <span class="math notranslate nohighlight">\(\alpha\)</span> to get the lowest energy giving the variational space of this wave-function.</p>
+ <div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (end)"></img><br></div><div class="cell tag_answer-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_answer-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+ <div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div><p>Finally plot out the wave-function on the x-axis (in the direction of the two protons).</p>
+ <div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (end)"></img><br></div><div class="cell tag_answer-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+ <div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div></section>
+</section>
+<section id="exercise-2-variational-monte-carlo">
+<h2>Exercise 2. Variational Monte Carlo<a class="headerlink" href="#exercise-2-variational-monte-carlo" title="Link to this heading">#</a></h2>
+<section id="a-variational-monte-carlo">
+<h3>a. Variational Monte Carlo<a class="headerlink" href="#a-variational-monte-carlo" title="Link to this heading">#</a></h3>
+<p>So far we’ve evaluated our wave-function using quadrature.  This works “ok” when you have one electron because you can afford to make a three-dimensional grid.  Eventually, though, we will need to transition to Monte Carlo to evaluate our wave-functions;  for example, to do the Hydrogen molecule with two electrons (as it would typically have), then we would need to do a six-dimensional integration.</p>
+<p>In this exercise we will still work with the dihydrogen cation but switch over to variational Monte Carlo and make sure that we get the same energy.</p>
+<p>The steps of variational Monte Carlo:</p>
+<ul class="simple">
+<li><p>For many sweeps:</p>
+<ul>
+<li><p>For 10 steps per sweep:</p>
+<ul>
+<li><p>Evaluate the old wavefunction amplitude <code class="docutils literal notranslate"><span class="pre">wf_old=Psi(e_pos,p_pos,params)</span></code></p></li>
+<li><p>Change the location of the electron by a random gaussian <code class="docutils literal notranslate"><span class="pre">np.random.randn(3)*1.0</span></code></p></li>
+<li><p>Evaluate the new wavefunction amplitude <code class="docutils literal notranslate"><span class="pre">wf_new=Psi(e_pos,p_pos,params)</span></code> at this new position</p></li>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">(wf_new/wf_old)^2</span></code> is greater then a random number selected between 0 and 1 (<code class="docutils literal notranslate"><span class="pre">np.random.rand()</span></code>) keep the new positions.  Otherwise revert to the old positions.</p></li>
+</ul>
+</li>
+<li><p>Add the current local energy to a list</p></li>
+</ul>
+</li>
+</ul>
+<p>Once this is done you can average the local energy list (ignoring the first few entries where the Monte Carlo was still equilibrating).    Write a function <code class="docutils literal notranslate"><span class="pre">MonteCarlo(p_pos,params,Psi,sweeps)</span></code> which performs this Variational Monte Carlo and returns the energies and acceptance ratios.</p>
+<p>Let’s try this for our wave-function at <span class="math notranslate nohighlight">\(\alpha=0.5\)</span> and run for 10,000 sweeps. You can compute an error bar by doing <code class="docutils literal notranslate"><span class="pre">error_energy=np.std(energies[l:])/np.sqrt(len(energies[l:]))</span></code> where <code class="docutils literal notranslate"><span class="pre">l</span></code> is a number selected to ignore the first few sweeps. Check that you are within 1-2 error bars of the value you computed above in exercise 1.</p>
+<p>Also plot the energy as a function of sweeps and plot a histogram of the energies.  You should notice that it is very spikey and the histogram has a wide range of values.</p>
+ <div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (end)"></img><br></div><div class="cell tag_answer-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+ <div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div></section>
+<section id="b-energy-as-a-function-of-alpha">
+<h3>b.  Energy as a function of <span class="math notranslate nohighlight">\(\alpha\)</span><a class="headerlink" href="#b-energy-as-a-function-of-alpha" title="Link to this heading">#</a></h3>
+<p>Now go ahead and produce the energy as a function of <span class="math notranslate nohighlight">\(\alpha\)</span> for <code class="docutils literal notranslate"><span class="pre">alphas=np.linspace(0.01,0.5,20)</span></code>.  You should get something similar to above but you should have more accurate energies (assuming you were using <code class="docutils literal notranslate"><span class="pre">r_limit=10</span></code> above).  There will be error bars on your results thought.</p>
+ <div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (end)"></img><br></div><div class="cell tag_answer-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_answer-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+ <div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div></section>
+<section id="c-a-problematic-wave-function">
+<h3>c.  A problematic wave-function<a class="headerlink" href="#c-a-problematic-wave-function" title="Link to this heading">#</a></h3>
+<p>Although we are getting reasonable results with our wave-function there is something that is qualitatively problematic about it. You might notice that our local energy has a lot of very large spikes (and the histogram has some pretty extreme values).  This is a sign that the wave-function isn’t very good.  Let’s try to understand what’s going on focusing on <span class="math notranslate nohighlight">\(\alpha=0.5\)</span>.</p>
+<p>Consider the pieces of our integrands</p>
+<div class="math notranslate nohighlight">
+\[
+\tilde{T}=\int r^2 |\Psi(r)|^2  \frac{\nabla^2 \Psi(r)}{\Psi(r) }
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\tilde{V}=\int r^2 |\Psi(r)|^2 V(r) 
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\int r^2 |\Psi(r)|^2 E_L(r)  = \tilde{T} + \tilde{V}
+\]</div>
+<p>and plot them function of <code class="docutils literal notranslate"><span class="pre">xs=np.linspace(-2,2,100)</span></code> with <span class="math notranslate nohighlight">\(y=z=0\)</span> all on the same plot.</p>
+<p>In addition, plot just
+$<span class="math notranslate nohighlight">\(
+\int r^2 |\Psi(r)|^2 
+\)</span>$</p>
+<p>What you should notice is that the local energy diverges at the proton locations because the potential energy gets very negative and the kinetic energy doesn’t compensate.  Both the large potential energy and the lack of compensating kinetic energy are coming because the probability of the electron being near the protons is non-trivial due to the flat wave-function near the proton locations.</p>
+ <div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (end)"></img><br></div><div class="cell tag_answer-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+ <div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div></section>
+<section id="d-a-jastrow">
+<h3>d. A Jastrow<a class="headerlink" href="#d-a-jastrow" title="Link to this heading">#</a></h3>
+<p>In order to fix this broken wave-function we should add a term to it which keeps the electron and proton away from each other.  In fact, we can analytically calculate what the correct term should be in the limit where the electron-proton distance is small.</p>
+<p>We can add a Jastrow factor</p>
+<div class="math notranslate nohighlight">
+\[
+\Psi_{new}(r;\alpha,\beta)=\Psi_{old}(r;\alpha)\exp[J_{ep}(r;\beta)] 
+\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[
+J_{ep}=-\frac{a_{ep}|r_i-I_j|} {1+b_{ep}|r_i-I_j|} 
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(a_{ep}=1\)</span> are chosen to satisfy the electron-proton cusp conditions, respectively.</p>
+<p>The parameter <span class="math notranslate nohighlight">\(\beta\)</span> gives additional freedom through the relations,</p>
+<div class="math notranslate nohighlight">
+\[
+b_{ep} = \left( \frac{a_{ep}}{\beta}\right)^{1/2} 
+\]</div>
+<p>Implement this Jastrow function and again plot the integrand terms above (including a third separate plot which just shows the local energy). What do you notice that’s different?</p>
+ <div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (end)"></img><br></div><div class="cell tag_answer-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+ <div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div></section>
+<section id="e-using-our-jastrow">
+<h3>e. Using our Jastrow<a class="headerlink" href="#e-using-our-jastrow" title="Link to this heading">#</a></h3>
+<p>Now we are going to go ahead and use our Jastrow factor.  Again, compute the value of our wavefunction with parameters <span class="math notranslate nohighlight">\(\alpha=0.5\)</span> and <span class="math notranslate nohighlight">\(\beta=0.1\)</span>  Plot he local energy as a function of Monte Carlo step and the histogram.  What do you notice now that is different from the earlier plots without the Jastrow?</p>
+ <div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (end)"></img><br></div><div class="cell tag_answer-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+ <div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div></section>
+<section id="f-getting-the-energy-again">
+<h3>f.  Getting the energy again<a class="headerlink" href="#f-getting-the-energy-again" title="Link to this heading">#</a></h3>
+<p>Now we want to find the best energy again for this phase point.  We now have to search over the variational parameters <span class="math notranslate nohighlight">\(\alpha\)</span> and <span class="math notranslate nohighlight">\(\beta\)</span>.  Using <code class="docutils literal notranslate"><span class="pre">alphas=np.linspace(0.01,0.5,20)</span></code> and <code class="docutils literal notranslate"><span class="pre">betas=np.linspace(0.1,10.0,20)</span></code> search over the relevant space.  For every <code class="docutils literal notranslate"><span class="pre">beta</span></code> plot a line which should be energy versus <code class="docutils literal notranslate"><span class="pre">alpha</span></code>.  Also, store the energies in such a way that you can report the minimum over all the energies that you see (this is a little bit incorrect to do because of statistical fluctuations - don’t do it exactly this way for a research project).  I am using 1000 sweeps per simulation.  The exact answer (see wikipedia) is -0.597.  You should find that you get something close.</p>
+<p>I am labelling each of my lines with <code class="docutils literal notranslate"><span class="pre">plt.plot(alphas,energies[alpha],label='beta='+str(beta))</span></code> and then pushing the legend outside of the box area with  <code class="docutils literal notranslate"><span class="pre">plt.legend(bbox_to_anchor=(1.05,</span> <span class="pre">1),</span> <span class="pre">loc='upper</span> <span class="pre">left')</span></code></p>
+<p>Finally take the final wave-function and plot it as a function of <span class="math notranslate nohighlight">\(x\)</span></p>
+ <div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (end)"></img><br></div><div class="cell tag_answer-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_answer-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_answer-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+ <div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div></section>
+<section id="g-bonding">
+<h3>g.  Bonding<a class="headerlink" href="#g-bonding" title="Link to this heading">#</a></h3>
+<p>All of this work was to get the energy of the proton at a single bond-length. Now we would like to stretch (and compress) the bond and also get the energies. If there is a local minima at these lengths (and the energy at large separation is larger then this local minima), then we would expect that the molecule should bind.</p>
+<p>Go ahead and compute for <code class="docutils literal notranslate"><span class="pre">L=[1.0,2.0,3.0]</span></code> the minima energy (optimizing for each one over all <span class="math notranslate nohighlight">\(\alpha\)</span> and <span class="math notranslate nohighlight">\(\beta\)</span>) You already have the <span class="math notranslate nohighlight">\(L=2\)</span> point.  Plot this as a function of L and see if you get a local minima that would suggest bonding.  You will probably find it useful to encapsulate the previous exercise into a function.</p>
+<p>You can compare it against the exact energy with</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cation</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s2">&quot;data&quot;</span><span class="p">,</span><span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">cation</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span><span class="n">cation</span><span class="p">[:,</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>You may notice that as you begin to stretch the molecule, things start to fall apart.  Why is that?</p>
+ <div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (end)"></img><br></div><div class="cell tag_answer-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+ <div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div></section>
+</section>
+<section id="exercise-3-hydrogen-molecule">
+<h2>Exercise 3. Hydrogen Molecule<a class="headerlink" href="#exercise-3-hydrogen-molecule" title="Link to this heading">#</a></h2>
+<p>Now that we’ve made some good progress with one electron, let’s go ahead and modify things to work with the Hydrogen molecule and two electrons - a single spin-up and spin-down.</p>
+<p>Things we have to change:</p>
+<ul class="simple">
+<li><p>Add an additional electron-electron Jastrow term</p></li>
+<li><p>Make sure your functions work with two electrons - pay special attention that your Variatonal Monte Carlo is choosing 6 (not 3) random numbers to add.</p></li>
+</ul>
+<p>Everything else should be essentially the same.</p>
+<section id="a-modify-the-jastrow">
+<h3>a. Modify the Jastrow<a class="headerlink" href="#a-modify-the-jastrow" title="Link to this heading">#</a></h3>
+<p>We now need a Jastrow factor for electrons as well:</p>
+<div class="math notranslate nohighlight">
+\[
+\Psi_{new}(r_1,r_2;\alpha,\beta)=\Psi_{old}(r_1,r_2;\alpha,\beta )\exp[J_{ee}(r_1,r_2;\beta)]
+\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[
+J_{ee}=\frac{a_{ee}|r_1-r_2|} {1+b_{ee}|r_1-r_2|} 
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(a_{ee}=1/2\)</span> ,</p>
+<p>The parameter <span class="math notranslate nohighlight">\(\beta\)</span> gives additional freedom through the relations,</p>
+<div class="math notranslate nohighlight">
+\[
+b_{ee} = \left( \frac{a_{ee}}{\beta} \right)^{1/2}
+\]</div>
+<p>In addition, make sure your other Jastrow works for two electrons as does your wavefunction -  i.e. there should now be a term that goes as <span class="math notranslate nohighlight">\(\exp[-\alpha (r_1^2 + r_2^2)\)</span>]</p>
+<p>You can check it by making sure that</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">L</span><span class="o">=</span><span class="mf">2.0</span>
+<span class="n">p_pos</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="n">L</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="n">L</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]])</span>
+<span class="n">e_pos</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.3</span><span class="p">,</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">2.1</span><span class="p">],[</span><span class="mf">1.2</span><span class="p">,</span><span class="o">-</span><span class="mf">0.2</span><span class="p">,</span><span class="mf">1.1</span><span class="p">]])</span>
+<span class="n">params</span><span class="o">=</span><span class="n">WavefunctionParams</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span><span class="n">beta</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Psi</span><span class="p">(</span><span class="n">e_pos</span><span class="p">,</span><span class="n">p_pos</span><span class="p">,</span><span class="n">params</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>gives you 0.007040289115058886</p>
+ <div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (end)"></img><br></div><div class="cell tag_answer-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+ <div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div></section>
+<section id="b-modify-your-local-energy">
+<h3>b.  Modify your local energy<a class="headerlink" href="#b-modify-your-local-energy" title="Link to this heading">#</a></h3>
+<p>Make the modifications to the Laplacian and the potential so it correctly computes the actual energy of your system. Make sure you use two particles in your laplacian and your potential energy including the electron-electron interaction now.</p>
+<p>You can check it by doing</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">L</span><span class="o">=</span><span class="mf">2.0</span>
+<span class="n">p_pos</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="n">L</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="n">L</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]])</span>
+<span class="n">e_pos</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.3</span><span class="p">,</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">2.1</span><span class="p">],[</span><span class="mf">1.2</span><span class="p">,</span><span class="o">-</span><span class="mf">0.2</span><span class="p">,</span><span class="mf">1.1</span><span class="p">]])</span>
+<span class="n">params</span><span class="o">=</span><span class="n">WavefunctionParams</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span><span class="n">beta</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Laplacian</span><span class="p">(</span><span class="n">e_pos</span><span class="p">,</span> <span class="n">p_pos</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">Psi</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">VPsiOverPsi</span><span class="p">(</span><span class="n">e_pos</span><span class="p">,</span> <span class="n">p_pos</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">LocalEnergy</span><span class="p">(</span><span class="n">e_pos</span><span class="p">,</span> <span class="n">p_pos</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">Psi</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>and get</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mf">0.012657175654795516</span>
+<span class="o">-</span><span class="mf">0.8976856497576701</span>
+<span class="o">-</span><span class="mf">1.7965958683538314</span>
+</pre></div>
+</div>
+ <div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (end)"></img><br></div><div class="cell tag_answer-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+ <div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div></section>
+<section id="c-do-a-monte-carlo">
+<h3>c. Do a Monte Carlo<a class="headerlink" href="#c-do-a-monte-carlo" title="Link to this heading">#</a></h3>
+<p>Modify your Monte Carlo to make sure it’s moving two electrons  Run your Monte Carlo on</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">L</span><span class="o">=</span><span class="mf">2.0</span>
+<span class="n">p_pos</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="n">L</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="n">L</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]])</span>
+<span class="n">e_pos</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.3</span><span class="p">,</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">2.1</span><span class="p">],[</span><span class="mf">1.2</span><span class="p">,</span><span class="o">-</span><span class="mf">0.2</span><span class="p">,</span><span class="mf">1.1</span><span class="p">]])</span>
+<span class="n">params</span><span class="o">=</span><span class="n">WavefunctionParams</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span><span class="n">beta</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>and make sure that you get something within error bars of</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="mf">0.34209397913287004</span>  <span class="o">+/-</span> <span class="mf">0.019897206346676632</span>
+</pre></div>
+</div>
+ <div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (end)"></img><br></div><div class="cell tag_answer-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+ <div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div></section>
+<section id="d-get-the-best-alpha-beta-at-this-bond-length">
+<h3>d. Get the best <span class="math notranslate nohighlight">\(\alpha, \beta\)</span> at this bond length<a class="headerlink" href="#d-get-the-best-alpha-beta-at-this-bond-length" title="Link to this heading">#</a></h3>
+<p>Using <code class="docutils literal notranslate"><span class="pre">betas=np.linspace(0.1,10.0,20)</span></code> and <code class="docutils literal notranslate"><span class="pre">alphas=np.linspace(0.01,0.5,20)</span></code> get the optimal <span class="math notranslate nohighlight">\(\alpha, \beta\)</span> as well as the lowest energy at</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">L</span><span class="o">=</span><span class="mf">2.0</span>
+<span class="n">p_pos</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="n">L</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="n">L</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]])</span>
+</pre></div>
+</div>
+ <div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (end)"></img><br></div><div class="cell tag_answer-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_answer-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_answer-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+ <div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div></section>
+<section id="e-bonding">
+<h3>e.  Bonding<a class="headerlink" href="#e-bonding" title="Link to this heading">#</a></h3>
+<p>Now compute the energy for the lengths <code class="docutils literal notranslate"><span class="pre">Ls=[1.0,1.424,2.0,3.0,4.0,5.0,6.0]</span></code>.  You can compare them with the exact answer</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">data_H2</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s2">&quot;data_H2&quot;</span><span class="p">,</span><span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">data_H2</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span><span class="n">data_H2</span><span class="p">[:,</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>You may notice that you are getting reasonable answers near the equilibrium bond length but getting something that is not reasonable at larger bond stretching.  Why is this and how could you modify your wave-function to do a better job.</p>
+ <div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (end)"></img><br></div><div class="cell tag_answer-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_answer-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_answer-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+ <div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div><p><strong>Acknowledgements:</strong></p>
+<ul class="simple">
+<li><p>Bryan Clark (original)</p></li>
+</ul>
+<p>© Copyright 2025</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="RabiOscillations.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Rabi Oscillations</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-dihydrogen-cation">Exercise 1. Dihydrogen cation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-a-variational-wave-function-attempt-1">a.  A variational wave-function: attempt 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-evaluating-the-energy">b. Evaluating the energy</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-computing-the-energy">c. Computing the energy</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-optimizing-the-energy">d. Optimizing the energy</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-variational-monte-carlo">Exercise 2. Variational Monte Carlo</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-variational-monte-carlo">a. Variational Monte Carlo</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-energy-as-a-function-of-alpha">b.  Energy as a function of <span class="math notranslate nohighlight">\(\alpha\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-a-problematic-wave-function">c.  A problematic wave-function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-a-jastrow">d. A Jastrow</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#e-using-our-jastrow">e. Using our Jastrow</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#f-getting-the-energy-again">f.  Getting the energy again</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#g-bonding">g.  Bonding</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-hydrogen-molecule">Exercise 3. Hydrogen Molecule</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-modify-the-jastrow">a. Modify the Jastrow</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-modify-your-local-energy">b.  Modify your local energy</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-do-a-monte-carlo">c. Do a Monte Carlo</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-get-the-best-alpha-beta-at-this-bond-length">d. Get the best <span class="math notranslate nohighlight">\(\alpha, \beta\)</span> at this bond length</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#e-bonding">e.  Bonding</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Bryan Clark
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

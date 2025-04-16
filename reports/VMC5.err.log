@@ -18,28 +18,44 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-import numpy as np
-from numpy import *
-import matplotlib.pyplot as plt
+import numpy as np 
+import pylab as plt
+import qutip
 import scipy
-import scipy.sparse
-import scipy.sparse.linalg
-import plotly.graph_objects as go
-from scipy.constants import physical_constants
-import scipy.special as sp
-from mpl_toolkits.mplot3d import Axes3D
-import math
+import scipy.linalg
+from matplotlib.animation import FuncAnimation
+from IPython.display import HTML
+import matplotlib.animation as animation
+from typing import NamedTuple
+from scipy.integrate import tplquad
+from numba import njit
+def resetMe(keepList=[]):
+    ll=%who_ls
+    keepList=keepList+['FuncAnimation','HTML','resetMe','scipy','np','plt','math','jax','jnp','jit','grad','HTML','animation','qutip','animation','FuncAnimation','NamedTuple']
+    for iiii in keepList:
+        if iiii in ll:
+            ll.remove(iiii)
+    for iiii in ll:
+        jjjj="^"+iiii+"$"
+        %reset_selective -f {jjjj}  
+    ll=%who_ls
+    plt.rcParams.update({"font.size": 14})
+    return
+#resetMe()
+import datetime;datetime.datetime.now()
+from functools import partial
+#import jax as jnp
 ------------------
 
 
 [31m---------------------------------------------------------------------------[39m
 [31mModuleNotFoundError[39m                       Traceback (most recent call last)
-[36mCell[39m[36m [39m[32mIn[1][39m[32m, line 4[39m
-[32m      2[39m [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01mnumpy[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m *
-[32m      3[39m [38;5;28;01mimport[39;00m[38;5;250m [39m[34;01mmatplotlib[39;00m[34;01m.[39;00m[34;01mpyplot[39;00m[38;5;250m [39m[38;5;28;01mas[39;00m[38;5;250m [39m[34;01mplt[39;00m
-[32m----> [39m[32m4[39m [38;5;28;01mimport[39;00m[38;5;250m [39m[34;01mscipy[39;00m
-[32m      5[39m [38;5;28;01mimport[39;00m[38;5;250m [39m[34;01mscipy[39;00m[34;01m.[39;00m[34;01msparse[39;00m
-[32m      6[39m [38;5;28;01mimport[39;00m[38;5;250m [39m[34;01mscipy[39;00m[34;01m.[39;00m[34;01msparse[39;00m[34;01m.[39;00m[34;01mlinalg[39;00m
+[36mCell[39m[36m [39m[32mIn[1][39m[32m, line 3[39m
+[32m      1[39m [38;5;28;01mimport[39;00m[38;5;250m [39m[34;01mnumpy[39;00m[38;5;250m [39m[38;5;28;01mas[39;00m[38;5;250m [39m[34;01mnp[39;00m 
+[32m      2[39m [38;5;28;01mimport[39;00m[38;5;250m [39m[34;01mpylab[39;00m[38;5;250m [39m[38;5;28;01mas[39;00m[38;5;250m [39m[34;01mplt[39;00m
+[32m----> [39m[32m3[39m [38;5;28;01mimport[39;00m[38;5;250m [39m[34;01mqutip[39;00m
+[32m      4[39m [38;5;28;01mimport[39;00m[38;5;250m [39m[34;01mscipy[39;00m
+[32m      5[39m [38;5;28;01mimport[39;00m[38;5;250m [39m[34;01mscipy[39;00m[34;01m.[39;00m[34;01mlinalg[39;00m
 
-[31mModuleNotFoundError[39m: No module named 'scipy'
+[31mModuleNotFoundError[39m: No module named 'qutip'
 
