@@ -15,7 +15,7 @@ The formalism of quantum mechanics can sometimes look foreboding.  One way to ma
 
 #### Physics 487
 [Perturbation Theory](PerturbationTheory.ipynb) <br>
-[Rabi Oscillations](RabiOscillations.ipynb)
+[Rabi Oscillations](RabiOscillations.ipynb) <br>
 [Variational Monte Carlo](VMC5.ipynb)
 
 
