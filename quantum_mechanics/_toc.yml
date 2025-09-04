@@ -1,13 +1,33 @@
 # Table of contents
 # Learn more at https://jupyterbook.org/customize/toc.html
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
 
 format: jb-book
 root: intro
-chapters:
-- file: ParticleInABox.ipynb
-- file: ParticleInAFiniteWell.ipynb
-- file: HarmonicOscillator.ipynb
-- file: Hydrogen.ipynb
-- file: PerturbationTheory.ipynb
-- file: RabiOscillations.ipynb
-- file: VMC5.ipynb
+
+parts:
+  - caption: "Physics 486"
+    chapters:
+      - file: ParticleInABox.ipynb
+      - file: ParticleInAFiniteWell.ipynb
+      - file: HarmonicOscillator.ipynb
+      - file: Hydrogen.ipynb
+  - caption: "Physics 487"
+    chapters:
+      - file: PerturbationTheory.ipynb
+      - file: RabiOscillations.ipynb
+      - file: VMC5.ipynb
+
+# format: jb-book
+# root: intro
+# parts:
+#   - caption: Physics 486
+#   chapters:
+#     - file: ParticleInABox.ipynb
+#     - file: ParticleInAFiniteWell.ipynb
+#     - file: HarmonicOscillator.ipynb
+#     - file: Hydrogen.ipynb
+#     - file: PerturbationTheory.ipynb
+#     - file: RabiOscillations.ipynb
+#     - file: VMC5.ipynb
