@@ -375,15 +375,17 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-dynamics-above-the-potential-barrier">d.  Dynamics above the potential barrier</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exerices-2-eigenstates-of-finite-barriers">Exerices 2. Eigenstates of Finite Barriers</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-eigenstates-of-finite-barriers">Exercise 2. Eigenstates of Finite Barriers</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-diagonalize">a. Diagonalize</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-effects-of-barrier-height-and-width-on-eigenstates">b. Effects of barrier height and width on eigenstates</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-effects-of-barrier-height-and-width-on-eigenstates-probably-remove">b. Effects of barrier height and width on eigenstates (probably remove)</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-faster-dynamics-and-finite-barriers">Exercise 3. Faster Dynamics and Finite Barriers</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-setting-up-your-new-time-evolution-and-a-test">a. Setting up your new time-evolution and a test</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-time-evolution-of-a-stationary-gaussian">b. Time evolution of a “stationary” gaussian</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-hitting-a-potential-barrier">c. Hitting a potential barrier.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-fast-time-evolution-for-the-finite-well">a. Fast Time evolution for the Finite Well</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-plotting-our-time-evolution">b. Plotting our time-evolution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-animate">c. Animate</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-time-evolution-of-a-stationary-gaussian">d. Time evolution of a “stationary” gaussian</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#e-hitting-a-potential-barrier">e. Hitting a Potential Barrier</a></li>
 </ul>
 </li>
 </ul>
@@ -452,21 +454,30 @@ document.write(`
 </details>
 </div>
 <p>In this assignment, we will consistently use grids and observables that we will set up in this way. This is very similar to how you set things for the particle in the box assignment.  We’ve also updated your animation code to include a skip parameter which will allow you to only show every skip’th frame.  This will make your animation generate much faster (if you choose a big skip).  It can’t be called like</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">skip</span><span class="o">=</span><span class="mi">10</span>
-<span class="n">animation</span> <span class="o">=</span> <span class="n">FuncAnimation</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">update</span><span class="p">,</span> <span class="n">frames</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">arrays</span><span class="p">)</span><span class="o">//</span><span class="n">skip</span><span class="p">,</span> <span class="n">interval</span><span class="o">=</span><span class="mi">10</span><span class="o">*</span><span class="n">skip</span><span class="p">,</span> <span class="n">fargs</span><span class="o">=</span><span class="p">(</span><span class="n">max_value</span><span class="p">,</span><span class="n">skip</span><span class="p">),</span><span class="n">repeat</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">skip</span><span class="o">=</span><span class="mi">10</span>
+<span class="n">max_value</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">array</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="k">for</span> <span class="n">array</span> <span class="ow">in</span> <span class="n">arrays</span><span class="p">[</span><span class="mi">1</span><span class="p">:]])</span>
+<span class="n">animation</span> <span class="o">=</span> <span class="n">FuncAnimation</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">update</span><span class="p">,</span> <span class="n">frames</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">arrays</span><span class="p">)</span><span class="o">//</span><span class="n">skip</span><span class="p">,</span> <span class="n">interval</span><span class="o">=</span><span class="mi">10</span><span class="o">*</span><span class="n">skip</span><span class="p">,</span> <span class="n">fargs</span><span class="o">=</span><span class="p">(</span><span class="n">skip</span><span class="p">,</span><span class="n">xs</span><span class="p">),</span><span class="n">repeat</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="n">animation</span><span class="o">.</span><span class="n">to_jshtml</span><span class="p">()))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
 </div>
 <p><strong>Note: You will modify and improve your animation funtion later in the assignment</strong></p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell content</p>
+<p class="expanded admonition-title">Hide code cell content</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">SetupGrid</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="n">delta_x</span><span class="p">):</span>
-    <span class="n">ns</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">int</span><span class="p">((</span><span class="n">L</span><span class="o">+</span><span class="mi">2</span><span class="o">*</span><span class="n">delta_x</span><span class="p">)</span><span class="o">//</span><span class="n">delta_x</span><span class="p">)))</span>
-    <span class="n">xs</span><span class="o">=</span><span class="n">ns</span><span class="o">*</span><span class="n">delta_x</span><span class="o">-</span><span class="n">L</span><span class="o">/</span><span class="mi">2</span>
+    <span class="n">n</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">L</span><span class="o">/</span><span class="n">delta_x</span><span class="p">))</span><span class="o">+</span><span class="mi">1</span>
+    <span class="n">xs</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="n">L</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="n">L</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="n">n</span><span class="p">,</span><span class="n">endpoint</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">xs</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">SetupObservables</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span><span class="n">delta_x</span><span class="p">):</span>
     <span class="n">X</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
-    <span class="n">P</span><span class="o">=</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">([</span><span class="mf">1.</span><span class="n">j</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">delta_x</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)],</span><span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">([</span><span class="o">-</span><span class="mf">1.</span><span class="n">j</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">delta_x</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)],</span><span class="n">k</span><span class="o">=-</span><span class="mi">1</span><span class="p">))</span>
+    <span class="n">P</span><span class="o">=</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">([</span><span class="o">-</span><span class="mf">1.</span><span class="n">j</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">delta_x</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)],</span><span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">([</span><span class="mf">1.</span><span class="n">j</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">delta_x</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)],</span><span class="n">k</span><span class="o">=-</span><span class="mi">1</span><span class="p">))</span>
 
     <span class="n">P2</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">P</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">xs</span><span class="p">)):</span>
@@ -476,19 +487,19 @@ document.write(`
             <span class="n">P2</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">i</span><span class="p">]</span><span class="o">=-</span><span class="mf">1.0</span><span class="o">/</span><span class="n">delta_x</span><span class="o">**</span><span class="mi">2</span>  
     <span class="k">return</span> <span class="n">X</span><span class="p">,</span><span class="n">P</span><span class="p">,</span><span class="n">P2</span>
 
-
-
-<span class="k">def</span><span class="w"> </span><span class="nf">update</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="n">max_value</span><span class="p">,</span><span class="n">skip</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">update</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="n">skip</span><span class="p">,</span> <span class="n">xs</span><span class="p">,</span> <span class="n">positions</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">potential</span><span class="o">=</span><span class="p">[],</span> <span class="n">max_value</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">energy</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">scale</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">cla</span><span class="p">()</span>  <span class="c1"># Clear the current plot</span>
+    <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">positions</span><span class="p">)</span><span class="o">==</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+        <span class="k">pass</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">arrays</span><span class="p">[::</span><span class="n">skip</span><span class="p">][</span><span class="n">frame</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>  <span class="c1"># Plot the current array</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">arrays</span><span class="p">[::</span><span class="n">skip</span><span class="p">][</span><span class="n">frame</span><span class="p">]</span><span class="nd">@X@arrays</span><span class="p">[::</span><span class="n">skip</span><span class="p">][</span><span class="n">frame</span><span class="p">]</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">conjugate</span><span class="p">())</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">max_value</span><span class="p">)</span>  <span class="c1"># Set the y-axis limit</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.5</span><span class="o">*</span><span class="n">max_value</span><span class="p">)</span>  <span class="c1"># Set the y-axis limit</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Value&#39;</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Frame </span><span class="si">{</span><span class="n">skip</span><span class="o">*</span><span class="n">frame</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s1">/</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">arrays</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>  <span class="c1"># Display the frame number</span>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <section id="exercise-1-particle-in-a-finite-well">
 <h2>Exercise 1. Particle in a Finite Well<a class="headerlink" href="#exercise-1-particle-in-a-finite-well" title="Link to this heading">#</a></h2>
@@ -502,10 +513,15 @@ document.write(`
 <li><p><span class="math notranslate nohighlight">\(10 \leq x \leq 20\)</span> at <span class="math notranslate nohighlight">\(V=0.5\)</span></p></li>
 </ul>
 <p>Generate a discretize <code class="docutils literal notranslate"><span class="pre">xs</span></code> with the same <span class="math notranslate nohighlight">\(\delta x=0.01\)</span> that you used previously - i.e. <code class="docutils literal notranslate"><span class="pre">xs=SetupGrid(L,delta_x)</span></code>
-Also generate a numpy array <code class="docutils literal notranslate"><span class="pre">V</span></code> which has the correct potential at each value of <span class="math notranslate nohighlight">\(x\)</span>.  Verify this all looks correct by plotting <span class="math notranslate nohighlight">\(V\)</span> vs. <span class="math notranslate nohighlight">\(x\)</span>.</p>
-<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell docutils container">
+Also generate a numpy array <code class="docutils literal notranslate"><span class="pre">potential</span></code> which has the correct potential at each value of <span class="math notranslate nohighlight">\(x\)</span>.  Verify this all looks correct by plotting <span class="math notranslate nohighlight">\(V\)</span> vs. <span class="math notranslate nohighlight">\(x\)</span>.</p>
+<p>It will also be convenient here to setup your observables using</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">X</span><span class="p">,</span><span class="n">P</span><span class="p">,</span><span class="n">P2</span><span class="o">=</span><span class="n">SetupObservables</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span><span class="n">delta_x</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>although we won’t use them till later</p>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell tag_answer-cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### answer here</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
 </pre></div>
 </div>
 </div>
@@ -513,22 +529,29 @@ Also generate a numpy array <code class="docutils literal notranslate"><span cla
 <div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div><p>We know need to again set up the Hamiltonian</p>
 <div class="math notranslate nohighlight">
 \[ H \equiv \left( -\frac{\hbar^2}{2m} \frac{\partial^2}{\partial x^2}  + V \right)  \]</div>
-<p>You already know how to turn the first term into a matrix.  Because we are working in the <span class="math notranslate nohighlight">\(x\)</span> basis, the <span class="math notranslate nohighlight">\(V\)</span> term is also very simple:  it is just a matrix with <span class="math notranslate nohighlight">\(V(x)\)</span> on the diagonal.   To get the matrix for the total Hamiltonian, we just add these two matrices.</p>
+<p>You already know how to turn the first term into a matrix.  Because we are working in the <span class="math notranslate nohighlight">\(x\)</span> basis, the <span class="math notranslate nohighlight">\(V\)</span> term is also very simple:  it is just a matrix with <span class="math notranslate nohighlight">\(V(x)\)</span> (<code class="docutils literal notranslate"><span class="pre">np.diag(V)</span></code>) on the diagonal.   To get the matrix for the total Hamiltonian, we just add these two matrices.</p>
 <p>Set up this Hamiltonian, and then get the eigenvalues and eigenvectors.</p>
-<p>Plot the first 20 eigenvalues.  You should notice that there is two qualitatively different behavior happening that switches over right when the eigenvalue energy gets greater then 0.5 (where our potential wall is.)</p>
-<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell docutils container">
+<p>Plot the first 20 eigenvalues.  You should notice that there is two qualitatively different behavior happening that switches over when the eigenvalue energy gets greater then 0.5 (where our potential wall is.)</p>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell tag_answer-cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### answer here</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_answer-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div><p>Now we would like to plot the energies in a slightly different way and plot the eigenvectors on top of them.  Let’s start by again plotting the potential as a function of distance.</p>
-<p>On top of this potential we are going to plot the lowest 10 energy levels.  Plot them with <code class="docutils literal notranslate"><span class="pre">plt.axhline(values,linestyle='--',alpha=0.5)</span></code>  You should notice that some of the energies are less then the potential and some of them more then the potential.</p>
+<p>On top of this potential we are going to plot the lowest 10 energy levels.  Plot them with <code class="docutils literal notranslate"><span class="pre">plt.axhline(the_ith_energy,linestyle='--',alpha=0.5)</span></code>  You should notice that some of the energies are less then the potential and some of them more then the potential.</p>
 <p>Now on top of this, we want to plot the lowest 10 eigenstates.   To make them easier to understand, let’s shift each eigensstate vertically by adding <code class="docutils literal notranslate"><span class="pre">e[i]</span></code> to the i’th eigenstate - i.e. <code class="docutils literal notranslate"><span class="pre">plt.plot(v[:,i]+e[i])</span></code>.  Notice that if you do this, you have each eigenstate whose origin is centered on their energy.</p>
-<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell docutils container">
+<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell tag_answer-cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### answer here</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
 </pre></div>
 </div>
 </div>
@@ -547,18 +570,18 @@ Also generate a numpy array <code class="docutils literal notranslate"><span cla
 <p>We have learned that when an eigenstate is in the forbidden region it should decay exponentially.<br />
 That means that if we look at any of the eigenstates with <span class="math notranslate nohighlight">\(e_i&lt;0.5\)</span>, we should find that they approach zero exponentially.  It might look that way by eye, but we want to check this explicitly.</p>
 <p>First, we need to learn how to extract the part of the wave-function where the energy is less then 0.5.  To do this, we should define a mask - i.e. <code class="docutils literal notranslate"><span class="pre">mask=xs&gt;10</span></code> to focus on the forbidden region.</p>
-<p>Then we can plot the absolute value of the eigenstate (because the eigenstate can approach zero from below) against xs only in this region - i.e. <code class="docutils literal notranslate"><span class="pre">plt.plot(xs[mask],v[:,0][mask])</span></code> for eigenstates 0,2,4.  Label each of your plots by including as a keyword <code class="docutils literal notranslate"><span class="pre">label=n</span></code> and then add a <code class="docutils literal notranslate"><span class="pre">plt.legend()</span></code> at the end.</p>
-<p>Then go ahead and plot it on a log-scale - <code class="docutils literal notranslate"><span class="pre">plt.yscale('log')</span></code>.  If it looks linear on a log scale, this means that the wave-function is decaying exponentially.  In practice, it may look like it diverges from that linear curve at large <span class="math notranslate nohighlight">\(x\)</span>.  This is essentially because you are running into machine precision.  *Notice that the lower-energy eigenstates have larger slopes (i.e. decay faster);  this is because they are deeper in the forbidden region.</p>
+<p>Then we can plot the absolute value of the eigenstate (because the eigenstate can approach zero from below) against xs only in this region - i.e. <code class="docutils literal notranslate"><span class="pre">plt.plot(xs[mask],v[:,n][mask])</span></code> for eigenstates <span class="math notranslate nohighlight">\(n \in \{0,2,4\}\)</span>.  Label each of your plots by including as a keyword <code class="docutils literal notranslate"><span class="pre">label=n</span></code> and then add a <code class="docutils literal notranslate"><span class="pre">plt.legend()</span></code> at the end.</p>
+<p>Then go ahead and plot it on a log-scale - <code class="docutils literal notranslate"><span class="pre">plt.yscale('log')</span></code>.  If it looks linear on a log scale, this means that the wave-function is decaying exponentially.  In practice, it may look like it diverges from that linear curve at large <span class="math notranslate nohighlight">\(x\)</span>.  This is essentially because you are running into machine precision.  Notice that the lower-energy eigenstates have larger slopes (i.e. decay faster);  this is because they are deeper in the forbidden region.</p>
 <p>We can actually quantify this (<em>this part is optional but interesting if you want to show that you get exactly the correct exponential decay</em>).  Our expectation is that the wave-function goes as <span class="math notranslate nohighlight">\(e^{-kx}\)</span> where</p>
 <div class="math notranslate nohighlight">
 \[k=\sqrt{\frac{2m(E-V_0)}{\hbar^2}}\]</div>
-<p>This means that if we plot the slopes squared of these three lines versus <span class="math notranslate nohighlight">\(e_i-0.5\)</span> where <span class="math notranslate nohighlight">\(e_i\)</span> is the eigenstate energy, it should be a straight line with a slope of 2.</p>
-<p>In order to get the slpoes of the three lines, we can use python to fit them.  Again let’s define a mask that is simultaneously both in the forbidden region and not at large <span class="math notranslate nohighlight">\(x\)</span> where the machine precision starts to cause trouble: <code class="docutils literal notranslate"><span class="pre">mask=np.logical_and(xs&gt;10,xs&lt;16)</span></code></p>
+<p>This means that if we plot the slopes squared of these three lines versus <span class="math notranslate nohighlight">\(e_i-0.5\)</span> where <span class="math notranslate nohighlight">\(e_i\)</span> is the eigenstate energy, it should be a straight line with a slope of -2.</p>
+<p>In order to get the slopes of the three lines, we can use python to fit them.  Again let’s define a mask that is simultaneously both in the forbidden region and not at large <span class="math notranslate nohighlight">\(x\)</span> where the machine precision starts to cause trouble: <code class="docutils literal notranslate"><span class="pre">mask=np.logical_and(xs&gt;10,xs&lt;16)</span></code></p>
 <p>Now use <code class="docutils literal notranslate"><span class="pre">np.polyfit(x,y,1)[0]</span></code> to get the slope.  Remember that <code class="docutils literal notranslate"><span class="pre">y</span></code> needs to be the log of the wave-function (appropriately masked).</p>
 <p>Then plot the slope-squared versus the energy difference from 0.5  You should fine a straight line.</p>
-<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell docutils container">
+<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell tag_answer-cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### answer here</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
 </pre></div>
 </div>
 </div>
@@ -567,26 +590,45 @@ That means that if we look at any of the eigenstates with <span class="math notr
 <section id="c-dynamics">
 <h3>c. Dynamics<a class="headerlink" href="#c-dynamics" title="Link to this heading">#</a></h3>
 <p>Like we did in the particle in the box, we are going to do some dynamics.</p>
-<p>Because we are going to do some non-trivial time evolution in this assignment, it’s worth enapsulating your time-evolution into two functions:</p>
+<p>Because we are going to do some non-trivial time evolution in this assignment, it’s worth encapsulating your time-evolution into two functions:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">TimeEvolutionOperator(H,delta_t)</span></code> should take the Hamiltonian and your time step and return <span class="math notranslate nohighlight">\(e^{-iHt}\)</span>.   It’s important to note that for each Hamiltonian, you only need to compute this time-evolution operator once even if you are time-evolving many different wave-functions. If you are careful about this, you will save yourself significant gime.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">TimeEvolution(psi,M,steps)</span></code> which takes the initial wave-function <code class="docutils literal notranslate"><span class="pre">psi</span></code>, the time-evolution operator <code class="docutils literal notranslate"><span class="pre">M</span></code> and the number of steps and returns a list of arrays that include the snapshot of the wave-function at every time step.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TimeEvolutionOperator(H,delta_t)</span></code> should take the Hamiltonian and your time step and return <span class="math notranslate nohighlight">\(e^{-iHt}\)</span>.   It’s important to note that for each Hamiltonian, you only need to compute this time-evolution operator once even if you are time-evolving many different wave-functions. If you are careful about this, you will save yourself significant time.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TimeEvolution(psi,M,steps)</span></code> which takes the initial wave-function <code class="docutils literal notranslate"><span class="pre">psi</span></code>, the time-evolution operator <code class="docutils literal notranslate"><span class="pre">M</span></code> and the number of steps and returns a list of arrays that include the snapshot of the wave-function at every time step.
+We also want to do an update of the update function so that the animation is slightly more informative. In particular, we are going to want to plot some information about the potential and energy of our state.  Because our y-axis is currently probability (which is at most 1), we will need to rescale the energy (which can get large) so that everything sanely fits on the same axis. To do this, we are going to rescale all our energies by <code class="docutils literal notranslate"><span class="pre">scale=max_value/energy</span></code> where <code class="docutils literal notranslate"><span class="pre">max_value</span></code> is the largest probability your wave-function gets (which we’ve already been calculating for animation) and <code class="docutils literal notranslate"><span class="pre">energy</span></code> is the energy of our initial wave-function, which you can compute (recall the energy doesn’t change as a function of time).</p></li>
 </ul>
-<p>We also want to do an update of the update function so that the animation is slightly more informative. In particular, we are going to want to plot some information about the potential and energy of our state.  Because our y-axis is currently probability (which is at most 1), we will need to rescale the energy (which can get large) so that everything sanely fits on the same axis. To do this, we are going to rescale all our energies by <code class="docutils literal notranslate"><span class="pre">scale=max_value/energy</span></code> where <code class="docutils literal notranslate"><span class="pre">max_value</span></code> is the largest probability your wave-function gets (which we’ve already been calculating for animation) and <code class="docutils literal notranslate"><span class="pre">energy</span></code> is the energy of our initial wave-function, which you can compute (recall the energy doesn’t change as a function of time).</p>
+<p>You will also need to make sure you’ve setup your observables</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="n">X</span><span class="p">,</span><span class="n">P</span><span class="p">,</span><span class="n">P2</span><span class="o">=</span><span class="n">SetupObservables</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span><span class="n">delta_x</span><span class="p">)</span>
+</pre></div>
+</div>
 <p><strong>Modifications of the Update Function</strong></p>
 <ul class="simple">
-<li><p>Add a line to compute the energy as well as the relevant scale</p></li>
-<li><p>Plot the Harmonic Oscillator potential on your animation as <code class="docutils literal notranslate"><span class="pre">plt.plot(xs,potential*scale)</span></code></p></li>
-<li><p>Draw a red-dashed line at the energy of our state - i.e. <code class="docutils literal notranslate"><span class="pre">plt.axhline(energy*scale)</span></code></p></li>
-<li><p>Increaese the <code class="docutils literal notranslate"><span class="pre">ylim</span></code> to 1.5 of max_value</p></li>
+<li><p>Add a line which takes the <code class="docutils literal notranslate"><span class="pre">energy</span></code> and <code class="docutils literal notranslate"><span class="pre">max_value</span></code> sent to it and computes a scale</p></li>
+<li><p>Plots a red-dashed line at the energy of our state - i.e. <code class="docutils literal notranslate"><span class="pre">plt.axhline(energy*scale,color='red',linestyle='--')</span></code></p></li>
+<li><p>Plots the potential (scaled by the scale)</p></li>
+<li><p>Gives<code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">update(frame,</span> <span class="pre">skip,</span> <span class="pre">xs,</span> <span class="pre">positions,</span> <span class="pre">potential,</span> <span class="pre">max_value,</span> <span class="pre">energy)</span></code>  the relevant additional parameters.  To do this you will need to compute the positions using your <code class="docutils literal notranslate"><span class="pre">X</span></code> from <code class="docutils literal notranslate"><span class="pre">SetupObservables</span></code> (outside the function)</p></li>
 </ul>
 <p>We will start with the wave-function (same superposition of eigenstates as our particle-in-the-box but somewhat different eigenstates so a somewhat different wave-function)</p>
 <div class="math notranslate nohighlight">
 \[|\Psi\rangle = \sqrt{0.1}|v_0\rangle + \sqrt{0.25}|v_1\rangle + i \sqrt{0.65}|v_2\rangle \]</div>
 <p>Go ahead and animate this wave-function as a function of time again for a time-step <span class="math notranslate nohighlight">\(\delta t=0.5\)</span> and out to time <span class="math notranslate nohighlight">\(T=200\)</span>.</p>
-<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell docutils container">
+<p>Seperately and, in addition, plot the snapshots at <span class="math notranslate nohighlight">\(T=0,100,200\)</span> in one plot.</p>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell tag_answer-cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### answer here</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_answer-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_answer-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
 </pre></div>
 </div>
 </div>
@@ -598,9 +640,16 @@ That means that if we look at any of the eigenstates with <span class="math notr
 <li><p>the phase plot of momentum vs position</p></li>
 <li><p>the energy as a function of time (making sure your scale is sane)</p></li>
 </ul>
-<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell docutils container">
+<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell tag_answer-cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### answer here</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_answer-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
 </pre></div>
 </div>
 </div>
@@ -611,42 +660,89 @@ That means that if we look at any of the eigenstates with <span class="math notr
 <h3>d.  Dynamics above the potential barrier<a class="headerlink" href="#d-dynamics-above-the-potential-barrier" title="Link to this heading">#</a></h3>
 <p>In this problem, let us consider a superposition of eigenstates that is above the potential barrier. For example, let’s take the superposition of eigenstates 9 and 10 (both above the potential) as</p>
 <div class="math notranslate nohighlight">
-\[\Psi= \sqrt{0.35}|e_9\rangle + i \sqrt{0.65}|e_{10}\rangle\]</div>
+\[\Psi= \sqrt{0.35}|v_9\rangle + i \sqrt{0.65}|v_{10}\rangle\]</div>
 <p>Produce the same set of animations and observable plots for this wave-function.</p>
 <p>Notice in this case that significant chunks of the wave-function are in the forbidden region.</p>
-<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell docutils container">
+<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell tag_answer-cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### answer here</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_answer-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_answer-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div></section>
 </section>
-<section id="exerices-2-eigenstates-of-finite-barriers">
-<h2>Exerices 2. Eigenstates of Finite Barriers<a class="headerlink" href="#exerices-2-eigenstates-of-finite-barriers" title="Link to this heading">#</a></h2>
+<section id="exercise-2-eigenstates-of-finite-barriers">
+<h2>Exercise 2. Eigenstates of Finite Barriers<a class="headerlink" href="#exercise-2-eigenstates-of-finite-barriers" title="Link to this heading">#</a></h2>
 <section id="a-diagonalize">
 <h3>a. Diagonalize<a class="headerlink" href="#a-diagonalize" title="Link to this heading">#</a></h3>
-<p>Now we will consider a potential with a finite barrier.  Set the potential to be zero except for the range <span class="math notranslate nohighlight">\(-1&lt;x&lt;1\)</span> where we will have the potential be <span class="math notranslate nohighlight">\(V_0\)</span>.  We will start with <span class="math notranslate nohighlight">\(V_0=5\)</span></p>
+<p>Now we will consider a potential with a finite barrier.  Set the potential to be zero except for the range <span class="math notranslate nohighlight">\(-1&lt;x&lt;1\)</span> where we will have the potential be <span class="math notranslate nohighlight">\(V_0=5\)</span>.  Use <span class="math notranslate nohighlight">\(L=20\)</span></p>
 <p>Start by plotting the potential.</p>
-<p>Then plot the lowest two eigenvalues and eigenvectors.   What you will find is that these two eigenvectors are nearly degenerate - they have almost the same energy.</p>
-<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell docutils container">
+<p>Then plot the lowest two 5 eigenvalues and 2 eigenvectors.   What you will find is that the two lowest eigenvectors are nearly degenerate - they have almost the same energy. Why is this?  Can you tell from the actual eigenvectors that this would have been the case?</p>
+<p>For this problem, it will run much faster if you use a more reasonable <span class="math notranslate nohighlight">\(\delta x = 0.1\)</span></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">delta_x</span><span class="o">=</span><span class="mf">0.1</span>
+<span class="n">xs</span><span class="o">=</span><span class="n">SetupGrid</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="n">delta_x</span><span class="p">)</span>
+</pre></div>
+</div>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell tag_answer-cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### answer here</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_answer-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div></section>
-<section id="b-effects-of-barrier-height-and-width-on-eigenstates">
-<h3>b. Effects of barrier height and width on eigenstates<a class="headerlink" href="#b-effects-of-barrier-height-and-width-on-eigenstates" title="Link to this heading">#</a></h3>
-<p>We would like to understand how the barrier height and width effects the 0’th eigenstate. Given that we know that there is an exponential decay of the eigenstate in the forbidden region, one interesting thing to look at is the minimum value of the eigenstate around zero.  One way to look at this is to do <code class="docutils literal notranslate"><span class="pre">np.min(np.abs(v[:,0][mask]))</span></code> where <code class="docutils literal notranslate"><span class="pre">mask=np.logical_and(xs&gt;-10,xs&lt;10)</span></code> is centered away from 20 and -20 where it gets tiny simply because of the hard walls there.</p>
+<section id="b-effects-of-barrier-height-and-width-on-eigenstates-probably-remove">
+<h3>b. Effects of barrier height and width on eigenstates (probably remove)<a class="headerlink" href="#b-effects-of-barrier-height-and-width-on-eigenstates-probably-remove" title="Link to this heading">#</a></h3>
+<p>We would like to understand how the barrier height and width effects the 0’th eigenstate. Given that we know that there is an exponential decay of the eigenstate in the forbidden region, one interesting thing to look at is the minimum value of the eigenstate around zero.  One way to look at this is to do <code class="docutils literal notranslate"><span class="pre">np.min(np.abs(v[:,0][mask]))</span></code> where <code class="docutils literal notranslate"><span class="pre">mask=np.logical_and(xs&gt;-5,xs&lt;5)</span></code> is centered away from 10 and -10 where it gets tiny simply because of the hard walls there.</p>
 <p>Produce a series of potentials with width 2 centered around zero but height which scales from 0 to 4 (do jumps of 0.1 between 0 and 2 and jumps of 0.4 between 2 and 4 to avoid things being too slow).</p>
 <p>Then plot this minimum value as a function of the height.</p>
 <p>Do a similar calculation where you let the height be fixed to <span class="math notranslate nohighlight">\(V_0=1\)</span> and let the width change from 0 to 4 (with similar jumps).</p>
-<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell docutils container">
+<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell tag_answer-cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### answer here</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_answer-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_answer-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_answer-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
 </pre></div>
 </div>
 </div>
@@ -663,7 +759,7 @@ That means that if we look at any of the eigenstates with <span class="math notr
 <div class="math notranslate nohighlight">
 \[\left(\exp\left[-i\Delta t\left(-\frac{\hat{P}^2}{2m}\right)\right] \exp\left[-i \Delta t \hat{V} \right]\right)^{T/\Delta t}  |\Psi\rangle\]</div>
 <p>Instead of thinking of time-evolution as applying the exponential of the Hamiltonian, we can think of time evolution as alternatively applying the exponential of the potential and kinetic terms.</p>
-<p>If our wave-function is a vector in the position basis (which it mainly has been), then applying the potential term is very easy because multiplying by a diagonal matrix is the same as pointwise multiplying by a vector - i.e.  all three of these lines below are equivalent:</p>
+<p>If our wave-function is a vector in the position basis (which it mainly has been), then applying the potential term (treating <code class="docutils literal notranslate"><span class="pre">V</span></code> as an array - earlier we called it <code class="docutils literal notranslate"><span class="pre">potential</span></code>) is very easy because multiplying by a diagonal matrix is the same as pointwise multiplying by a vector - i.e.  all three of these lines below are equivalent:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">scipy</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">expm</span><span class="p">(</span><span class="o">-</span><span class="mf">1.</span><span class="n">j</span><span class="o">*</span><span class="n">dt</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">V</span><span class="p">))</span> <span class="o">@</span> <span class="n">psi</span>
 <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">1.</span><span class="n">j</span><span class="o">*</span><span class="n">dt</span><span class="o">*</span><span class="n">V</span><span class="p">))</span> <span class="o">@</span> <span class="n">psi</span>
 <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">1.</span><span class="n">j</span><span class="o">*</span><span class="n">dt</span><span class="o">*</span><span class="n">V</span><span class="p">)</span> <span class="o">*</span> <span class="n">psi</span>
@@ -671,7 +767,7 @@ That means that if we look at any of the eigenstates with <span class="math notr
 </div>
 <p>The first line is the sort of thing we’ve been doing all along (but just with the potential piece).
 The last line doesn’t involve a matrix at all but just a vector.  Let us define <code class="docutils literal notranslate"><span class="pre">M_half_x=np.exp(-1.j*dt/2*np.diag(V))</span></code></p>
-<p>Unfortunately, the potential piece is complicated if our wave-function is in the position basis. But…. if our wave-function is in the momentum basis, then it would be easy because in the momentum basis that matrix is diagonal so we can just pointwise multiply by the vector <code class="docutils literal notranslate"><span class="pre">M_p=np.exp(-1.j*</span> <span class="pre">dt*</span> <span class="pre">-(ks**2)/(2*m))</span></code>.</p>
+<p>Unfortunately, the kinetic piece is complicated if our wave-function is in the position basis. But…. if our wave-function is in the momentum basis, then it would be easy because in the momentum basis that matrix is diagonal so we can just pointwise multiply by the vector <code class="docutils literal notranslate"><span class="pre">M_p=np.exp(-1.j*</span> <span class="pre">dt*</span> <span class="pre">(ks**2)/(2*m))</span></code>.</p>
 <p>But it’s easy to move the wave-function back and forth between the position and momentum basis via an FFT so we can always be in the “good” basis when we have to apply the operator.</p>
 <p>This leaves us with the following algorithm to apply a single time-step <span class="math notranslate nohighlight">\(\Delta t\)</span> starting with a wave-function <code class="docutils literal notranslate"><span class="pre">psi</span></code> in the position basis:</p>
 <ul class="simple">
@@ -684,77 +780,160 @@ The last line doesn’t involve a matrix at all but just a vector.  Let us defin
 <p>We then need to do this over and over again for many time-steps  (for technical reasons, it’s actually more accurate to put (1) after (5)).</p>
 <p>You are making a tiny error in <span class="math notranslate nohighlight">\(\Delta t\)</span> but this algorithm is much better then our previous approaches.  You never need to build a big matrix diagonalize a Hamiltonian, etc.  To implement this you will need the k-vectors <code class="docutils literal notranslate"><span class="pre">ks=np.fft.fftfreq(len(xs),</span> <span class="pre">delta_x)*(2*np.pi)</span></code></p>
 <p>There is one additional wart.  This will only work on wave-functions that go to zero at the edge of your box but since you can use such a large box this shouldn’t be a problem.</p>
-<section id="a-setting-up-your-new-time-evolution-and-a-test">
-<h3>a. Setting up your new time-evolution and a test<a class="headerlink" href="#a-setting-up-your-new-time-evolution-and-a-test" title="Link to this heading">#</a></h3>
-<p>Set up code to use this new algorithm.</p>
-<p>Start by doing a test for the particle in a finite well with the initial state</p>
-<div class="math notranslate nohighlight">
-\[|\Psi\rangle = \sqrt{0.1}|v_0\rangle + \sqrt{0.25}|v_1\rangle + i \sqrt{0.65}|v_2\rangle \]</div>
-<p>in a potential well where <span class="math notranslate nohighlight">\(V(x)=0.5\)</span> when <span class="math notranslate nohighlight">\(|x|&gt;10\)</span> and <span class="math notranslate nohighlight">\(V(x)=0\)</span> otherwise. (to get <span class="math notranslate nohighlight">\(\Psi\)</span>, you will need to work with your Hamiltonian again which is slow - this is just for a test)</p>
-<p>Use</p>
+<section id="a-fast-time-evolution-for-the-finite-well">
+<h3>a. Fast Time evolution for the Finite Well<a class="headerlink" href="#a-fast-time-evolution-for-the-finite-well" title="Link to this heading">#</a></h3>
+<p>In this part, we will do time evolution again on the finite well but this time much more efficiently.  The finite well parameters we will use are</p>
 <ul class="simple">
+<li><p>dt=0.01</p></li>
+<li><p>delta_x=0.1</p></li>
+<li><p>L=40 (for a width of 80)</p></li>
+<li><p>T=1 (this will be the time at which your Time Evolution runs - you will run it many times but each time saving a snapshot at each <span class="math notranslate nohighlight">\(T\)</span>)</p></li>
+<li><p>an initial wave-function <span class="math notranslate nohighlight">\(|\Psi\rangle = \sqrt{0.1}|v_0\rangle + \sqrt{0.25}|v_1\rangle + i \sqrt{0.65}|v_2\rangle \)</span> generated from the finite-well potential with <span class="math notranslate nohighlight">\(V(x)=0.5\)</span> when <span class="math notranslate nohighlight">\(|x|&gt;10\)</span> and <span class="math notranslate nohighlight">\(V(x)=0\)</span> otherwise. (to get <span class="math notranslate nohighlight">\(\Psi\)</span>, you will need to work with your Hamiltonian again which is slow - this is just for a test).</p></li>
+</ul>
+<p>Write a function</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">SetupWell</span><span class="p">():</span>
+  <span class="c1"># do stuff here</span>
+    <span class="k">return</span> <span class="n">psi_init</span><span class="p">,</span><span class="n">V</span><span class="p">,</span><span class="n">dt</span><span class="p">,</span><span class="n">T</span><span class="p">,</span><span class="n">xs</span><span class="p">,</span><span class="n">freqs</span>
+</pre></div>
+</div>
+<p>which returns the relevant initial wave-function, potential, time-step, time-per-snapshot, grid, and frequencies.  recall that
+the frequencies that correspond to our fft are</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">freqs</span> <span class="pre">=</span> <span class="pre">np.fft.fftfreq(len(xs),</span> <span class="pre">delta_x)*(2*np.pi)</span></code></p></li>
+</ul>
+<p>Now write a function <code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">TimeEvolution(T,dt,V,psi,freqs)</span></code> which does the time-evolution returning the new <code class="docutils literal notranslate"><span class="pre">psi</span></code>.</p>
+<p>Run your time-evolution out to time <span class="math notranslate nohighlight">\(400T\)</span> like</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">psi</span><span class="p">,</span><span class="n">V</span><span class="p">,</span><span class="n">dt</span><span class="p">,</span><span class="n">T</span><span class="p">,</span><span class="n">xs</span><span class="p">,</span><span class="n">freqs</span><span class="o">=</span><span class="n">SetupWell</span><span class="p">()</span>
+<span class="n">arrays</span><span class="o">=</span><span class="p">[</span><span class="n">psi</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">step</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">400</span><span class="p">):</span>
+    <span class="n">psi</span><span class="o">=</span><span class="n">TimeEvolution</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">V</span><span class="p">,</span> <span class="n">psi</span><span class="p">,</span> <span class="n">freqs</span><span class="p">)</span>
+    <span class="n">arrays</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">psi</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>If you plot the probability density of the wave-function at time <span class="math notranslate nohighlight">\(40T\)</span> you should see the wave-function in the  potential barrier with the weight to the left.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span><span class="n">V</span><span class="o">/</span><span class="mi">200</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">arrays</span><span class="p">[</span><span class="mi">40</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell tag_answer-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (start)"></img><br></div></section>
+<section id="b-plotting-our-time-evolution">
+<h3>b. Plotting our time-evolution<a class="headerlink" href="#b-plotting-our-time-evolution" title="Link to this heading">#</a></h3>
+<p>Now we would like to plot some data.</p>
+<p>We want to plot</p>
+<ul class="simple">
+<li><p>the probability density of the wave-function in real space at time <span class="math notranslate nohighlight">\(50T\)</span></p></li>
+<li><p>the probability density of the wave-function in k-space at time <span class="math notranslate nohighlight">\(50T\)</span></p></li>
+<li><p>the average position as a function of time (<strong>you shouldn’t need anything from SetupObservables for this such as the X or P</strong>)</p></li>
+<li><p>the momentum as a function of time (you shouldn’t need anything from SetupObservables for this)</p></li>
+<li><p>the total, kinetic, and potential energy as a function of time (on one plot)  (you shouldn’t need anything from SetupObservables for this)</p></li>
+<li><p>the potential</p></li>
+</ul>
+<p>Write <code class="docutils literal notranslate"><span class="pre">GetEnergy(psis,freqs)</span></code> and <code class="docutils literal notranslate"><span class="pre">GetAverages(psis,xs,freqs)</span></code> which return these observables and plot them.</p>
+<p>You can plot it however you want but I plotted it like this to get it into subplots</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">set_figwidth</span><span class="p">(</span><span class="mi">22</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">set_figheight</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Es</span><span class="p">)))</span><span class="o">*</span><span class="n">dt</span><span class="p">,</span><span class="n">Es</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Total Energy&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">PEs</span><span class="p">)))</span><span class="o">*</span><span class="n">dt</span><span class="p">,</span><span class="n">PEs</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Potential Energy&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">KEs</span><span class="p">)))</span><span class="o">*</span><span class="n">dt</span><span class="p">,</span><span class="n">KEs</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Kinetic Energy&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Energy&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">positions</span><span class="p">)))</span><span class="o">*</span><span class="n">dt</span><span class="p">,</span><span class="n">positions</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Position&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Position&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">momentums</span><span class="p">)))</span><span class="o">*</span><span class="n">dt</span><span class="p">,</span><span class="n">momentums</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Momentum&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Momentum&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">arrays</span><span class="p">[</span><span class="mi">50</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Probability Density&#39;</span><span class="p">)</span>
+<span class="n">psi_k</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fft</span><span class="p">(</span><span class="n">arrays</span><span class="p">[</span><span class="mi">50</span><span class="p">])</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">freqs</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">psi_k</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span><span class="n">V</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Potential Energy&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell tag_answer-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div></section>
+<section id="c-animate">
+<h3>c. Animate<a class="headerlink" href="#c-animate" title="Link to this heading">#</a></h3>
+<p>We now want to animate our system. Because we’re going to do this a couple times with different potential, let’s go ahead and write an animate function <code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">animateMe(arrays,V)</span></code> that goes ahead and finds the <code class="docutils literal notranslate"><span class="pre">max_value</span></code> and does calls the animation.</p>
+<p>Then go ahead and animate your wave-function.</p>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell tag_answer-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (start)"></img><br></div></section>
+<section id="d-time-evolution-of-a-stationary-gaussian">
+<h3>d. Time evolution of a “stationary” gaussian<a class="headerlink" href="#d-time-evolution-of-a-stationary-gaussian" title="Link to this heading">#</a></h3>
+<p>We now would like to go ahead and do a time-evolution of a stationary Guassian with the following parameters.</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\psi_\textrm{init}=\frac{1}{N} \exp[-\frac{1}{2} x^2]\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(L=200\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(\Delta x=0.1\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(L=40\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(\Delta t=0.01\)</span>.</p></li>
-<li><p>Go to <span class="math notranslate nohighlight">\(T=400\)</span> taking a snapshot to graph every <span class="math notranslate nohighlight">\(T=1\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\Delta t=0.01\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(T=0.1\)</span></p></li>
+<li><p>The potential is zero</p></li>
 </ul>
-<p>Your animation wants to know what the energy of your wave-function is to rescale the potential.  You don’t have to get this working to test your animation but you should fix it after that looks good.</p>
-<p>Previously we got this by computing the expectation value with respect to the Hamiltonian.  That is no longer efficient.  Here, we are going to go back to computing expectation values as we did originally for position.</p>
-<p>To compute the average potential energy you have</p>
-<div class="math notranslate nohighlight">
-\[\sum_x |\Psi(x)|^2 V(x)\]</div>
-<p>and to compute the average kinetic energy you have</p>
-<div class="math notranslate nohighlight">
-\[\sum_k |\Psi(k)|^2 k^2/2m\]</div>
-<p>remembering that for this latter quantity you need to switch to k-space.   The total energy is just the same of the kinetic and potential energy.</p>
-<p>Compare your result against what the time-evolution for the same system you did earlier in the assignment.</p>
-<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell docutils container">
+<p>Go ahead and write a <code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">SetupGauss()</span></code> function and produce the same plots and animations as above</p>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell tag_answer-cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### answer here</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
 </pre></div>
 </div>
 </div>
 </div>
-<div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div></section>
-<section id="b-time-evolution-of-a-stationary-gaussian">
-<h3>b. Time evolution of a “stationary” gaussian<a class="headerlink" href="#b-time-evolution-of-a-stationary-gaussian" title="Link to this heading">#</a></h3>
-<p>We should now be ready to choose any potential and any initial state to do time-evolution over.  Let’s begin with no potential <span class="math notranslate nohighlight">\(V=0\)</span> and the guassian</p>
-<div class="math notranslate nohighlight">
-\[\frac{1}{N} \exp[-\frac{1}{2} x^2]\]</div>
-<p>where <span class="math notranslate nohighlight">\(N\)</span> is the normalization constant on a grid of <span class="math notranslate nohighlight">\(L=200\)</span>, <span class="math notranslate nohighlight">\(\Delta x=0.1\)</span> and <span class="math notranslate nohighlight">\(\Delta t=0.01\)</span> taking a snapshot every 10 time-steps out to a total time of T=1.  You should find that a stationary gaussian simply spreads out as a function of time.</p>
-<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### answer here</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div></section>
-<section id="c-hitting-a-potential-barrier">
-<h3>c. Hitting a potential barrier.<a class="headerlink" href="#c-hitting-a-potential-barrier" title="Link to this heading">#</a></h3>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (start)"></img><br></div></section>
+<section id="e-hitting-a-potential-barrier">
+<h3>e. Hitting a Potential Barrier<a class="headerlink" href="#e-hitting-a-potential-barrier" title="Link to this heading">#</a></h3>
 <p>Let us now consider a potential barrier with</p>
-<div class="math notranslate nohighlight">
-\[V(x) = V_0 \textrm{ for }  -a&lt;x&lt;a \]</div>
-<p>and 0 otherwise.<br />
-Let us start with</p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(V_0=10\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(a=0.5\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(V(x) = V_0 \textrm{ for }  -a&lt;x&lt;a \)</span> and 0 otherwise where  <span class="math notranslate nohighlight">\(V_0=10\)</span> and <span class="math notranslate nohighlight">\(a=0.5\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(L=60\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\Psi_{init} =\frac{1}{N} \exp[-0.5 (x+20)^2 + 5i x]\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(T=0.05\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(dt=0.1\)</span></p></li>
 </ul>
-<p>Taking as an initial wave-function</p>
-<div class="math notranslate nohighlight">
-\[\frac{1}{N} \exp[-0.5 (x+20)^2 + 5i x]\]</div>
-<p>where <span class="math notranslate nohighlight">\(N\)</span> is the normalization, do time-evolution to <span class="math notranslate nohighlight">\(T=10\)</span> with a snapshot every <span class="math notranslate nohighlight">\(t=0.1\)</span></p>
-<p>Plot also (as a function of t), the amount of probability to the left and right of <span class="math notranslate nohighlight">\(x=0\)</span>.</p>
-<p>While not required, it’s fun to play with barrier height and width and see what happens. Another interesting thing is to .</p>
-<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell docutils container">
+<p>In addition to the standard plots, please also make a plot of the amount of the probability to the left and right of <span class="math notranslate nohighlight">\(x=0\)</span>.</p>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (end)"></img><br></div><div class="cell tag_answer-cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### answer here</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
 </pre></div>
 </div>
 </div>
 </div>
-<div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div></section>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div><hr><p><strong>Acknowledgements:</strong></p>
+<ul class="simple">
+<li><p>Bryan Clark (original)</p></li>
+</ul>
+<p>© Copyright 2025</p>
+</section>
 </section>
 </section>
 
@@ -829,15 +1008,17 @@ Let us start with</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-dynamics-above-the-potential-barrier">d.  Dynamics above the potential barrier</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exerices-2-eigenstates-of-finite-barriers">Exerices 2. Eigenstates of Finite Barriers</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-eigenstates-of-finite-barriers">Exercise 2. Eigenstates of Finite Barriers</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-diagonalize">a. Diagonalize</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-effects-of-barrier-height-and-width-on-eigenstates">b. Effects of barrier height and width on eigenstates</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-effects-of-barrier-height-and-width-on-eigenstates-probably-remove">b. Effects of barrier height and width on eigenstates (probably remove)</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-faster-dynamics-and-finite-barriers">Exercise 3. Faster Dynamics and Finite Barriers</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-setting-up-your-new-time-evolution-and-a-test">a. Setting up your new time-evolution and a test</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-time-evolution-of-a-stationary-gaussian">b. Time evolution of a “stationary” gaussian</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-hitting-a-potential-barrier">c. Hitting a potential barrier.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-fast-time-evolution-for-the-finite-well">a. Fast Time evolution for the Finite Well</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-plotting-our-time-evolution">b. Plotting our time-evolution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-animate">c. Animate</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-time-evolution-of-a-stationary-gaussian">d. Time evolution of a “stationary” gaussian</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#e-hitting-a-potential-barrier">e. Hitting a Potential Barrier</a></li>
 </ul>
 </li>
 </ul>
