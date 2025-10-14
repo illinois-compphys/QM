@@ -529,18 +529,12 @@ document.write(`
 </pre></div>
 </div>
 <p>go ahead and plot the probability (absolute value squared of the wave-function) of getting different <span class="math notranslate nohighlight">\(x\)</span> values for this wave-function rememembering to label the x-axis as <code class="docutils literal notranslate"><span class="pre">plt.xlabel(&quot;x&quot;)</span></code> and the y-axis as <code class="docutils literal notranslate"><span class="pre">plt.ylabel(&quot;probability</span> <span class="pre">density&quot;)</span></code>.   From this plot, you should be able to see that if you measure <span class="math notranslate nohighlight">\(x\)</span> over and over again if will always be getting an answer somewhat around 4.</p>
-<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell tag_hide-cell tag_answer-cell docutils container">
-<details class="admonition hide above-input">
-<summary aria-label="Toggle hidden content">
-<p class="collapsed admonition-title">Show code cell content</p>
-<p class="expanded admonition-title">Hide code cell content</p>
-</summary>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell tag_answer-cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
 </pre></div>
 </div>
 </div>
-</details>
 </div>
 <div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div><p>We are now hoping that there’s also a pretty narrow range of where the particle can be in momentum <span class="math notranslate nohighlight">\(P\)</span> - i.e. if we measure the momentum over and over again would we get essentially the same value.  It’s hard to look at our plot and figure this out at the moment.  That’s because the wave-function is currently plotted in the x-basis.  We could also plot it in the momentum basis.  If we did that, then we could look at the wave-function squared and see how spread out it is in momentum (and so whether we would expect to get the same momentum if we measured it).</p>
 <p>So we’d like to replot the wave-function as a function of <span class="math notranslate nohighlight">\(p\)</span> and not <span class="math notranslate nohighlight">\(x\)</span>.  Mind you, this is the same wave-function.  It’s just a different way of representing it.  If I show you a curve and I don’t tell label the axis so you know whether you are in the <span class="math notranslate nohighlight">\(x\)</span> basis or <span class="math notranslate nohighlight">\(p\)</span> basis, you don’t really know what you’re looking at.</p>
@@ -556,18 +550,12 @@ You can get this unitary (along with the basis of p-points) by doing</p>
 </pre></div>
 </div>
 <p>Now by getting out this unitary (<code class="docutils literal notranslate"><span class="pre">ps,U=MomentumBasis(20,0.1)</span></code>) you can then apply <code class="docutils literal notranslate"><span class="pre">U&#64;psi</span></code> to rotate into the fourier basis.  Take the wave-function in real space and rotate it into the fourer basis. Plot the wave-function squared in the momentum basis and see if (after measurement) in the momentum basis you are likely to get consistent answers for the momentum.</p>
-<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell tag_hide-cell tag_answer-cell docutils container">
-<details class="admonition hide above-input">
-<summary aria-label="Toggle hidden content">
-<p class="collapsed admonition-title">Show code cell content</p>
-<p class="expanded admonition-title">Hide code cell content</p>
-</summary>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell tag_answer-cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
 </pre></div>
 </div>
 </div>
-</details>
 </div>
 <div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div><p>While our position resolution is good, our momentum resolution is not that great - it seems we can locate the momentum to within 5’sh.</p>
 </section>
@@ -581,18 +569,12 @@ You can get this unitary (along with the basis of p-points) by doing</p>
 <p>Recall that you can get the expectation value of an observable <span class="math notranslate nohighlight">\(O\)</span> by doing <code class="docutils literal notranslate"><span class="pre">psi.conjugate()</span> <span class="pre">&#64;</span> <span class="pre">O</span> <span class="pre">&#64;</span> <span class="pre">psi.T</span></code></p>
 <p>Write a function <code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">uncertainty(psi,X,P)</span></code> which returns the <span class="math notranslate nohighlight">\(\Delta X\)</span> and <span class="math notranslate nohighlight">\(\Delta P\)</span> and <span class="math notranslate nohighlight">\(\Delta X \Delta P\)</span>.</p>
 <p>Now compute the uncertainty for the wave-functions above. You should quantify what we say above.  The variance of the position is smallish but the variance of the momentum is much larger and so if we measured we would be getting widely different momentum.</p>
-<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell tag_hide-cell tag_answer-cell docutils container">
-<details class="admonition hide above-input">
-<summary aria-label="Toggle hidden content">
-<p class="collapsed admonition-title">Show code cell content</p>
-<p class="expanded admonition-title">Hide code cell content</p>
-</summary>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell tag_answer-cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
 </pre></div>
 </div>
 </div>
-</details>
 </div>
 <div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div><p>Our wave-function does have a tuning paramater <span class="math notranslate nohighlight">\(\alpha\)</span> that will make it more or less concentrated in <span class="math notranslate nohighlight">\(x\)</span> (for example try <span class="math notranslate nohighlight">\(\alpha=0.0001\)</span> in the x-basis). Write some code to tune <span class="math notranslate nohighlight">\(\alpha\)</span> from <span class="math notranslate nohighlight">\(10\)</span> down to <span class="math notranslate nohighlight">\(0.0001\)</span>.  On the same plot, show as a function of <span class="math notranslate nohighlight">\(\alpha\)</span></p>
 <ul class="simple">
@@ -608,18 +590,12 @@ You can get this unitary (along with the basis of p-points) by doing</p>
 </div>
 <p>If you do this, then you are going to want to change the x-axis on a log-scale as <code class="docutils literal notranslate"><span class="pre">plt.xscale('log')</span></code></p>
 <p>Plot also the theoretical minima <code class="docutils literal notranslate"><span class="pre">plt.ahline(0.5)</span></code></p>
-<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell tag_hide-cell tag_answer-cell docutils container">
-<details class="admonition hide above-input">
-<summary aria-label="Toggle hidden content">
-<p class="collapsed admonition-title">Show code cell content</p>
-<p class="expanded admonition-title">Hide code cell content</p>
-</summary>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell tag_answer-cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
 </pre></div>
 </div>
 </div>
-</details>
 </div>
 <div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div></section>
 <section id="c-minimizing-uncertainty">
@@ -630,44 +606,26 @@ You can get this unitary (along with the basis of p-points) by doing</p>
 <p>Therefore, use an objective function <span class="math notranslate nohighlight">\(\Delta X \Delta P + 0.01 \textrm{max}(\Delta X, \Delta P)\)</span>.  Make sure your three delta are all real.</p>
 <p>Now we can call the optimization function.  The optimization function needs to be sent out objective function and a guess - i.e. <code class="docutils literal notranslate"><span class="pre">ans=scipy.optimize.minimize(f,guess)</span></code>.  You can use as your guess <span class="math notranslate nohighlight">\(\sin(0.3141592653589793 x)\)</span> which you can check is not very localized.</p>
 <p>Once the optimizations is done, the new wave-function is <code class="docutils literal notranslate"><span class="pre">ans.x</span></code>.  Check the uncertainty of your new wave-function and plot it both in the x-basis and the p-basis.   You may notice that your wave-function looks gaussian. You can double check this by trying to fit/plot a gaussian on top of it.</p>
-<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell tag_hide-cell tag_answer-cell docutils container">
-<details class="admonition hide above-input">
-<summary aria-label="Toggle hidden content">
-<p class="collapsed admonition-title">Show code cell content</p>
-<p class="expanded admonition-title">Hide code cell content</p>
-</summary>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell tag_answer-cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
 </pre></div>
 </div>
 </div>
-</details>
 </div>
-<div class="cell tag_answer-cell tag_hide-cell docutils container">
-<details class="admonition hide above-input">
-<summary aria-label="Toggle hidden content">
-<p class="collapsed admonition-title">Show code cell content</p>
-<p class="expanded admonition-title">Hide code cell content</p>
-</summary>
+<div class="cell tag_answer-cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
 </pre></div>
 </div>
 </div>
-</details>
 </div>
-<div class="cell tag_hide-cell tag_answer-cell docutils container">
-<details class="admonition hide above-input">
-<summary aria-label="Toggle hidden content">
-<p class="collapsed admonition-title">Show code cell content</p>
-<p class="expanded admonition-title">Hide code cell content</p>
-</summary>
+<div class="cell tag_answer-cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
 </pre></div>
 </div>
 </div>
-</details>
 </div>
 <div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div></section>
 <section id="d-coherent-states">
@@ -679,18 +637,12 @@ You can get this unitary (along with the basis of p-points) by doing</p>
 <p>We will set <span class="math notranslate nohighlight">\(\alpha=0.2\)</span> for this part of the problem.</p>
 <p>Using your code, compute the uncertainty <span class="math notranslate nohighlight">\(\Delta X\)</span> and <span class="math notranslate nohighlight">\(\Delta P\)</span> and <span class="math notranslate nohighlight">\(\Delta\)</span> for this (actually will be true for any) coherent state?</p>
 <p>Also plot the space in real and momentum space.</p>
-<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell tag_hide-cell tag_answer-cell docutils container">
-<details class="admonition hide above-input">
-<summary aria-label="Toggle hidden content">
-<p class="collapsed admonition-title">Show code cell content</p>
-<p class="expanded admonition-title">Hide code cell content</p>
-</summary>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell tag_answer-cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
 </pre></div>
 </div>
 </div>
-</details>
 </div>
 <div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div></section>
 <section id="e-not-coherent-states">
@@ -699,18 +651,12 @@ You can get this unitary (along with the basis of p-points) by doing</p>
 <div class="math notranslate nohighlight">
 \[\Psi(x) =  N \exp[-0.3 x^2]\]</div>
 <p>where <span class="math notranslate nohighlight">\(N\)</span> is the normalization.</p>
-<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell tag_hide-cell tag_answer-cell docutils container">
-<details class="admonition hide above-input">
-<summary aria-label="Toggle hidden content">
-<p class="collapsed admonition-title">Show code cell content</p>
-<p class="expanded admonition-title">Hide code cell content</p>
-</summary>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell tag_answer-cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
 </pre></div>
 </div>
 </div>
-</details>
 </div>
 <div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (start)"></img><br></div></section>
 </section>
@@ -754,31 +700,19 @@ H=-\frac{1}{2}\frac{\partial^2}{\partial x^2} + \frac{1}{2}x^2
 <li><p>Set your limits to something sane (<code class="docutils literal notranslate"><span class="pre">ax.set_ylim(0,something)</span></code>)</p></li>
 </ul>
 <p>What important qualitative feature do you notice about the energy levels?</p>
-<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell tag_hide-cell tag_answer-cell docutils container">
-<details class="admonition hide above-input">
-<summary aria-label="Toggle hidden content">
-<p class="collapsed admonition-title">Show code cell content</p>
-<p class="expanded admonition-title">Hide code cell content</p>
-</summary>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell tag_answer-cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
 </pre></div>
 </div>
 </div>
-</details>
 </div>
-<div class="cell tag_answer-cell tag_hide-cell docutils container">
-<details class="admonition hide above-input">
-<summary aria-label="Toggle hidden content">
-<p class="collapsed admonition-title">Show code cell content</p>
-<p class="expanded admonition-title">Hide code cell content</p>
-</summary>
+<div class="cell tag_answer-cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
 </pre></div>
 </div>
 </div>
-</details>
 </div>
 <div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div></section>
 <section id="b-eigenstates">
@@ -808,18 +742,12 @@ and then include the legend with</p></li>
 <ul class="simple">
 <li><p>In addition, print out the uncertainty of these wave-functions.  Are they anywhere near the Heisenberg limit.</p></li>
 </ul>
-<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell tag_hide-cell tag_answer-cell docutils container">
-<details class="admonition hide above-input">
-<summary aria-label="Toggle hidden content">
-<p class="collapsed admonition-title">Show code cell content</p>
-<p class="expanded admonition-title">Hide code cell content</p>
-</summary>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell tag_answer-cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
 </pre></div>
 </div>
 </div>
-</details>
 </div>
 <div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div></section>
 <section id="c-dynamics-and-ehrenfest-theorem">
@@ -849,57 +777,33 @@ In particular, we are going to want to plot some information about the potential
 <li><p>for a total time of <span class="math notranslate nohighlight">\(T=40\)</span>.</p></li>
 </ul>
 <p>Store the snapshot of the wave-function at each time and animate it.</p>
-<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell tag_answer-cell tag_hide-cell docutils container">
-<details class="admonition hide above-input">
-<summary aria-label="Toggle hidden content">
-<p class="collapsed admonition-title">Show code cell content</p>
-<p class="expanded admonition-title">Hide code cell content</p>
-</summary>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell tag_answer-cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
 </pre></div>
 </div>
 </div>
-</details>
 </div>
-<div class="cell tag_answer-cell tag_hide-cell docutils container">
-<details class="admonition hide above-input">
-<summary aria-label="Toggle hidden content">
-<p class="collapsed admonition-title">Show code cell content</p>
-<p class="expanded admonition-title">Hide code cell content</p>
-</summary>
+<div class="cell tag_answer-cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
 </pre></div>
 </div>
 </div>
-</details>
 </div>
-<div class="cell tag_hide-cell tag_answer-cell docutils container">
-<details class="admonition hide above-input">
-<summary aria-label="Toggle hidden content">
-<p class="collapsed admonition-title">Show code cell content</p>
-<p class="expanded admonition-title">Hide code cell content</p>
-</summary>
+<div class="cell tag_answer-cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
 </pre></div>
 </div>
 </div>
-</details>
 </div>
-<div class="cell tag_hide-cell tag_answer-cell docutils container">
-<details class="admonition hide above-input">
-<summary aria-label="Toggle hidden content">
-<p class="collapsed admonition-title">Show code cell content</p>
-<p class="expanded admonition-title">Hide code cell content</p>
-</summary>
+<div class="cell tag_answer-cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
 </pre></div>
 </div>
 </div>
-</details>
 </div>
 <div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div><p>As in the particle in the box, takes your list of wave-functions as a function of time and generate from each wave-function a value of <span class="math notranslate nohighlight">\(\langle x \rangle(t)\)</span> and <span class="math notranslate nohighlight">\(\langle p \rangle(t)\)</span> showing (on the subplots as typical)</p>
 <p>On the same plot show</p>
@@ -923,18 +827,12 @@ In particular, we are going to want to plot some information about the potential
 <div class="math notranslate nohighlight">
 \[ \frac{d}{dt} \langle p \rangle = -\langle V'(x)\rangle \]</div>
 <p>Finally go ahead and make a phase plot of momentum vs position.</p>
-<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell tag_hide-cell tag_answer-cell docutils container">
-<details class="admonition hide above-input">
-<summary aria-label="Toggle hidden content">
-<p class="collapsed admonition-title">Show code cell content</p>
-<p class="expanded admonition-title">Hide code cell content</p>
-</summary>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell tag_answer-cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
 </pre></div>
 </div>
 </div>
-</details>
 </div>
 <div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div></section>
 <section id="id1">
@@ -947,57 +845,33 @@ In particular, we are going to want to plot some information about the potential
 <p>Add one more line to your plots: the position and velocity of a classical oscillator in the same Harmonic potential starting at <span class="math notranslate nohighlight">\(x=3\sqrt{2}\)</span></p>
 <p>What do you notice that’s interesting about the time-evolution of the coherent states.</p>
 <p>Does something not quite look right in your animation?</p>
-<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell tag_hide-cell tag_answer-cell docutils container">
-<details class="admonition hide above-input">
-<summary aria-label="Toggle hidden content">
-<p class="collapsed admonition-title">Show code cell content</p>
-<p class="expanded admonition-title">Hide code cell content</p>
-</summary>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell tag_answer-cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
 </pre></div>
 </div>
 </div>
-</details>
 </div>
-<div class="cell tag_hide-cell tag_answer-cell docutils container">
-<details class="admonition hide above-input">
-<summary aria-label="Toggle hidden content">
-<p class="collapsed admonition-title">Show code cell content</p>
-<p class="expanded admonition-title">Hide code cell content</p>
-</summary>
+<div class="cell tag_answer-cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
 </pre></div>
 </div>
 </div>
-</details>
 </div>
-<div class="cell tag_answer-cell tag_hide-cell docutils container">
-<details class="admonition hide above-input">
-<summary aria-label="Toggle hidden content">
-<p class="collapsed admonition-title">Show code cell content</p>
-<p class="expanded admonition-title">Hide code cell content</p>
-</summary>
+<div class="cell tag_answer-cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
 </pre></div>
 </div>
 </div>
-</details>
 </div>
-<div class="cell tag_answer-cell tag_hide-cell docutils container">
-<details class="admonition hide above-input">
-<summary aria-label="Toggle hidden content">
-<p class="collapsed admonition-title">Show code cell content</p>
-<p class="expanded admonition-title">Hide code cell content</p>
-</summary>
+<div class="cell tag_answer-cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
 </pre></div>
 </div>
 </div>
-</details>
 </div>
 <div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div></section>
 </section>
@@ -1015,18 +889,12 @@ In particular, we are going to want to plot some information about the potential
 <li><p>Verify that the operators are complex conjugates of each other (by daggering a and subtracting <span class="math notranslate nohighlight">\(a^\dagger\)</span> and making sure they are zero  - i.e. check that the maximum of the absolute value of the difference is zero)</p></li>
 <li><p>Look at the matshow of the upper left of the matrix <code class="docutils literal notranslate"><span class="pre">plt.matshow(a[0:10,0:10])</span></code>.  Can you understand why this is what this looks like.</p></li>
 </ul>
-<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell tag_answer-cell tag_hide-cell docutils container">
-<details class="admonition hide above-input">
-<summary aria-label="Toggle hidden content">
-<p class="collapsed admonition-title">Show code cell content</p>
-<p class="expanded admonition-title">Hide code cell content</p>
-</summary>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell tag_answer-cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
 </pre></div>
 </div>
 </div>
-</details>
 </div>
 <div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div></section>
 <section id="b-testing-the-raising-of-the-raising-operator">
@@ -1034,18 +902,12 @@ In particular, we are going to want to plot some information about the potential
 <p>We expect that the raising operator has the property that when it acts on an eigenstate <span class="math notranslate nohighlight">\(|n-1\rangle\)</span> it should produce the eigenstate <span class="math notranslate nohighlight">\(\sqrt{n}\)</span> times eigenstate <span class="math notranslate nohighlight">\(|n\rangle\)</span>.  Let’s check that by plotting.  Plot <span class="math notranslate nohighlight">\(\sqrt{4}  |\Psi_4 \rangle\)</span> and <span class="math notranslate nohighlight">\(a^\dagger |\Psi_3\rangle\)</span> and verify that they give the same result.   Again be cognizant that you might need to flip one of the states.</p>
 <p>Similarly let’s check that <span class="math notranslate nohighlight">\(a\)</span> lowers a state.  Verify that eigenstate 4 is the same as eigenstate 5 lowered with a coefficient of <span class="math notranslate nohighlight">\(\sqrt{5}\)</span>.</p>
 <p>Also verify that the lowering operator destroys the ground state - i.e. check that <span class="math notranslate nohighlight">\(a^\dagger \Psi_0\)</span> is actually zero. (Remember to check the scale of your graph as it might have some features but essentially be zero)</p>
-<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell tag_hide-cell tag_answer-cell docutils container">
-<details class="admonition hide above-input">
-<summary aria-label="Toggle hidden content">
-<p class="collapsed admonition-title">Show code cell content</p>
-<p class="expanded admonition-title">Hide code cell content</p>
-</summary>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell tag_answer-cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
 </pre></div>
 </div>
 </div>
-</details>
 </div>
 <div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div></section>
 <section id="c-verifying-the-norms-and-number-operators">
@@ -1057,35 +919,23 @@ In particular, we are going to want to plot some information about the potential
 </ul>
 <p>and checking that they are the same</p>
 <p>We can also check that <span class="math notranslate nohighlight">\(a^\dagger a\)</span> is a number operator.  Plot again for the first ten eigenstates, the expectation value  of <span class="math notranslate nohighlight">\(a^\dagger a\)</span> in those eigenstates.</p>
-<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell tag_hide-cell tag_answer-cell docutils container">
-<details class="admonition hide above-input">
-<summary aria-label="Toggle hidden content">
-<p class="collapsed admonition-title">Show code cell content</p>
-<p class="expanded admonition-title">Hide code cell content</p>
-</summary>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell tag_answer-cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
 </pre></div>
 </div>
 </div>
-</details>
 </div>
 <div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div></section>
 <section id="d-write-it-in-the-basis-of-number-operators">
 <h3>d.  Write it in the basis of number operators<a class="headerlink" href="#d-write-it-in-the-basis-of-number-operators" title="Link to this heading">#</a></h3>
 <p>Now we would like to go ahead and write <span class="math notranslate nohighlight">\(a^\dagger\)</span> and <span class="math notranslate nohighlight">\(a\)</span> in the Harmonic Oscillator basis.  In this basis, what we expect to see is that both the raising and lowering operators are just above and below the diagonal respectively. To rotate an operator from the position basis into the Harmonic oscillator basis, you want to do <code class="docutils literal notranslate"> <span class="pre">v.T.conjugate()</span> <span class="pre">&#64;</span> <span class="pre">O</span> <span class="pre">&#64;</span> <span class="pre">v</span></code> for an operator <code class="docutils literal notranslate"><span class="pre">O</span></code> where <code class="docutils literal notranslate"><span class="pre">v</span></code> is the eigenstates of the simple harmonic oscillator.  Go ahead and rotate <span class="math notranslate nohighlight">\(a\)</span>, <span class="math notranslate nohighlight">\(a^\dagger\)</span> and <span class="math notranslate nohighlight">\(a^\dagger a\)</span> into the Harmonic oscillator basis and look at the top <span class="math notranslate nohighlight">\(10 \times 10\)</span> chunk. Does it make sense?  What are the values of the diagonal of <span class="math notranslate nohighlight">\(a^\dagger a\)</span></p>
-<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell tag_answer-cell tag_hide-cell docutils container">
-<details class="admonition hide above-input">
-<summary aria-label="Toggle hidden content">
-<p class="collapsed admonition-title">Show code cell content</p>
-<p class="expanded admonition-title">Hide code cell content</p>
-</summary>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell tag_answer-cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
 </pre></div>
 </div>
 </div>
-</details>
 </div>
 <div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div></section>
 <section id="e-warts">
@@ -1094,33 +944,21 @@ In particular, we are going to want to plot some information about the potential
 <ul class="simple">
 <li><p>The simplest thing is just that the eigenstates and eigenvalues start diverging from the true answer due to the finite L and discretization. This is very standard but you can see this here by plotting the eigenstates out to <span class="math notranslate nohighlight">\(n=100\)</span>.  What do you notice? To fix this, you can go ahead and increase <span class="math notranslate nohighlight">\(L=40\)</span> and see that the eigenstates out to <span class="math notranslate nohighlight">\(n=100\)</span> look fine.</p></li>
 </ul>
-<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell tag_hide-cell tag_answer-cell docutils container">
-<details class="admonition hide above-input">
-<summary aria-label="Toggle hidden content">
-<p class="collapsed admonition-title">Show code cell content</p>
-<p class="expanded admonition-title">Hide code cell content</p>
-</summary>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell tag_answer-cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
 </pre></div>
 </div>
 </div>
-</details>
 </div>
 <div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div><p>We learned in quantum mechanics that <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(p\)</span> obey canonical commutation relations - i.e. <span class="math notranslate nohighlight">\([X,P]=i\hbar\)</span> (which means explicitly it’s the identity matrix times <span class="math notranslate nohighlight">\(i\hbar\)</span>).</p>
 <p>Let’s test this.  Take the <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(P\)</span> operators and compute their commutator. Do a matshow of the imaginary part of the top <span class="math notranslate nohighlight">\(10 \times 10\)</span> piece of the matrix.</p>
-<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell tag_hide-cell tag_answer-cell docutils container">
-<details class="admonition hide above-input">
-<summary aria-label="Toggle hidden content">
-<p class="collapsed admonition-title">Show code cell content</p>
-<p class="expanded admonition-title">Hide code cell content</p>
-</summary>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell tag_answer-cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
 </pre></div>
 </div>
 </div>
-</details>
 </div>
 <div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div><p>You may notice that you get something that is not diagonal at all.  Instead their is <span class="math notranslate nohighlight">\(i\hbar\)</span> right off the diagonal. What’s going on!?</p>
 <p>Remember that the rows and columns are labelled by <span class="math notranslate nohighlight">\(x\)</span>.  This means that what we expected was</p>
@@ -1145,31 +983,19 @@ H = \frac{1}{2} + \hbar \omega a a^\dagger
 <p>is the Harmonic Oscillator Hamiltonian.</p>
 <p>Go ahead and diagonalize this in the x-basis and plot the first 100 eigenvalues.</p>
 <p>You’ll notice a set of eigenvalues that you are used to (which can correspond to the eigenvectors you are used to) and an erroneous set of eigenvalues.  This is essentially coming from the fact that <code class="docutils literal notranslate"><span class="pre">P&#64;P</span></code> and <code class="docutils literal notranslate"><span class="pre">P2</span></code> are different matrices.  You might think that this is some technical issue but it’s actually deep and fundamental and causes all sorts of trouble in lattice gauge theory. It goes by the name Fermion doubling and you can see a description of the problem (and the piece that’s very relevant here) is you look at this <a class="reference external" href="https://en.wikipedia.org/wiki/Fermion_doubling">Wikipedia article</a> and look at the section on derivative discretization.</p>
-<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell tag_hide-cell tag_answer-cell docutils container">
-<details class="admonition hide above-input">
-<summary aria-label="Toggle hidden content">
-<p class="collapsed admonition-title">Show code cell content</p>
-<p class="expanded admonition-title">Hide code cell content</p>
-</summary>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell tag_answer-cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
 </pre></div>
 </div>
 </div>
-</details>
 </div>
-<div class="cell tag_hide-cell tag_answer-cell docutils container">
-<details class="admonition hide above-input">
-<summary aria-label="Toggle hidden content">
-<p class="collapsed admonition-title">Show code cell content</p>
-<p class="expanded admonition-title">Hide code cell content</p>
-</summary>
+<div class="cell tag_answer-cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
 </pre></div>
 </div>
 </div>
-</details>
 </div>
 <div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div></section>
 </section>

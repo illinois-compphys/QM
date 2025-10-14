@@ -381,7 +381,7 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-eigenstates-of-finite-barriers">Exercise 2. Eigenstates of Finite Barriers</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-diagonalize">a. Diagonalize</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-effects-of-barrier-height-and-width-on-eigenstates-probably-remove">b. Effects of barrier height and width on eigenstates (probably remove)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-effects-of-barrier-height-and-width-on-eigenstates-optional">b. Effects of barrier height and width on eigenstates (optional)</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-faster-dynamics-and-finite-barriers">Exercise 3. Faster Dynamics and Finite Barriers</a><ul class="nav section-nav flex-column">
@@ -597,9 +597,9 @@ That means that if we look at any of the eigenstates with <span class="math notr
 <p>Because we are going to do some non-trivial time evolution in this assignment, it’s worth encapsulating your time-evolution into two functions:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">TimeEvolutionOperator(H,delta_t)</span></code> should take the Hamiltonian and your time step and return <span class="math notranslate nohighlight">\(e^{-iHt}\)</span>.   It’s important to note that for each Hamiltonian, you only need to compute this time-evolution operator once even if you are time-evolving many different wave-functions. If you are careful about this, you will save yourself significant time.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">TimeEvolution(psi,M,steps)</span></code> which takes the initial wave-function <code class="docutils literal notranslate"><span class="pre">psi</span></code>, the time-evolution operator <code class="docutils literal notranslate"><span class="pre">M</span></code> and the number of steps and returns a list of arrays that include the snapshot of the wave-function at every time step.
-We also want to do an update of the update function so that the animation is slightly more informative. In particular, we are going to want to plot some information about the potential and energy of our state.  Because our y-axis is currently probability (which is at most 1), we will need to rescale the energy (which can get large) so that everything sanely fits on the same axis. To do this, we are going to rescale all our energies by <code class="docutils literal notranslate"><span class="pre">scale=max_value/energy</span></code> where <code class="docutils literal notranslate"><span class="pre">max_value</span></code> is the largest probability your wave-function gets (which we’ve already been calculating for animation) and <code class="docutils literal notranslate"><span class="pre">energy</span></code> is the energy of our initial wave-function, which you can compute (recall the energy doesn’t change as a function of time).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TimeEvolution(psi,M,steps)</span></code> which takes the initial wave-function <code class="docutils literal notranslate"><span class="pre">psi</span></code>, the time-evolution operator <code class="docutils literal notranslate"><span class="pre">M</span></code> and the number of steps and returns a list of arrays that include the snapshot of the wave-function at every time step.</p></li>
 </ul>
+<p>We also want to do an update of the update function so that the animation is slightly more informative. In particular, we are going to want to plot some information about the potential and energy of our state.  Because our y-axis is currently probability (which is at most 1), we will need to rescale the energy (which can get large) so that everything sanely fits on the same axis. To do this, we are going to rescale all our energies by <code class="docutils literal notranslate"><span class="pre">scale=max_value/energy</span></code> where <code class="docutils literal notranslate"><span class="pre">max_value</span></code> is the largest probability your wave-function gets (which we’ve already been calculating for animation) and <code class="docutils literal notranslate"><span class="pre">energy</span></code> is the energy of our initial wave-function, which you can compute (recall the energy doesn’t change as a function of time).</p>
 <p>You will also need to make sure you’ve setup your observables</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="n">X</span><span class="p">,</span><span class="n">P</span><span class="p">,</span><span class="n">P2</span><span class="o">=</span><span class="n">SetupObservables</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span><span class="n">delta_x</span><span class="p">)</span>
 </pre></div>
@@ -717,8 +717,8 @@ We also want to do an update of the update function so that the animation is sli
 </div>
 </div>
 <div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div></section>
-<section id="b-effects-of-barrier-height-and-width-on-eigenstates-probably-remove">
-<h3>b. Effects of barrier height and width on eigenstates (probably remove)<a class="headerlink" href="#b-effects-of-barrier-height-and-width-on-eigenstates-probably-remove" title="Link to this heading">#</a></h3>
+<section id="b-effects-of-barrier-height-and-width-on-eigenstates-optional">
+<h3>b. Effects of barrier height and width on eigenstates (optional)<a class="headerlink" href="#b-effects-of-barrier-height-and-width-on-eigenstates-optional" title="Link to this heading">#</a></h3>
 <p>We would like to understand how the barrier height and width effects the 0’th eigenstate. Given that we know that there is an exponential decay of the eigenstate in the forbidden region, one interesting thing to look at is the minimum value of the eigenstate around zero.  One way to look at this is to do <code class="docutils literal notranslate"><span class="pre">np.min(np.abs(v[:,0][mask]))</span></code> where <code class="docutils literal notranslate"><span class="pre">mask=np.logical_and(xs&gt;-5,xs&lt;5)</span></code> is centered away from 10 and -10 where it gets tiny simply because of the hard walls there.</p>
 <p>Produce a series of potentials with width 2 centered around zero but height which scales from 0 to 4 (do jumps of 0.1 between 0 and 2 and jumps of 0.4 between 2 and 4 to avoid things being too slow).</p>
 <p>Then plot this minimum value as a function of the height.</p>
@@ -1014,7 +1014,7 @@ the frequencies that correspond to our fft are</p>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-eigenstates-of-finite-barriers">Exercise 2. Eigenstates of Finite Barriers</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-diagonalize">a. Diagonalize</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-effects-of-barrier-height-and-width-on-eigenstates-probably-remove">b. Effects of barrier height and width on eigenstates (probably remove)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-effects-of-barrier-height-and-width-on-eigenstates-optional">b. Effects of barrier height and width on eigenstates (optional)</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-faster-dynamics-and-finite-barriers">Exercise 3. Faster Dynamics and Finite Barriers</a><ul class="nav section-nav flex-column">
