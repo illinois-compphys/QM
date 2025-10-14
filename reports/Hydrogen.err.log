@@ -49,6 +49,9 @@ from mpl_toolkits.mplot3d import Axes3D
 import math
 ------------------
 
+----- stderr -----
+Matplotlib is building the font cache; this may take a moment.
+------------------
 
 [31m---------------------------------------------------------------------------[39m
 [31mModuleNotFoundError[39m                       Traceback (most recent call last)
