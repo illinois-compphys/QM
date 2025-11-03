@@ -432,9 +432,6 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Matplotlib is building the font cache; this may take a moment.
-</pre></div>
-</div>
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
 <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
@@ -480,25 +477,24 @@ R_{nl}(r) = \frac{u_{nl}(r)}{r} = N \exp(-\rho / 2)  \rho^l  L^{n-l-1}_{2l+1}(\r
 <li><p><span class="math notranslate nohighlight">\((n,\ell) = (3,0)\)</span></p></li>
 </ul>
 <p>How do the number of nodes (times when it hits zero) correspond to the value of <span class="math notranslate nohighlight">\(n\)</span>?</p>
-<p>Now also plot</p>
+<p>Now on a separate plot make</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\((n,\ell) = (3,2)\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\((n,\ell) = (3,1)\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\((n,\ell) = (3,0)\)</span></p></li>
 </ul>
 <p>Notice how the larger values of <span class="math notranslate nohighlight">\(l\)</span> are pushed further away from the origin. This is coming from the additional force due to the fake potential.</p>
-<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell docutils container">
+<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell tag_answer-cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#answer here</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
 </pre></div>
 </div>
 </div>
 </div>
-<div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div><p>It should also be that the different <span class="math notranslate nohighlight">\(u_{nl}(r)\)</span> at fixed <span class="math notranslate nohighlight">\(l\)</span> are orthogonal to each other.  Check this by verifying that
-<span class="math notranslate nohighlight">\(u_{31} u_{21}^\dagger=0\)</span>  You can do this by doing <code class="docutils literal notranslate"><span class="pre">u31</span> <span class="pre">&#64;</span> <span class="pre">u21.T.conjugate()</span></code> where you get <code class="docutils literal notranslate"><span class="pre">u</span></code> by multiplying your radial function by <span class="math notranslate nohighlight">\(r\)</span>.</p>
-<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell docutils container">
+<div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div><p>It should also be that the different <span class="math notranslate nohighlight">\(u_{nl}(r)\)</span> at fixed <span class="math notranslate nohighlight">\(l\)</span> are orthogonal to each other.  Check this by verifying that <code class="docutils literal notranslate"><span class="pre">u31.conjugate()</span> <span class="pre">&#64;</span> <span class="pre">u21.T=0</span></code> where you get <code class="docutils literal notranslate"><span class="pre">u</span></code> by multiplying your radial function by <span class="math notranslate nohighlight">\(r\)</span>.</p>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell tag_answer-cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#answer here</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
 </pre></div>
 </div>
 </div>
@@ -510,7 +506,7 @@ R_{nl}(r) = \frac{u_{nl}(r)}{r} = N \exp(-\rho / 2)  \rho^l  L^{n-l-1}_{2l+1}(\r
 <div class="math notranslate nohighlight">
 \[\Psi_{nlm}(x,y,z) = R_{nl}(x,y,z)Y_{lm}(\theta,\phi)\]</div>
 <p>We are going to want to evaluate these orbitals on the entire space.  Therefore, we will start by putting together a three-dimensional grid of the (x,y,z) positions.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">HydrogenGrid</span><span class="p">(</span><span class="n">g</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="n">numGridPoints</span><span class="o">=</span><span class="mi">50</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">HydrogenGrid</span><span class="p">(</span><span class="n">g</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="n">numGridPoints</span><span class="o">=</span><span class="mi">50</span><span class="p">):</span>
     <span class="n">p</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="n">g</span><span class="p">,</span><span class="n">g</span><span class="p">,</span><span class="n">numGridPoints</span><span class="p">)</span>
     <span class="n">h</span><span class="o">=</span><span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="n">p</span><span class="p">,</span><span class="n">p</span><span class="p">)</span>
@@ -518,7 +514,7 @@ R_{nl}(r) = \frac{u_{nl}(r)}{r} = N \exp(-\rho / 2)  \rho^l  L^{n-l-1}_{2l+1}(\r
 </pre></div>
 </div>
 <p>which you can then get the grid from by doing <code class="docutils literal notranslate"><span class="pre">x,y,z,h=HydrogenGrid(g)</span></code></p>
-<p>You’ll adjust the grid length <code class="docutils literal notranslate"><span class="pre">g</span></code> depending on which orbital you’re trying to plot. This will return three three-dimensional arrays x,y, z (as well as a scalar grid-spacing h).</p>
+<p>You’ll adjust the grid length <code class="docutils literal notranslate"><span class="pre">g</span></code> depending on which orbital you’re trying to plot. This will return three three-dimensional arrays x,y, z (as well as the grid spacing <span class="math notranslate nohighlight">\(h\)</span>).</p>
 <p>The three-dimensional array x simply has the coordinate of x at every point in (the discretized) 3D space and the three-dimensional array y has the coordinate of y at every point in (the discretized) 3D space - e.g. the analogous 2D version of this are
 <span class="math notranslate nohighlight">\(x=\)</span></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[[</span><span class="o">-</span><span class="mf">8.</span> <span class="o">-</span><span class="mf">4.</span>  <span class="mf">0.</span>  <span class="mf">4.</span>  <span class="mf">8.</span><span class="p">]</span>
@@ -546,9 +542,17 @@ Recall that</p>
 <p>and</p>
 <div class="math notranslate nohighlight">
 \[\phi = \cos^{-1}(z/r)\]</div>
-<p>You should now have access to <span class="math notranslate nohighlight">\(r,\theta,\phi\)</span> on your grid from which you can call both your radial function and spherical harmonics.  Write a function <code class="docutils literal notranslate"><span class="pre">HydrogenAtom(n,</span> <span class="pre">l,</span> <span class="pre">m,x,y,z)</span></code> which computes the hydrogen orbital on this grid and returns <code class="docutils literal notranslate"><span class="pre">psi</span></code>.</p>
+<p>You should now have access to <span class="math notranslate nohighlight">\(r,\theta,\phi\)</span> on your grid from which you can call both your radial function and spherical harmonics.</p>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell tag_answer-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (start)"></img><br></div><p>Now write a function <code class="docutils literal notranslate"><span class="pre">HydrogenAtom(n,</span> <span class="pre">l,</span> <span class="pre">m,x,y,z)</span></code> which computes the hydrogen orbital on this grid and returns <code class="docutils literal notranslate"><span class="pre">psi</span></code>.</p>
 <p>The spherical Harmonics is</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sp</span><span class="o">.</span><span class="n">sph_harm</span><span class="p">(</span><span class="n">m</span><span class="p">,</span><span class="n">l</span><span class="p">,</span><span class="n">theta</span><span class="p">,</span><span class="n">phi</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sp</span><span class="o">.</span><span class="n">sph_harm_y</span><span class="p">(</span><span class="n">l</span><span class="p">,</span><span class="n">m</span><span class="p">,</span><span class="n">phi</span><span class="p">,</span><span class="n">theta</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>where the <span class="math notranslate nohighlight">\(m\)</span> and <span class="math notranslate nohighlight">\(l\)</span> are indexing the eigenstates of the angular momentum operator. (Notice that this is backwards from how you typical think about the quantum numbers for the hydrogen atom).</p>
@@ -576,9 +580,30 @@ Recall that</p>
 <span class="n">g</span><span class="p">[(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">)]</span><span class="o">=</span><span class="mi">20</span>
 </pre></div>
 </div>
-<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell docutils container">
+<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell tag_answer-cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#answer here</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_answer-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_answer-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_answer-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
 </pre></div>
 </div>
 </div>
@@ -588,7 +613,9 @@ Recall that</p>
 <h3>c. Getting the Energy of the Hydrogen Atom<a class="headerlink" href="#c-getting-the-energy-of-the-hydrogen-atom" title="Link to this heading">#</a></h3>
 <p>Now we are going to compute the energy of the Hydrogen atom.   Recall that the Hamiltonian for the Hydrogen atom is</p>
 <div class="math notranslate nohighlight">
-\[ H =  -\frac{1}{2} \nabla^2 + \frac{1}{r} \]</div>
+\[
+H =  -\frac{1}{2} \nabla^2 + \frac{1}{r}
+\]</div>
 <p>where <span class="math notranslate nohighlight">\(-\nabla^2 = \partial^2/\partial x^2 + \partial^2/\partial y^2  + \partial^2/\partial z^2\)</span> and <span class="math notranslate nohighlight">\(r\)</span> is the distance between the nucleus and the electron.</p>
 <p>Let’s figure out how to compute each of these terms.</p>
 <p>This second term can be computed by taking the integral</p>
@@ -597,9 +624,9 @@ Recall that</p>
 <p>If we evaluate our wave-function <code class="docutils literal notranslate"><span class="pre">psi</span></code> on the grid (which is how we got our orbitals that we visualize above), then we simply multiply these three terms, sum them up (<code class="docutils literal notranslate"><span class="pre">np.sum</span></code>) and then multiply by our grid spacing cubed.</p>
 <p>For the <span class="math notranslate nohighlight">\((n,l,m)=(1,0,0)\)</span> you should get a potential Energy of  -0.9897509703021152 using the following grid <code class="docutils literal notranslate"><span class="pre">x,y,z,delta_x=HydrogenGrid(20,200)</span></code></p>
 <p>Implement this function and make sure you get the correct energy.</p>
-<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell docutils container">
+<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell tag_answer-cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#answer here</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
 </pre></div>
 </div>
 </div>
@@ -615,9 +642,9 @@ Recall that</p>
 <p>Write a function <code class="docutils literal notranslate"><span class="pre">Laplacian(n,l,m)</span></code> which calls <code class="docutils literal notranslate"><span class="pre">HydrogenWaveFunction</span></code> three times (per direction) returning the laplacian; for example for the x-direction it calls  <code class="docutils literal notranslate"><span class="pre">x+dx</span></code>, <code class="docutils literal notranslate"><span class="pre">x-dx</span></code>, and <code class="docutils literal notranslate"><span class="pre">x</span></code>. For <code class="docutils literal notranslate"><span class="pre">dx</span></code> use 1e-3.</p>
 <p>Compute the kinetic energy of the <span class="math notranslate nohighlight">\((n,l,m)=(1,0,0)\)</span> state.  You should get 0.4897835961971023 total with each of the three kinetic terms being the same (because of the symmetry of this state)</p>
 <p>Now sum up the kinetic and potential energies and multiply by 27.2 to get it into eV.  Verify that you get the right answer for the (1,0,0) term.  Also compute the energies for the (2,0,0), (2,1,0), (2,1,1) and (3,2,1) terms.  Check that each of them are close to the known value.</p>
-<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell docutils container">
+<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell tag_answer-cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#answer here</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
 </pre></div>
 </div>
 </div>
@@ -628,16 +655,24 @@ Recall that</p>
 <h2>Exercise 2. Solving the Hydrogen Atom Radial Equation Numerically<a class="headerlink" href="#exercise-2-solving-the-hydrogen-atom-radial-equation-numerically" title="Link to this heading">#</a></h2>
 <p>Recall that the Hydrogen atom Hamiltonian is</p>
 <div class="math notranslate nohighlight">
-\[H =  -\frac{1}{2}\nabla^2 - \frac{1}{r} \]</div>
+\[
+H =  -\frac{1}{2}\nabla^2 - \frac{1}{r}
+\]</div>
 <p>We solve the hydrogen atom using separation of variables eventually finding that</p>
 <div class="math notranslate nohighlight">
-\[\Psi(R,\theta,\phi) = R_{nl}(r) Y_{lm}(\theta,\phi)\]</div>
+\[
+\Psi(R,\theta,\phi) = R_{nl}(r) Y_{lm}(\theta,\phi)
+\]</div>
 <p>where <span class="math notranslate nohighlight">\(R_{nl}(r) = u(r)/r\)</span> and <span class="math notranslate nohighlight">\(u(r)\)</span> obeys the raidial eigenvalue equation</p>
 <div class="math notranslate nohighlight">
-\[ \left[-\frac{1}{2}\left(\frac{d^2}{dr^2} - \frac{l(l+1)}{r^2}  \right) - \frac{1}{r} \right] u(r) = E u(r)\]</div>
+\[
+\left[-\frac{1}{2}\left(\frac{d^2}{dr^2} - \frac{l(l+1)}{r^2}  \right) - \frac{1}{r} \right] u(r) = E u(r)
+\]</div>
 <p>which we can write as</p>
 <div class="math notranslate nohighlight">
-\[H_{eff} u(r) = E u(r)\]</div>
+\[
+H_{eff} u(r) = E u(r)
+\]</div>
 <p>This problem looks a lot like the particle in the box.   We can think of <span class="math notranslate nohighlight">\(r\)</span> here just like the <span class="math notranslate nohighlight">\(x\)</span> coordinate.  Then the Hamiltonian has three terms:</p>
 <ul class="simple">
 <li><p>the standard kinetic energy term</p></li>
@@ -656,7 +691,9 @@ Recall that</p>
 <p>We are building <span class="math notranslate nohighlight">\(N \times N\)</span> matrices where each row (respectively column) corresponds to a values of <span class="math notranslate nohighlight">\(r\)</span> on the grid - i.e. the “third” row corresponds to r[2] and the “fourth” column corresponds to the value of r[3].</p>
 <p>Let’s start with the term</p>
 <div class="math notranslate nohighlight">
-\[\frac{d^2}{dr^2} = \frac{2 f(r) - f(r+dr ) - f(r-dr)}{dr^2} \]</div>
+\[
+\frac{d^2}{dr^2} = \frac{2 f(r) - f(r+dr ) - f(r-dr)}{dr^2}
+\]</div>
 <p>As a matrix this means:</p>
 <ul class="simple">
 <li><p>the elements that connect the r’th column to the r’th row should get a <span class="math notranslate nohighlight">\(2/dr^2\)</span>.  This is just the diagonal of the matrix</p></li>
@@ -664,10 +701,10 @@ Recall that</p>
 <li><p>the elements that connect the (r-1)’st column to the r’th row should get a <span class="math notranslate nohighlight">\(-1/dr^2\)</span>. This is just one row below the diagonal.</p></li>
 </ul>
 <p>Write a function <code class="docutils literal notranslate"><span class="pre">Laplacian(r)</span></code> which takes the grid <code class="docutils literal notranslate"><span class="pre">r</span></code> and returns a matrix corresponding to the second derivative.   You will find the <code class="docutils literal notranslate"><span class="pre">np.diag</span></code> function useful (even the off-diagonal term can be built using it - look at the documentation!).  You should essentially be able to build this matrix in three such function calls.</p>
-<p>Working in units where <span class="math notranslate nohighlight">\(\hbar =1\)</span> and <span class="math notranslate nohighlight">\(m=1\)</span>, go ahead and compute the full kinetic term.   To diagonalize a matrix, you can call <code class="docutils literal notranslate"><span class="pre">e,v=np.linalg.eigh(L)</span></code>.  Verify that the lowest four energies are [0.00305358 0.01221356 0.02747771 0.04884231].</p>
-<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell docutils container">
+<p>Working in units where <span class="math notranslate nohighlight">\(\hbar =1\)</span> and <span class="math notranslate nohighlight">\(m=1\)</span>, go ahead and compute the full kinetic term.   To diagonalize a matrix, you can call <code class="docutils literal notranslate"><span class="pre">e,v=np.linalg.eigh(-0.5*L)</span></code>.  Verify that the lowest four energies are [0.00305358 0.01221356 0.02747771 0.04884231].</p>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell tag_answer-cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#answer here</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
 </pre></div>
 </div>
 </div>
@@ -679,9 +716,9 @@ Recall that</p>
 <div class="math notranslate nohighlight">
 \[V(r,l) = \frac{l(l+1)}{2r^2} - \frac{1}{r}\]</div>
 <p>Again use <code class="docutils literal notranslate"><span class="pre">np.diag</span></code></p>
-<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell docutils container">
+<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell tag_answer-cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#answer here</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
 </pre></div>
 </div>
 </div>
@@ -692,9 +729,16 @@ Recall that</p>
 <p>Now we simply want to add the full Hamiltonian matrix together and diagonalize it using <code class="docutils literal notranslate"><span class="pre">e,v=np.linalg.eigh(H)</span></code></p>
 <p>Both print and plot the lowest 6 energies - <code class="docutils literal notranslate"><span class="pre">plt.plot(e[0:6]*27.2)</span></code>.  Also on your plot make some straight lines - <code class="docutils literal notranslate"><span class="pre">plt.axhline(the_energy)</span></code> where the energies for the n’th eignenstate should be - i.e. <span class="math notranslate nohighlight">\(-13.6/n^2\)</span>.  How close are you getting?</p>
 <p>Also plot the lowest three eigenstates and see if the radial functions match the ones from above.  To normalize the plot correctly you have to divide your eigenvectors by <span class="math notranslate nohighlight">\(\sqrt{h}\)</span>.</p>
-<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell docutils container">
+<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell tag_answer-cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#answer here</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_answer-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
 </pre></div>
 </div>
 </div>
@@ -710,9 +754,9 @@ Recall that</p>
 </ul>
 <p>Use now a grid of <span class="math notranslate nohighlight">\(N=4000\)</span> out to <span class="math notranslate nohighlight">\(L=60\)</span></p>
 <p>Go ahead and plot the same curves as above and verify you get more reasonable results.</p>
-<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell docutils container">
+<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell tag_answer-cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#answer here</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
 </pre></div>
 </div>
 </div>
@@ -732,10 +776,14 @@ Recall that</p>
 <p>Our goal here is to be able to solve for the eigenstates and eigenvalues of the Hydrogen atom.</p>
 <p>The hydrogen atom has a single electron and a Hamiltonian of</p>
 <div class="math notranslate nohighlight">
-\[H =  -\frac{1}{2}\nabla^2 + V(R) \]</div>
+\[
+H =  -\frac{1}{2}\nabla^2 + V(R)
+\]</div>
 <p>where</p>
 <div class="math notranslate nohighlight">
-\[V(R) = -\frac{1}{R}\]</div>
+\[
+V(R) = -\frac{1}{R}
+\]</div>
 <p>where <span class="math notranslate nohighlight">\(R\)</span> is the distance between the proton and electron of the Hydrogen atom.</p>
 <p>Let’s learn some things to put this together:</p>
 <p>First recall that <span class="math notranslate nohighlight">\(\nabla^2 = \frac{d^2}{dx^2}+\frac{d^2}{dy^2}+ \frac{d^2}{dz^2}\)</span>.  We need to generate a matrix for this laplacian.</p>
@@ -752,16 +800,16 @@ These two steps will give you <span class="math notranslate nohighlight">\(\frac
 </pre></div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">which='SA'</span></code> is important to get the lowest energies.</p>
-<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (end)"></img><br></div><div class="cell docutils container">
+<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (end)"></img><br></div><div class="cell tag_answer-cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#answer here</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div><p>After you have your laplacian in place, you want to generate the Coulomb potential piece of your Hamiltonian (<span class="math notranslate nohighlight">\(1/R\)</span>) on a grid.</p>
-<!-- 
-You want to get a three-dimensional grid 
+<!--
+You want to get a three-dimensional grid
 `r2=x*x+y*y+z*z`.   You essentially want three-dimensional versions of the following:
 $x=$
 ```
@@ -796,9 +844,9 @@ From this it should be straightforward to produce $R$ as a three-dimensional gri
 </div>
 <p>Write a function <code class="docutils literal notranslate"><span class="pre">ExternalPotential</span></code> which generates this matrix.</p>
 <p>You now have your laplacian term and your potential term.  You can add these two terms together to get your full Hamiltonian.</p>
-<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell docutils container">
+<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell tag_answer-cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#answer here</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
 </pre></div>
 </div>
 </div>
@@ -818,18 +866,19 @@ From this it should be straightforward to produce $R$ as a three-dimensional gri
 </ul>
 <p>Let’s start with looking at the energies of the 1s, 2s, and 3s states which we expect it to be -13.6 eV, -13.6/4 eV and -13.6/9 eV respectively.  Obviously because we are using a grid, we aren’t going to get the exact answer. But as we increase the grid size we should get closer and closer to the true answer.  Starting with 20 grid points per direction and increasing the grid in units of 20 up to 100 grid points per direction, graph the energy of these three eigenstates as a function of number of grid points per direction. Also draw horizontal lines at the expected value of the eigenstates.  You should see the energies approach the target energies at large grid-size.  <em>Hint: Your g=20 energy for 1s should be -10.71473301</em>.  (There are some eigenstates where you need to increase the size of the grid to capture the full wave-function)</p>
 <p><strong>Note:</strong>. You need to be careful about units.  To convert into eV you have to multiply your energy by 27.21.</p>
-<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell tag_hide-cell docutils container">
-<details class="admonition hide above-input">
-<summary aria-label="Toggle hidden content">
-<p class="collapsed admonition-title">Show code cell content</p>
-<p class="expanded admonition-title">Hide code cell content</p>
-</summary>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell tag_answer-cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#answer here</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
 </pre></div>
 </div>
 </div>
-</details>
+</div>
+<div class="cell tag_answer-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
+</pre></div>
+</div>
+</div>
 </div>
 <div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div></section>
 <section id="c-eigenvectors">
@@ -838,17 +887,17 @@ From this it should be straightforward to produce $R$ as a three-dimensional gri
 <p>Let’s start by looking at the s-states.  First, we will make some two-dimensional slices of the three-dimensional wave-functions we’ve found.  To get your 2d visualization, you first need to reshape your wave-function into a 3d grid - if you have a <span class="math notranslate nohighlight">\(80 \times 80 \times 80\)</span> grid this can be done for the <span class="math notranslate nohighlight">\(i\)</span> th eigenstate by doing <code class="docutils literal notranslate"><span class="pre">A=psi[:,i].reshape(80,80,80)</span></code>.   Now you can go ahead and plot it by <code class="docutils literal notranslate"><span class="pre">plt.matshow(A[40,:,:])</span></code> where 40 is the slice that you want.  You probably want to use <code class="docutils literal notranslate"><span class="pre">plt.colorbar()</span></code> so you can see the magnitude and sign of things.</p>
 <p>If you look at the 0 (1s),1 (2s) or 5 (3s) eigenstate you will find that it should have a clear “S” character - symmetric around the origin.   (This ordering of eigentstates )</p>
 <p>You can also graph the probability density as a function of the radius.  You could average but because it is symmetric the easiest thing to do is just plot a one dimensional line starting at the origin.  To match up with earlier results, actually we’d like to plot not the radial function <span class="math notranslate nohighlight">\(|R_{nl}(r)|^2\)</span> but <span class="math notranslate nohighlight">\(|u_{nl}(r)|^2\)</span> so multiply by <span class="math notranslate nohighlight">\(r\)</span> - i.e. <code class="docutils literal notranslate"><span class="pre">plt.plot(r,r*A[40,40,40:])</span></code>.  Notice we are starting at <code class="docutils literal notranslate"><span class="pre">40:</span></code> for that last term because that’s where zero starts.  For the different shells, count how many nodes you see (i.e. places where the probability density goes to zero).  To normalize you have to divide by <span class="math notranslate nohighlight">\(1/(4\pi\sqrt{h})\)</span></p>
-<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell docutils container">
+<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell tag_answer-cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#answer here</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div><p>You can also look at the 2’nd eigenstate (and third and fourth) eigenstate on a 2d plot.  This should show clearly the p-character of your state.</p>
-<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell docutils container">
+<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell tag_answer-cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#answer here</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
 </pre></div>
 </div>
 </div>
@@ -857,15 +906,48 @@ From this it should be straightforward to produce $R$ as a three-dimensional gri
 <section id="c-three-dimensional-plots">
 <h3>c.  Three-dimensional plots<a class="headerlink" href="#c-three-dimensional-plots" title="Link to this heading">#</a></h3>
 <p>Now we’d like to make some three-dimensional plots.</p>
-<p>Make some three-dimensional plots.   To do this, you need to put your wave-function back on a grid - i.e. psi[:,i].reshape(80,80,80).  Then use your <code class="docutils literal notranslate"><span class="pre">PlotMe</span></code> function from above.   Compare these orbitals to the ones you got by directly plotting the analytic formula.</p>
-<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell docutils container">
+<p>Make some three-dimensional plots.   To do this, you need to put your wave-function back on a grid - i.e. psi[:,i].reshape(80,80,80).</p>
+<p>Then use the following function</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">PlotMe</span><span class="p">(</span><span class="n">psi</span><span class="p">):</span>
+    <span class="n">isomin</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">psi</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">isomax</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">psi</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">isomin</span><span class="p">,</span><span class="n">isomax</span><span class="p">)</span>
+    <span class="n">g</span><span class="o">=</span><span class="mi">80</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">12</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="n">g</span><span class="p">);</span>         <span class="c1">#% one dimensiton space lattice</span>
+    <span class="n">h</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>              <span class="c1">#% latice spacing</span>
+    <span class="n">L3</span><span class="o">=</span><span class="n">Laplacian</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="n">g</span><span class="p">)</span>
+    <span class="p">[</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">Z</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">p</span><span class="p">);</span>  <span class="c1">#% three d</span>
+    <span class="c1"># Create the isosurface</span>
+    <span class="n">isosurface</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Isosurface</span><span class="p">(</span>
+        <span class="n">x</span><span class="o">=</span><span class="n">X</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span>
+        <span class="n">y</span><span class="o">=</span><span class="n">Y</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span>
+        <span class="n">z</span><span class="o">=</span><span class="n">Z</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span>
+        <span class="n">value</span><span class="o">=</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">psi</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span>  <span class="c1"># Use the absolute value for intensity</span>
+        <span class="c1">#isomin=0.01**2,  # Adjust the minimum intensity threshold</span>
+        <span class="c1">#isomax=isomax,  # Adjust the maximum intensity threshold</span>
+        <span class="n">surface_count</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="c1"># Number of isosurfaces to display</span>
+        <span class="c1">#colorscale=&#39;Viridis&#39;,  # Choose a color scale</span>
+        <span class="n">opacity</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>  <span class="c1"># Set the opacity of the isosurface</span>
+        <span class="n">surface_fill</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+        <span class="n">caps</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">x_show</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">y_show</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="p">)</span>
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Figure</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="p">[</span><span class="n">isosurface</span><span class="p">])</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Compare these orbitals to the ones you got by directly plotting the analytic formula.</p>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell tag_answer-cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#answer here</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###ANSWER HERE</span>
 </pre></div>
 </div>
 </div>
 </div>
-<div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div></section>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div><p><strong>Acknowledgements:</strong></p>
+<ul class="simple">
+<li><p>Bryan Clark (original)</p></li>
+</ul>
+</section>
 </section>
 </section>
 
