@@ -33,6 +33,9 @@ import pylab as plt
 import qutip
 import scipy
 import scipy.linalg
+import stats
+from tqdm.notebook import tqdm
+import time
 from matplotlib.animation import FuncAnimation
 from IPython.display import HTML
 import matplotlib.animation as animation
