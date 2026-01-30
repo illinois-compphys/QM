@@ -11,8 +11,8 @@ The formalism of quantum mechanics can sometimes look foreboding.  One way to ma
 
 #### Physics 486
 [Particle in a Box](ParticleInABox.ipynb)<br>
-[Particle in a Finite Well](ParticleInAFiniteWell.ipynb)<br>
 [Harmonic Oscillator](HarmonicOscillator.ipynb) <br>
+[Particle in a Finite Well](ParticleInAFiniteWell.ipynb)<br>
 [Hydrogen Atom](Hydrogen.ipynb)
 
 #### Physics 487
