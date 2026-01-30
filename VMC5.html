@@ -30,7 +30,7 @@
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
@@ -50,7 +50,7 @@
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="_static/togglebutton.js?v=1ae7504c"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/design-tabs.js?v=f930bc37"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
@@ -825,8 +825,10 @@ b_{ep} = \left( \frac{a_{ep}}{\beta}\right)^{1/2}
 <p>All of this work was to get the energy of the proton at a single bond-length. Now we would like to stretch (and compress) the bond and also get the energies. If there is a local minima at some value (and the energy at large separation is larger then this local minima), then the molecule should bind.</p>
 <p>Go ahead and compute for <code class="docutils literal notranslate"><span class="pre">L=[1.0,2.0,3.0]</span></code> the minima energy (optimizing for each one over all <span class="math notranslate nohighlight">\(\alpha\)</span> and <span class="math notranslate nohighlight">\(\beta\)</span>) You already have the <span class="math notranslate nohighlight">\(L=2\)</span> point.  Plot the best energies as a function of L and see if you get a local minima that would indicate bonding.</p>
 <p>You can compare it against the exact energy with</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cation</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s2">&quot;data&quot;</span><span class="p">,</span><span class="n">delimiter</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">cation</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span><span class="n">cation</span><span class="p">[:,</span><span class="mi">1</span><span class="p">])</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>!wget https://clark.physics.illinois.edu/QM/data
+!wget https://clark.physics.illinois.edu/QM/data_H2
+cation=np.loadtxt(&quot;data&quot;,delimiter=&quot;,&quot;)
+plt.plot(cation[:,0],cation[:,1])
 </pre></div>
 </div>
 <p>You may notice that as you begin to stretch the molecule, things start to fall apart.  Why is that?    What could you do to fix this?</p>

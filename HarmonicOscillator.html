@@ -30,7 +30,7 @@
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
@@ -50,7 +50,7 @@
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="_static/togglebutton.js?v=1ae7504c"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/design-tabs.js?v=f930bc37"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
@@ -493,10 +493,17 @@ document.write(`
     <span class="k">return</span> <span class="n">X</span><span class="p">,</span><span class="n">P</span><span class="p">,</span><span class="n">P2</span>
 
 
+
 <span class="k">def</span><span class="w"> </span><span class="nf">update</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="n">skip</span><span class="p">,</span> <span class="n">xs</span><span class="p">,</span> <span class="n">positions</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">potential</span><span class="o">=</span><span class="p">[],</span> <span class="n">max_value</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">energy</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">scale</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">cla</span><span class="p">()</span>  <span class="c1"># Clear the current plot</span>
+    <span class="n">scale</span><span class="o">=</span><span class="n">max_value</span><span class="o">/</span><span class="n">energy</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">energy</span><span class="o">*</span><span class="n">scale</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span><span class="n">potential</span><span class="o">*</span><span class="n">scale</span><span class="p">)</span>
     <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">positions</span><span class="p">)</span><span class="o">==</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
-        <span class="k">pass</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">positions</span><span class="p">[::</span><span class="n">skip</span><span class="p">][</span><span class="n">frame</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">positions</span><span class="o">!=</span><span class="kc">None</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ERROR&quot;</span><span class="p">)</span>
+        <span class="k">return</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">arrays</span><span class="p">[::</span><span class="n">skip</span><span class="p">][</span><span class="n">frame</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>  <span class="c1"># Plot the current array</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.5</span><span class="o">*</span><span class="n">max_value</span><span class="p">)</span>  <span class="c1"># Set the y-axis limit</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
@@ -758,15 +765,7 @@ and then include the legend with</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">TimeEvolutionOperator(H,delta_t)</span></code> should take the Hamiltonian and your time step and return <span class="math notranslate nohighlight">\(e^{-iH\delta t}\)</span>.   It’s important to note that for each Hamiltonian, you only need to compute this time-evolution operator once even if you are time-evolving for many steps (or even many different initial wave-functions). This will save significant time compared to computing it each time!</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">TimeEvolution(psi,M,steps)</span></code> which takes the initial wave-function <code class="docutils literal notranslate"><span class="pre">psi</span></code>, the time-evolution operator <code class="docutils literal notranslate"><span class="pre">M</span></code> and the number of steps and returns a list of arrays that include the snapshot of the wave-function at every time step.</p></li>
 </ul>
-<p>We also want to do an update of the update function so that the animation is slightly more informative. <em>Note: If you did the particle-in-a-finite-well assignment you may have already done these modifications</em>
-In particular, we are going to want to plot some information about the potential and energy of our state.  Because our y-axis is currently probability (which is at most 1), we will need to rescale the energy (which can get large) so that everything sanely fits on the same axis. To do this, we are going to rescale all our energies by <code class="docutils literal notranslate"><span class="pre">scale=max_value/energy</span></code> where <code class="docutils literal notranslate"><span class="pre">max_value</span></code> is the largest probability your wave-function gets (which we’ve already been calculating for animation) and <code class="docutils literal notranslate"><span class="pre">energy</span></code> is the energy of our initial wave-function, which you can compute (recall the energy doesn’t change as a function of time).</p>
-<p><strong>Modifications of the Update Function</strong></p>
-<ul class="simple">
-<li><p>Add a line which takes the <code class="docutils literal notranslate"><span class="pre">energy</span></code> and <code class="docutils literal notranslate"><span class="pre">max_value</span></code> sent to it and computes a scale</p></li>
-<li><p>Plots a red-dashed line at the energy of our state - i.e. <code class="docutils literal notranslate"><span class="pre">plt.axhline(energy*scale,color='red',linestyle='--')</span></code></p></li>
-<li><p>Plots the potential (scaled by the scale)</p></li>
-<li><p>Gives<code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">update(frame,</span> <span class="pre">skip,</span> <span class="pre">xs,</span> <span class="pre">positions,</span> <span class="pre">potential,</span> <span class="pre">max_value,</span> <span class="pre">energy)</span></code>  the relevant additional parameters.  To do this you will need to compute the positions using your <code class="docutils literal notranslate"><span class="pre">X</span></code> from <code class="docutils literal notranslate"><span class="pre">SetupObservables</span></code> (outside the function)</p></li>
-</ul>
+<p>You will need to give <code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">update(frame,</span> <span class="pre">skip,</span> <span class="pre">xs,</span> <span class="pre">positions,</span> <span class="pre">potential,</span> <span class="pre">max_value,</span> <span class="pre">energy)</span></code>  the relevant additional parameters. <code class="docutils literal notranslate"><span class="pre">max_value</span></code> is the largest probability your wave-function gets (which we’ve already been calculating for animation) and <code class="docutils literal notranslate"><span class="pre">energy</span></code> is the energy of our initial wave-function, which you can compute (recall the energy doesn’t change as a function of time).  You also need to send it the position array which you can compute using your <code class="docutils literal notranslate"><span class="pre">X</span></code> from <code class="docutils literal notranslate"><span class="pre">SetupObservables</span></code> (outside the function).</p>
 <p>Let’s start with the wave-function</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">psi=(np.sqrt(0.1)*v[:,0]+np.sqrt(0.25)*v[:,1]+1.j*np.sqrt(0.65)*v[:,2]).astype(np.complex128)</span></code> where <code class="docutils literal notranslate"><span class="pre">v</span></code> are the eigenstates from the SHO.</p></li>
@@ -942,7 +941,7 @@ In particular, we are going to want to plot some information about the potential
 <h3>e. Warts<a class="headerlink" href="#e-warts" title="Link to this heading">#</a></h3>
 <p>So far everything has worked out well when we discretized things.  In this section, we just mention a couple warts that you need to look out for.</p>
 <ul class="simple">
-<li><p>The simplest thing is just that the eigenstates and eigenvalues start diverging from the true answer due to the finite L and discretization. This is very standard but you can see this here by plotting the eigenstates out to <span class="math notranslate nohighlight">\(n=100\)</span>.  What do you notice? To fix this, you can go ahead and increase <span class="math notranslate nohighlight">\(L=40\)</span> and see that the eigenstates out to <span class="math notranslate nohighlight">\(n=100\)</span> look fine.</p></li>
+<li><p>The simplest thing is just that the eigenstates and eigenvalues start diverging from the true answer due to the finite L and discretization. This is very standard but you can see this here by plotting the eigenvalues out to <span class="math notranslate nohighlight">\(n=100\)</span>.  What do you notice? To fix this, you can go ahead and increase <span class="math notranslate nohighlight">\(L=40\)</span> and see that the eigenstates out to <span class="math notranslate nohighlight">\(n=100\)</span> look fine.</p></li>
 </ul>
 <div><img src="https://clark.physics.illinois.edu/246img/AnsStart.svg" width=200 align=left alt="Answer (start)"></img><br></div><div class="cell tag_answer-cell docutils container">
 <div class="cell_input docutils container">
@@ -997,7 +996,13 @@ H = \frac{1}{2} + \hbar \omega a a^\dagger
 </div>
 </div>
 </div>
-<div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div></section>
+<div><img src="https://clark.physics.illinois.edu/246img/AnsEnd.svg" width=200 align=left alt="Answer (end)"></img><br></div><hr class="docutils" />
+<p><strong>Acknowledgements:</strong></p>
+<ul class="simple">
+<li><p>Bryan Clark (original)</p></li>
+</ul>
+<p>© Copyright 2025</p>
+</section>
 </section>
 </section>
 
